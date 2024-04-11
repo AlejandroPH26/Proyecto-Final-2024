@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovimientoPrueba : MonoBehaviour
+public class MovimientoPrueba2 : MonoBehaviour
 {
     public float speed = 5f; // Velocidad de movimiento del jugador
     private Rigidbody2D rb; // Referencia al Rigidbody2D del jugador
@@ -14,13 +14,17 @@ public class MovimientoPrueba : MonoBehaviour
 
     private bool playerInRoom = false; // Variable para verificar si el jugador está en la sala actual
 
+    // Posición inicial y final de la cámara para el paneo
+    private Vector3 initialCameraPosition;
+    private Vector3 targetCameraPosition;
+    private float lerpProgress = 0.5f; // Progreso del paneo
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Obtener el Rigidbody2D del jugador
     }
 
-    // Update se llama una vez por frame
     void Update()
     {
         // Obtener la entrada del teclado
@@ -84,9 +88,26 @@ public class MovimientoPrueba : MonoBehaviour
             Transform cameraTarget = salaActual.transform.Find("CameraTarget");
             if (cameraTarget != null)
             {
-                mainCamera.position = cameraTarget.position;
+                // Configurar los valores para el paneo de la cámara
+                initialCameraPosition = mainCamera.position;
+                targetCameraPosition = cameraTarget.position;
+                // Iniciar el paneo de la cámara
+                StartCoroutine(MoveCameraSmoothly());
             }
+        }
+    }
 
+    // Corrutina para mover suavemente la cámara
+    IEnumerator MoveCameraSmoothly()
+    {
+        lerpProgress = 0f;
+        while (lerpProgress < 1f)
+        {
+            // Incrementar el progreso del paneo
+            lerpProgress += Time.deltaTime * speed;
+            // Aplicar la función Lerp para mover suavemente la cámara hacia su destino
+            mainCamera.position = Vector3.Lerp(initialCameraPosition, targetCameraPosition, lerpProgress);
+            yield return null; // Esperar hasta el siguiente frame
         }
     }
 
@@ -110,5 +131,4 @@ public class MovimientoPrueba : MonoBehaviour
             }
         }
     }
-
 }
