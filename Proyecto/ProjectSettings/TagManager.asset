@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Door
+  - CameraTarget
+  - TeleportTarget
+  - SalaActual
   layers:
   - Default
   - TransparentFX
