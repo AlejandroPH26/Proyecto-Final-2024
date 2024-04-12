@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class MovimientoPrueba2 : MonoBehaviour
 {
-    public float speed = 5f; // Velocidad de movimiento del jugador
-    private Rigidbody2D rb; // Referencia al Rigidbody2D del jugador
+    public float speed = 5f;                                // Velocidad de movimiento del jugador
+    public float cameraSpeed = 2f;                          // Velocidad del paneo de la cámara
+    private Rigidbody2D rb;                                 // Referencia al Rigidbody2D del jugador
 
-    public Transform mainCamera; // Referencia al transform de la cámara principal
-    public Transform player; // Referencia al transform del jugador
-    public string teleportTargetTag = "TeleportTarget"; // Tag de los objetos de teletransporte
-    public string currentRoomTag = "SalaActual"; // Tag del objeto vacío que representa la sala actual
+    public Transform mainCamera;                            // Referencia al transform de la cámara principal
+    public Transform player;                                // Referencia al transform del jugador
+    public string teleportTargetTag = "TeleportTarget";     // Tag de los objetos de teletransporte
+    public string currentRoomTag = "SalaActual";            // Tag del objeto vacío que representa la sala actual
 
-    private bool playerInRoom = false; // Variable para verificar si el jugador está en la sala actual
+    private bool playerInRoom = false;                      // Variable para verificar si el jugador está en la sala actual
+    private bool isCameraMoving;                            // Variable para rastrear si la cámara está en movimiento
 
     // Posición inicial y final de la cámara para el paneo
     private Vector3 initialCameraPosition;
     private Vector3 targetCameraPosition;
-    private float lerpProgress = 0.5f; // Progreso del paneo
+    private float lerpProgress = 0.01f;                     // Progreso del paneo
 
     // Start is called before the first frame update
     void Start()
@@ -100,15 +102,26 @@ public class MovimientoPrueba2 : MonoBehaviour
     // Corrutina para mover suavemente la cámara
     IEnumerator MoveCameraSmoothly()
     {
+        // Marcar que la cámara está en movimiento
+        isCameraMoving = true;
+        // Pausar el tiempo del juego
+        Time.timeScale = 0f;
+        // Esperar un frame para asegurarse de que el tiempo se haya pausado correctamente
+        yield return null;
+
         lerpProgress = 0f;
         while (lerpProgress < 1f)
         {
             // Incrementar el progreso del paneo
-            lerpProgress += Time.deltaTime * speed;
+            lerpProgress += Time.unscaledDeltaTime * cameraSpeed;
             // Aplicar la función Lerp para mover suavemente la cámara hacia su destino
             mainCamera.position = Vector3.Lerp(initialCameraPosition, targetCameraPosition, lerpProgress);
             yield return null; // Esperar hasta el siguiente frame
         }
+
+        // Restablecer valores y reanudar el tiempo del juego
+        isCameraMoving = false;
+        Time.timeScale = 1f;
     }
 
     void OnTriggerExit2D(Collider2D other)

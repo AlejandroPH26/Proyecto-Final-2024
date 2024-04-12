@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 387421861}
   - component: {fileID: 387421860}
   - component: {fileID: 387421859}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1479,7 +1479,7 @@ Transform:
   m_GameObject: {fileID: 1645033461}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.029999971, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1560,6 +1560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  cameraSpeed: 2
   mainCamera: {fileID: 387421861}
   player: {fileID: 1645033464}
   teleportTargetTag: TeleportTarget
@@ -2359,8 +2360,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 598168282}
   - {fileID: 387421861}
+  - {fileID: 598168282}
   - {fileID: 1083475617}
   - {fileID: 4467051536456624929}
   - {fileID: 85714054}
