@@ -32,6 +32,8 @@ public class MovimientoPrueba : MonoBehaviour
 
         // Aplicar el movimiento al Rigidbody2D del jugador
         rb.velocity = movement;
+
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
