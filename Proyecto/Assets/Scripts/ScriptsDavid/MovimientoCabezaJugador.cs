@@ -9,6 +9,7 @@ public class MovimientoCabezaJugador : MonoBehaviour
     public Animator pAnimator;
     public float speedBullet = 3f;
     public GameObject balaprefab;
+    bool canShoot;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,9 +57,26 @@ public class MovimientoCabezaJugador : MonoBehaviour
         // TODO cambiar posicion según dirección de la cabeza
         GameObject bala = Instantiate(balaprefab, transform.position, Quaternion.identity);
         // Obtener componente BalaJugador del objeto
+        BalaJugador bullet = bala.GetComponent<BalaJugador>();
         // A esa BalaJugador le asignamos la dirección (la de la cabeza)
-
+        if (dirCabeza == Direction.UP)
+        {
+            new Vector2(0, 1);
+        }
+        if (dirCabeza == Direction.RIGHT)
+        {
+            new Vector2(1, 0);
+        }
+        if (dirCabeza == Direction.LEFT)
+        {
+            new Vector2(-1, 0);
+        }
+        if (dirCabeza == Direction.DOWN)
+        {
+            new Vector2(0, -1);
+        }
         // Desactivar el disparo (p.ej. booleano canShoot)
+        canShoot = false;
         // Hacer un invoke para volver a activar canShoot en un tiempo p.ej. delayDisparo)
 
     }
