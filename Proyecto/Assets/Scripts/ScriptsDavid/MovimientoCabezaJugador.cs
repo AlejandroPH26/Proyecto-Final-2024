@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 //Enum para posicion de la cabeza y el disparo
 public enum Direction {UP, DOWN, LEFT, RIGHT};
+
 public class MovimientoCabezaJugador : MonoBehaviour
 {
-    public Direction dirCabeza;
+    public Direction dirCabeza = Direction.DOWN;
     public Animator pAnimator;
     public float speedBullet = 3f;
     public GameObject balaprefab;
-    bool canShoot;
+    bool canShoot=true;
+    public float delay = 1f;
+    public Transform GameObjectUp;
+    public Transform GameObjectLeft;
+    public Transform GameObjectRight;
+    public Transform GameObjectDown;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,30 +61,74 @@ public class MovimientoCabezaJugador : MonoBehaviour
            // transform.position += new Vector3(0, -speedBullet, 0) * Time.deltaTime;
     public void Shoot()
     {
-        // TODO cambiar posicion según dirección de la cabeza
-        GameObject bala = Instantiate(balaprefab, transform.position, Quaternion.identity);
-        // Obtener componente BalaJugador del objeto
-        BalaJugador bullet = bala.GetComponent<BalaJugador>();
-        // A esa BalaJugador le asignamos la dirección (la de la cabeza)
-        if (dirCabeza == Direction.UP)
+        if (canShoot == true)
         {
-            new Vector2(0, 1);
-        }
-        if (dirCabeza == Direction.RIGHT)
-        {
-            new Vector2(1, 0);
-        }
-        if (dirCabeza == Direction.LEFT)
-        {
-            new Vector2(-1, 0);
-        }
-        if (dirCabeza == Direction.DOWN)
-        {
-            new Vector2(0, -1);
-        }
-        // Desactivar el disparo (p.ej. booleano canShoot)
-        canShoot = false;
-        // Hacer un invoke para volver a activar canShoot en un tiempo p.ej. delayDisparo)
+            if (dirCabeza == Direction.UP)
+            {
+                // TODO cambiar posicion según dirección de la cabeza
+                GameObject bala = Instantiate(balaprefab, GameObjectUp.position, Quaternion.identity);
+                // Obtener componente BalaJugador del objeto
+                BalaJugador bullet = bala.GetComponent<BalaJugador>();
+                // A esa BalaJugador le asignamos la dirección (la de la cabeza)
+                bullet.asignarDireccion(dirCabeza);
 
+                // Desactivar el disparo (p.ej. booleano canShoot)
+                canShoot = false;
+                // Hacer un invoke para volver a activar canShoot en un tiempo p.ej. delayDisparo)
+                Invoke("activaDisparo", delay);
+            }
+            if (dirCabeza == Direction.LEFT)
+            {
+                // TODO cambiar posicion según dirección de la cabeza
+                GameObject bala = Instantiate(balaprefab, GameObjectLeft.position, Quaternion.identity);
+                // Obtener componente BalaJugador del objeto
+                BalaJugador bullet = bala.GetComponent<BalaJugador>();
+                // A esa BalaJugador le asignamos la dirección (la de la cabeza)
+                bullet.asignarDireccion(dirCabeza);
+
+                // Desactivar el disparo (p.ej. booleano canShoot)
+                canShoot = false;
+                // Hacer un invoke para volver a activar canShoot en un tiempo p.ej. delayDisparo)
+                Invoke("activaDisparo", delay);
+            }
+            if (dirCabeza == Direction.RIGHT)
+            {
+                // TODO cambiar posicion según dirección de la cabeza
+                GameObject bala = Instantiate(balaprefab, GameObjectRight.position, Quaternion.identity);
+                // Obtener componente BalaJugador del objeto
+                BalaJugador bullet = bala.GetComponent<BalaJugador>();
+                // A esa BalaJugador le asignamos la dirección (la de la cabeza)
+                bullet.asignarDireccion(dirCabeza);
+
+                // Desactivar el disparo (p.ej. booleano canShoot)
+                canShoot = false;
+                // Hacer un invoke para volver a activar canShoot en un tiempo p.ej. delayDisparo)
+                Invoke("activaDisparo", delay);
+            }
+            if (dirCabeza == Direction.DOWN)
+            {
+                // TODO cambiar posicion según dirección de la cabeza
+                GameObject bala = Instantiate(balaprefab, GameObjectDown.position, Quaternion.identity);
+                // Obtener componente BalaJugador del objeto
+                BalaJugador bullet = bala.GetComponent<BalaJugador>();
+                // A esa BalaJugador le asignamos la dirección (la de la cabeza)
+                bullet.asignarDireccion(dirCabeza);
+
+                // Desactivar el disparo (p.ej. booleano canShoot)
+                canShoot = false;
+                // Hacer un invoke para volver a activar canShoot en un tiempo p.ej. delayDisparo)
+                Invoke("activaDisparo", delay);
+            }
+
+
+
+
+
+        }
     }
+   private void activaDisparo()
+    {
+        canShoot = true;
+    }
+
 }

@@ -11,10 +11,9 @@ public class BalaJugador : MonoBehaviour
     private Vector2[] direcciones = {new Vector2(0,1), new Vector2(0,-1), new Vector2(-1,0), new Vector2(1,0)};
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     { 
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(0, speed);
     }
 
     // Update is called once per frame
@@ -32,10 +31,6 @@ public class BalaJugador : MonoBehaviour
     {
         // Asignar dirBala
         dirBala = dir;
-        
-    
-
-       
         // Modificar rb.velocity
         // direcciones para usar la lista, el corchete [] es para seleccionar la posición en la lista,
         // que dirBala es int y no otro tipo de dato (int),
