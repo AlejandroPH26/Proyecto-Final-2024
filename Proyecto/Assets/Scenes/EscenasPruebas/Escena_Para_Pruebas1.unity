@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 127258976}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObjectRight
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 158299576}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObjectLeft
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 235572347}
   - component: {fileID: 235572346}
   - component: {fileID: 235572345}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cabeza
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 392328824}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObjectDown
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 1392623511}
   - component: {fileID: 1392623510}
   - component: {fileID: 1392623509}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jugador
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -645,7 +645,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1771193270}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObjectUp
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
