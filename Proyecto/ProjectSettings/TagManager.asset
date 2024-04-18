@@ -8,16 +8,21 @@ TagManager:
   - CameraTarget
   - TeleportTarget
   - SalaActual
+  - Pared
+  - Obstaculo
+  - Topo
+  - BalaJugador
+  - Minero
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - EnemigoMinero
   - Water
   - UI
   - BalaJugador
   - Jugador
-  - 
+  - EnemigoTopo
   - 
   - 
   - 
