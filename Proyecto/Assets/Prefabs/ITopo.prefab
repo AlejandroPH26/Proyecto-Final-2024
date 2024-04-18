@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2417998376129672409}
   - component: {fileID: 4580862414862009043}
   - component: {fileID: 6354646111898944475}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: ITopo
   m_TagString: Topo
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 8
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0

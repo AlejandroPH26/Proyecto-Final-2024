@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 929880368933771715}
   m_Layer: 0
   m_Name: IBala
-  m_TagString: Untagged
+  m_TagString: BalaJugador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
