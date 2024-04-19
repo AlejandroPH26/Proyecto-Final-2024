@@ -25,7 +25,7 @@ public class MenuPrincipal : MonoBehaviour
     public void EmpezarNivel()
     {
 
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Tutorial");
 
     }
 

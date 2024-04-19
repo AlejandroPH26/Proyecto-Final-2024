@@ -1506,7 +1506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &301310357
 Transform:
   m_ObjectHideFlags: 0
@@ -1533,7 +1533,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 326639204}
-  - component: {fileID: 326639205}
   - component: {fileID: 326639206}
   - component: {fileID: 326639207}
   - component: {fileID: 326639208}
@@ -1559,14 +1558,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 821105371}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &326639205
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326639203}
-  m_Enabled: 1
 --- !u!82 &326639206
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4476,7 +4467,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &965966793
 Transform:
   m_ObjectHideFlags: 0
