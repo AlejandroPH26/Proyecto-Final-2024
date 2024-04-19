@@ -25,7 +25,7 @@ public class ETopo : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         Player = FindObjectOfType<Jugador>(); // Busca el script del jugador 
         vidaActual = vidaMax; // Al iniciar, la vida actual es igual a la vida maximaç
-        DireccionActual = Vector2.right; // Comienza moviéndose hacia la derecha
+        CambiarDireccion(); // Comienza moviéndose hacia la derecha
         timer = CambiarDireccionTimer; // Inicializa el temporizador
     }
 
@@ -37,6 +37,7 @@ public class ETopo : MonoBehaviour
         // Si el temporizador llega a cero, cambia la dirección
         if (timer <= 0f)
         {
+            Debug.Log("Cambio de dirección");
             CambiarDireccion();
             timer = CambiarDireccionTimer; // Reinicia el temporizador
         }
@@ -48,7 +49,13 @@ public class ETopo : MonoBehaviour
     void CambiarDireccion()
     {
         // Cambia la dirección
+        // Eljo que eje se mueve Random enre 0 y 1
+
+        // Para el eje que se mueve, saco 1 o -1
+        
+
         DireccionActual = new Vector2(DireccionActual.y, -DireccionActual.x);
+        
     }
 
     // Detecta colisiones con obstáculos, paredes, otros enemigos y el jugador
@@ -57,7 +64,9 @@ public class ETopo : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstaculo") || collision.gameObject.CompareTag("Pared") || collision.gameObject.CompareTag("Topo") || collision.gameObject.CompareTag("Minero"))
         {
             // Cambia la dirección para evitar el obstáculo
+            
             CambiarDireccion();
+
            // Debug.Log("CambioDireccion");
         }
 

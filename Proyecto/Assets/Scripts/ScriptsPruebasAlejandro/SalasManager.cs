@@ -19,19 +19,32 @@ public class SalasManager : MonoBehaviour
     {
         
     }
+    public void DesactivarTeleportTargets()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag(teleportTargetTag))
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void ActivarTeleportTargets()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.CompareTag(teleportTargetTag))
+            {
+                child.gameObject.SetActive(true);
+            }
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(currentRoomTag))
         {
-            GameObject salaActual = other.gameObject;
-
-            foreach (Transform child in salaActual.transform)
-            {
-                if (child.CompareTag(teleportTargetTag))
-                {
-                    child.gameObject.SetActive(false);
-                }
-            }
+            DesactivarTeleportTargets();
         }
     }
 
@@ -39,15 +52,7 @@ public class SalasManager : MonoBehaviour
     {
         if (other.CompareTag(currentRoomTag))
         {
-            GameObject salaActual = other.gameObject;
-
-            foreach (Transform child in salaActual.transform)
-            {
-                if (child.CompareTag(teleportTargetTag))
-                {
-                    child.gameObject.SetActive(true);
-                }
-            }
+            ActivarTeleportTargets();           
         }
     }
 

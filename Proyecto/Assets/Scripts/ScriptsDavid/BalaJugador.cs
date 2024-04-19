@@ -37,6 +37,8 @@ public class BalaJugador : MonoBehaviour
         // mutiplicarlo por speed para indicarle la velocidad
         rb.velocity = direcciones[(int)dirBala] * speed;    
 
+        
+
         // Modificar rotacion bala
     }
 

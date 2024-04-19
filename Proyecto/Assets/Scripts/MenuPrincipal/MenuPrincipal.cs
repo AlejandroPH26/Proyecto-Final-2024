@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManger : MonoBehaviour
+public class MenuPrincipal : MonoBehaviour
 {
 
     //PAGINA CREDITOS
@@ -25,7 +25,7 @@ public class GameManger : MonoBehaviour
     public void EmpezarNivel()
     {
 
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("AnimacionInicial");
 
     }
 
