@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MenuPrincipal : MonoBehaviour
+public class HGameManager : MonoBehaviour
 {
     //BRILLO
     public Slider sliderBrillo;
@@ -18,6 +18,7 @@ public class MenuPrincipal : MonoBehaviour
 
     //PANTALLA COMPLETA
     public Toggle Pcompleta;
+
 
     // Start is called before the first frame update
     void Start()
