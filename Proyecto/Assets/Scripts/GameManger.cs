@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManger : MonoBehaviour
+public class MenuPrincipal : MonoBehaviour
 {
     //BRILLO
     public Slider sliderBrillo;
@@ -16,18 +16,12 @@ public class GameManger : MonoBehaviour
     public float sliderValor;
     public Image imagenMuteo;
 
-    //PAGINA CREDITOS
-    public GameObject MenuInicio;
-    public GameObject MenuOpciones;
-    public GameObject MenuCreditos;
+    //PANTALLA COMPLETA
+    public Toggle Pcompleta;
 
     // Start is called before the first frame update
     void Start()
     {
-        //paginas
-        MenuInicio.SetActive(true);
-        MenuOpciones.SetActive(false);
-        MenuCreditos.SetActive(false);
 
         //brillo
         sliderBrillo.value = PlayerPrefs.GetFloat("brillo", 0f);
@@ -39,6 +33,21 @@ public class GameManger : MonoBehaviour
         sliderVolumen.value = PlayerPrefs.GetFloat("volumenAudio", 50f); //ponemos el audio del slider a X voluem predeterminado
         AudioListener.volume = sliderVolumen.value;// hacemos que el volumen del AudioListener tenga el volumen predefinidio del slider
         RevisarMuteo(); //revisamos si estamos sin audio para activar un icono
+
+        //pantalla completa
+
+        if(Screen.fullScreen)
+        {
+
+            Pcompleta.isOn = true;
+
+        }
+       else
+        {
+
+            Pcompleta.isOn = false;
+
+        }
     }
 
     public void CambiarVoluem(float valor)
@@ -71,19 +80,12 @@ public class GameManger : MonoBehaviour
 
         }
 
-    }
+    } 
 
-    public void EmpezarNivel()
+    public void ActivarPantalla(bool pantallaCompleta)
     {
 
-        SceneManager.LoadScene("SampleScene");
-
-    }
-
-    public void SalirJuego()
-    {
-
-        Application.Quit();
+        Screen.fullScreen = pantallaCompleta;
 
     }
 
