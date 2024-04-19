@@ -34,15 +34,19 @@ public class MovimientoPrueba : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Verifica si el jugador colisionó con una puerta
         if (other.CompareTag("Door"))
         {
             GameObject[] teleportTargets = GameObject.FindGameObjectsWithTag(teleportTargetTag);
             Transform closestTarget = null;
             float closestDistance = Mathf.Infinity;
 
+            // Itera sobre todos los objetivos de teletransporte encontrados
             foreach (GameObject target in teleportTargets)
             {
+                // Calcula la distancia entre el jugador y el objetivo actual
                 float distanceToTarget = Vector2.Distance(player.position, target.transform.position);
+                // Verifica si la distancia actual es menor que la distancia más cercana encontrada hasta el momento
                 if (distanceToTarget < closestDistance)
                 {
                     closestTarget = target.transform;
@@ -58,11 +62,30 @@ public class MovimientoPrueba : MonoBehaviour
 
         if (other.CompareTag(currentRoomTag))
         {
+            SalasManager salaManager = other.GetComponent<SalasManager>();
+            if (salaManager != null)
+            {
+                salaManager.DesactivarTeleportTargets();
+            }
+
             Transform cameraTarget = other.transform.Find("CameraTarget");
             if (cameraTarget != null)
             {
                 CameraManager cameraManager = FindObjectOfType<CameraManager>();
-                cameraManager.MoveCameraSmoothly(cameraTarget.position, cameraTarget.position);
+                cameraManager.MoveCameraSmoothly(cameraManager.mainCamera.position, cameraTarget.position);
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        // Verificar si el jugador ya no está en contacto con la SalaActual
+        if (other.CompareTag(currentRoomTag))
+        {
+            SalasManager salaManager = other.GetComponent<SalasManager>();
+            if (salaManager != null)
+            {
+                salaManager.ActivarTeleportTargets();
             }
         }
     }
