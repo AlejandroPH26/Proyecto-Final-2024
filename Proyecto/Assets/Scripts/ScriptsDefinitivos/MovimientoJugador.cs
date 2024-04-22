@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -37,6 +38,13 @@ public class MovimientoJugador : MonoBehaviour
             // para que el movimiento no dependa del framerate ya que lo gestiona el motor de fisicas.
             aux.y = 1;
             pAnimator.Play("WalkUp_Personaje");           
+        }
+        if (aux.y < 1 && aux.x > -1)// Diagonal arriba izquierda
+        {
+            // Nos desplazamos (sumamos movimiento) hacia arriba (eje y = 1), multiplicamos por deltatime
+            // para que el movimiento no dependa del framerate ya que lo gestiona el motor de fisicas.
+          
+            pAnimator.Play("WalkUp_Personaje");
         }
         if (Input.GetKey(moveDown))
         {

@@ -7,7 +7,7 @@ public enum Direction {UP, DOWN, LEFT, RIGHT};
 public class MovimientoCabezaJugador : MonoBehaviour
 {
     public Direction dirCabeza = Direction.DOWN;
-    public Animator pAnimator;
+    public Animator cAnimator;
     public float speedBullet = 3f;
     public GameObject balaprefab;
     bool canShoot=true;
@@ -20,7 +20,7 @@ public class MovimientoCabezaJugador : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        cAnimator = GetComponent<Animator>();   
     }
 
     // Update is called once per frame
@@ -33,26 +33,29 @@ public class MovimientoCabezaJugador : MonoBehaviour
         if(Input.GetKey(KeyCode.UpArrow))
         {
             dirCabeza = Direction.UP;
-            // pAnimator.Play("Mirar_Arriba");
             Shoot();
+            cAnimator.Play("WalkUp_Cabeza");
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             dirCabeza = Direction.RIGHT;
             //  pAnimator.Play("Mirar_Derecha");
             Shoot();
+            cAnimator.Play("WalkRight_Cabeza");
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             dirCabeza = Direction.LEFT;
             // pAnimator.Play("Mirar_Izquierda");
             Shoot();
+            cAnimator.Play("WalkLeft_Cabeza");
         }
         if (Input.GetKey(KeyCode.DownArrow))
         {
             dirCabeza = Direction.DOWN;
             // pAnimator.Play("Mirar_Abajo");
             Shoot();
+            cAnimator.Play("WalkDown_Cabeza");
         }
     }
            // transform.position += new Vector3(0, speedBullet, 0) * Time.deltaTime;
