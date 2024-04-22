@@ -90,6 +90,20 @@ public class HGameManager : MonoBehaviour
 
     }
 
+    public void SalirJuego()
+    {
+
+        Application.Quit();
+
+    }
+
+    public void MenuPrincipal()
+    {
+
+        SceneManager.LoadScene("MenúPrincipal");
+
+    }
+
     // Update is called once per frame
     void Update()
     {
