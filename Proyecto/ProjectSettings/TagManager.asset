@@ -13,6 +13,8 @@ TagManager:
   - Topo
   - BalaJugador
   - Minero
+  - Undefined
+  - BalaEnemigo
   layers:
   - Default
   - TransparentFX

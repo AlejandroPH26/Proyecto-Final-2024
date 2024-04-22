@@ -4,32 +4,49 @@ using UnityEngine;
 
 public class EBorracho : MonoBehaviour
 {
-    public Transform Jugador;
-    private bool isFacingRight = true;
-    public int speed;
+    public GameObject bullet;
+    public Transform bulletPos;
+    public GameObject Player;
+
+    public float RangoMin = 8;
+    private float timer;
+    private float TiempoEntreDisparos = 1.5f;
+
+   
 
     void Start()
     {
-
+        Player = GameObject.FindGameObjectWithTag("Player");
 
     }
     // Update is called once per frame
     void Update()
     {
-       transform.position = Vector2.MoveTowards(transform.position, Jugador.position, speed * Time.deltaTime);
- 
-      bool isPlayerRight = transform.position.x < Jugador.transform.position.x;
-      Voltear(isPlayerRight);
+
+        Rango();
     }
 
-   private void Voltear(bool isPlayerRight)
-   {
-        if((isFacingRight && !isPlayerRight) || (!isFacingRight && isPlayerRight))
+    void shoot()
+    {
+       Instantiate(bullet,bulletPos.position, Quaternion.identity);
+    }
+    
+    void Rango()
+    {
+        float distancia = Vector2.Distance(transform.position, Player.transform.position);
+        Debug.Log(distancia);
+
+        if (distancia < RangoMin)
         {
-            isFacingRight = !isFacingRight;
-            Vector3 scale = transform.localScale;
-            scale.x *= -1;
-            transform.localScale = scale;
+            timer += Time.deltaTime;
+
+            if (timer > TiempoEntreDisparos)
+            {
+                timer = 0;
+                shoot();
+            }
         }
-   }
+    }
+  
+    
 }
