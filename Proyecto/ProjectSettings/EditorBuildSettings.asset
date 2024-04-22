@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: "Assets/Scenes/Menus/Men\xFAPrincipal.unity"
+    path: "Assets/Scenes/Men\xFAPrincipal.unity"
     guid: f75c41f377353a642a4a8c2db3c1723b
   - enabled: 1
     path: Assets/Scenes/AnimacionInicial.unity
