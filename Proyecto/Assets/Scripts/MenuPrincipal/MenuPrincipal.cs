@@ -29,13 +29,6 @@ public class MenuPrincipal : MonoBehaviour
 
     }
 
-    public void SalirJuego()
-    {
-
-        Application.Quit();
-
-    }
-
     // Update is called once per frame
     void Update()
     {

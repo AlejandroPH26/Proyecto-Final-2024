@@ -7,11 +7,13 @@ public class MenuPausa : MonoBehaviour
     //PANTALLA PAUSA
 
     public GameObject mPausa;
+    public GameObject opciones;
 
     // Start is called before the first frame update
     void Start()
     {
         mPausa.SetActive(false);
+        opciones.SetActive(false);
     }
 
     // Update is called once per frame
@@ -29,6 +31,6 @@ public class MenuPausa : MonoBehaviour
 
         }
 
-
     }
+
 }
