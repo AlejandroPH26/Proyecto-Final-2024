@@ -8,6 +8,7 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
     public float bulletSpeed = 5f;
     public Transform firePoint;
     public float bulletLifetime = 2f; // Tiempo de vida de las balas
+    public Direction hatDir;
 
     // Start is called before the first frame update
     void Start()
@@ -18,48 +19,46 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Shoot();
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            Shoot();
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Shoot();
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Shoot();
-        }
+        
     }
 
     public void Shoot()
     {
-        // Determinar la dirección basada en la tecla presionada
+        // Establecer la dirección de movimiento de las balas basada en la dirección del sombrero
         Vector3 direction = Vector3.zero;
+        // Determinar la dirección de disparo y el desplazamiento en el eje y
+        Vector3 offset = Vector3.zero;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        switch (hatDir)
         {
-            direction = Vector3.up;
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            direction = Vector3.down;
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            direction = Vector3.right;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            direction = Vector3.left;
+            case Direction.UP:
+                direction = Vector3.up;
+                offset = new Vector3(0.5f, 0f, 0f);
+                Debug.Log("Sombrero dispara arriba");
+                break;
+            case Direction.DOWN:
+                direction = Vector3.down;
+                offset = new Vector3(-0.5f, 0f, 0f);
+                Debug.Log("Sombrero dispara abajo");
+                break;
+            case Direction.RIGHT:
+                direction = Vector3.right;
+                offset = new Vector3(0f, 0.5f, 0f);
+                Debug.Log("Sombrero dispara derecha");
+                break;
+            case Direction.LEFT:
+                direction = Vector3.left;
+                offset = new Vector3(0f, -0.5f, 0f);
+                Debug.Log("Sombrero dispara izquierda");
+                break;
+            default:
+                // Si la dirección no está definida, no disparamos
+                Debug.LogWarning("La dirección del sombrero no está definida. No se puede disparar.");
+                return;
         }
 
-        // Instanciar dos balas separadas por 0.5 unidades en el eje x
-        Vector3 offset = new Vector3(0.5f, 0f, 0f);
+        // Instanciar dos balas separadas por 0.5 unidades en la dirección del sombrero
+        
         GameObject bullet1 = Instantiate(bulletPrefab, firePoint.position + offset, Quaternion.identity);
         GameObject bullet2 = Instantiate(bulletPrefab, firePoint.position - offset, Quaternion.identity);
 
@@ -70,7 +69,13 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
         // Destruir las balas después de un cierto tiempo
         Destroy(bullet1, bulletLifetime);
         Destroy(bullet2, bulletLifetime);
+
     }
 
- 
+    public void SetDirection(Direction dir)
+    {
+        hatDir = dir;
+    }
+
+
 }
