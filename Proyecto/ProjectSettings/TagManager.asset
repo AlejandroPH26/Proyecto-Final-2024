@@ -55,3 +55,12 @@ TagManager:
   - name: ObjetosSala
     uniqueID: 158467211
     locked: 0
+  - name: Cuerpo
+    uniqueID: 2198791203
+    locked: 0
+  - name: Cabeza
+    uniqueID: 3717644779
+    locked: 0
+  - name: Bala
+    uniqueID: 1673134997
+    locked: 0

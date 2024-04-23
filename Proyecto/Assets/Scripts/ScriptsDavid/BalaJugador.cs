@@ -29,7 +29,7 @@ public class BalaJugador : MonoBehaviour
     }
     public void asignarDireccion(Direction dir)
     {
-        // Asignar dirBala
+        // Asignar dirBala     
         dirBala = dir;
         // Modificar rb.velocity
         // direcciones para usar la lista, el corchete [] es para seleccionar la posición en la lista,
