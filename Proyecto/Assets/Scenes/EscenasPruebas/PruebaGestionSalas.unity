@@ -435,6 +435,7 @@ MonoBehaviour:
   bulletSpeed: 5
   firePoint: {fileID: 567425728}
   bulletLifetime: 2
+  hatDir: 0
 --- !u!1001 &1057120002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -505,8 +506,6 @@ GameObject:
   - component: {fileID: 1496253558}
   - component: {fileID: 1496253557}
   - component: {fileID: 1496253562}
-  - component: {fileID: 1496253564}
-  - component: {fileID: 1496253563}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -656,48 +655,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6ef8acf7881b04884817a4513da914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
   player: {fileID: 1496253561}
   teleportTargetTag: TeleportTarget
   currentRoomTag: SalaActual
---- !u!95 &1496253563
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496253556}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 59f11d139d070dd4c872e8633726f4e3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1496253564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496253556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c9d73a1710078247a9c4bb937344e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  moveUp: 119
-  moveLeft: 97
-  moveDown: 115
-  moveRight: 100
-  pAnimator: {fileID: 1496253563}
 --- !u!1 &1725072494
 GameObject:
   m_ObjectHideFlags: 0

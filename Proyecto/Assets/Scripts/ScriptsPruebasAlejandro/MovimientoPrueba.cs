@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class MovimientoPrueba : MonoBehaviour
 {
-    // public float speed = 5f;
-    // private Rigidbody2D rb;
+    public ISombreros[] isombreros;
+    
+    public float speed = 5f;
+    private Rigidbody2D rb;
 
     public Transform player;
     public string teleportTargetTag = "TeleportTarget";
@@ -17,22 +19,27 @@ public class MovimientoPrueba : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // rb = GetComponent<Rigidbody2D>(); // Obtener el Rigidbody2D del jugador
+        rb = GetComponent<Rigidbody2D>(); // Obtener el Rigidbody2D del jugador
         cameraManager = FindObjectOfType<CameraManager>();
+        isombreros = GetComponentsInChildren<ISombreros>();
     }
 
     // Update se llama una vez por frame
     void Update()
     {
-        // Obtener la entrada del teclado
-        // float horizontalInput = Input.GetAxis("Horizontal");
-        // float verticalInput = Input.GetAxis("Vertical");
+        // Manejo de la entrada de movimiento del jugador
+        HandleMovementInput();
+        // Manejo de la entrada de sombreros (disparo)
+        InputHats();
+    }
 
-        // Calcular el movimiento basado en la entrada del teclado
-        // Vector2 movement = new Vector2(horizontalInput, verticalInput) * speed;
-
-        // Aplicar el movimiento al Rigidbody2D del jugador
-        // rb.velocity = movement;
+    void HandleMovementInput()
+    {
+        // Manejo de la entrada de movimiento del jugador
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        Vector2 movement = new Vector2(horizontalInput, verticalInput) * speed;
+        rb.velocity = movement;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -91,4 +98,58 @@ public class MovimientoPrueba : MonoBehaviour
             }
         }
     }
+
+    public void InputHats()
+    {
+        // Manejo de la entrada para disparar y asignar dirección a los sombreros
+        Vector3 direction = Vector3.zero;
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            direction = Vector3.up;
+            SetDirectionForHats(Direction.UP);
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            direction = Vector3.down;
+            SetDirectionForHats(Direction.DOWN);
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            direction = Vector3.right;
+            SetDirectionForHats(Direction.RIGHT);
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            direction = Vector3.left;
+            SetDirectionForHats(Direction.LEFT);
+        }
+
+        // Después de establecer la dirección, realizar el disparo
+        if (direction != Vector3.zero)
+        {
+            Shoot();
+        }
+    }
+
+    void SetDirectionForHats(Direction dir)
+    {
+        // Establecer la dirección para todos los sombreros asociados
+        foreach (var sombrero in isombreros)
+        {
+            sombrero.SetDirection(dir);
+        }
+    }
+
+    public void Shoot()
+    {
+        // Iterar sobre cada objeto en el arreglo isombreros
+        foreach (var sombrero in isombreros)
+        {
+            // Llamar al método Shoot() en cada objeto
+            sombrero.Shoot();
+        }
+    }
+
+
 }

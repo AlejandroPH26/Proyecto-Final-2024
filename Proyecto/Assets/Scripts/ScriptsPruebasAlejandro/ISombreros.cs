@@ -5,4 +5,5 @@ using UnityEngine;
 public interface ISombreros
 {
     public void Shoot();
+    public void SetDirection(Direction dir);
 }
