@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class MovimientoJugador : MonoBehaviour
 {
-
+    private MovimientoCabezaJugador direccion;
     [Tooltip("Velocidad del jugador en unidades de unity / segundo")]
     public float speed = 2f;
     public KeyCode moveUp = KeyCode.W;
@@ -22,6 +22,7 @@ public class MovimientoJugador : MonoBehaviour
     {
         pAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        direccion = GetComponentInChildren<MovimientoCabezaJugador>();
     }
 
     // Update is called once per frame
@@ -31,39 +32,57 @@ public class MovimientoJugador : MonoBehaviour
     }
     private void InputJugador()
     {
+        //orientarCabeza(direccion);
         Vector2 aux = Vector2.zero; // Declaramos el Vector2 para el movimiento y lo identificamos como aux la variable y ponemos que es 0 para que en caso de no pulsar nada se quede quieto
-        if (Input.GetKey(moveUp)) // Comprobamos que se está pulsando la tecla W
+        if (Input.GetKey(moveUp) && Input.GetKey(moveLeft))// Diagonal arriba izquierda
+        {
+            aux.y = 1;
+            aux.x = -1;
+            pAnimator.Play("WalkUp_Personaje");
+        }
+        else if (Input.GetKey(moveUp) && Input.GetKey(moveRight))// Diagonal arriba izquierda
+        {
+            aux.y = 1;
+            aux.x = 1;
+            pAnimator.Play("WalkUp_Personaje");
+        }
+        else if (Input.GetKey(moveDown) && Input.GetKey(moveLeft))// Diagonal arriba izquierda
+        {
+            aux.y = -1;
+            aux.x = -1;
+            pAnimator.Play("WalkDown_Personaje");
+        }
+        else if (Input.GetKey(moveDown) && Input.GetKey(moveRight))// Diagonal arriba izquierda
+        {
+            aux.y = -1;
+            aux.x = 1;
+            pAnimator.Play("WalkDown_Personaje");
+        }
+        else if (Input.GetKey(moveUp)) // Comprobamos que se está pulsando la tecla W
         {
             // Nos desplazamos (sumamos movimiento) hacia arriba (eje y = 1), multiplicamos por deltatime
             // para que el movimiento no dependa del framerate ya que lo gestiona el motor de fisicas.
             aux.y = 1;
             pAnimator.Play("WalkUp_Personaje");           
         }
-        if (aux.y < 1 && aux.x > -1)// Diagonal arriba izquierda
-        {
-            // Nos desplazamos (sumamos movimiento) hacia arriba (eje y = 1), multiplicamos por deltatime
-            // para que el movimiento no dependa del framerate ya que lo gestiona el motor de fisicas.
-          
-            pAnimator.Play("WalkUp_Personaje");
-        }
-        if (Input.GetKey(moveDown))
+        else if (Input.GetKey(moveDown))
         {
             // Nos desplazamos (sumamos movimiento) hacia abajo (eje y = -1), multiplicamos por deltatime
             aux.y = -1;
             pAnimator.Play("WalkDown_Personaje");
         }
-        if (Input.GetKey(moveLeft))
+        else if (Input.GetKey(moveLeft))
         {
             // Nos desplazamos (sumamos movimiento) hacia la izquierda (eje x = -1), multiplicamos por deltatime
             aux.x = -1;
             pAnimator.Play("WalkLeft_Personaje");
         }
-        if (Input.GetKey(moveRight))
+        else if (Input.GetKey(moveRight))
         {
             // Nos desplazamos (sumamos movimiento) hacia la derecha (eje x = 1), multiplicamos por deltatime
             aux.x = 1;
             pAnimator.Play("WalkRight_Personaje");
-        }
+        } 
         if (aux.x == 0 && aux.y == 0)
         {
             // Nos desplazamos (sumamos movimiento) hacia la derecha (eje x = 1), multiplicamos por deltatime
@@ -76,5 +95,7 @@ public class MovimientoJugador : MonoBehaviour
         }
         pAnimator.SetBool("Moving", isMoving);
         rb.velocity = aux.normalized * speed; // Aqui lo normalizamos y lo multiplicamos por speed para que no vaya mas rapido en diagonal
+
+
     }
 }

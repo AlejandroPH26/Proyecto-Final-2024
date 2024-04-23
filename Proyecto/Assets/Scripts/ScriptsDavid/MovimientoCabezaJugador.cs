@@ -133,5 +133,26 @@ public class MovimientoCabezaJugador : MonoBehaviour
     {
         canShoot = true;
     }
-   
+   //Metodo con dirCabeza para usarlo en el script de movimiento y orientar la cabeza en la dirección en la que se anda
+   public void orientarCabeza(Direction dir)
+    {
+        dirCabeza = dir;
+
+        if (dirCabeza == Direction.UP)
+        {
+            cAnimator.Play("WalkUp_Cabeza");
+        }
+        if (dirCabeza == Direction.LEFT)
+        {
+            cAnimator.Play("WalkLeft_Cabeza");
+        }
+        if (dirCabeza == Direction.RIGHT)
+        {
+            cAnimator.Play("WalkRight_Cabeza");
+        }
+        if (dirCabeza == Direction.DOWN)
+        {
+            cAnimator.Play("WalkDown_Cabeza");
+        }
+    }
 }
