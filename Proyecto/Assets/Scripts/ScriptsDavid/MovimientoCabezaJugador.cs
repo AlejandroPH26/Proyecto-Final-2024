@@ -43,21 +43,21 @@ public class MovimientoCabezaJugador : MonoBehaviour
             Shoot();
             cAnimator.Play("WalkUp_Cabeza");
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             dirCabeza = Direction.RIGHT;
             //  pAnimator.Play("Mirar_Derecha");
             Shoot();
             cAnimator.Play("WalkRight_Cabeza");
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             dirCabeza = Direction.LEFT;
             // pAnimator.Play("Mirar_Izquierda");
             Shoot();
             cAnimator.Play("WalkLeft_Cabeza");
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
             dirCabeza = Direction.DOWN;
             sprite.sortingLayerName = "Cabeza";
