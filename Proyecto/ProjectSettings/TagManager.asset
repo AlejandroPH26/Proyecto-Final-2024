@@ -27,7 +27,7 @@ TagManager:
   - Jugador
   - EnemigoTopo
   - MenuPausa
-  - 
+  - BalaBorracho
   - 
   - 
   - 
@@ -64,4 +64,7 @@ TagManager:
     locked: 0
   - name: Bala
     uniqueID: 1673134997
+    locked: 0
+  - name: UI
+    uniqueID: 295600445
     locked: 0

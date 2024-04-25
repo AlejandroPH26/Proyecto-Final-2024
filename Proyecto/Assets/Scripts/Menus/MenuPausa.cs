@@ -7,7 +7,9 @@ public class MenuPausa : MonoBehaviour
     //PANTALLA PAUSA
 
     public GameObject mPausa;
+    public bool Pausa = false;
     public GameObject opciones;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +29,26 @@ public class MenuPausa : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             
-            mPausa.SetActive(true);
+           if(Pausa == false)
+           {
+                mPausa.SetActive(true);
+                Pausa = true;
+
+                Time.timeScale = 0f;
+            }
 
         }
+    }
+
+    public void ReanudarJuego()
+    {
+        mPausa.SetActive(false);
+        Pausa = false;
+
+        Time.timeScale = 1;
+
 
     }
+    
 
 }
