@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PruebaSombreroCopa : MonoBehaviour, ISombreros
+public class PruebaSombreroSheriff : MonoBehaviour, ISombreros
 {
     public GameObject bulletPrefab;
     public float bulletSpeed = 5f;
@@ -18,13 +18,13 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Shoot()
@@ -71,15 +71,12 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
     {
         // Instanciar dos balas separadas por 0.5 unidades en la dirección del sombrero
         GameObject bullet1 = Instantiate(bulletPrefab, firePoint.position + offset, Quaternion.identity);
-        GameObject bullet2 = Instantiate(bulletPrefab, firePoint.position - offset, Quaternion.identity);
 
         // Establecer la dirección de movimiento de las balas
         bullet1.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-        bullet2.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
 
         // Destruir las balas después de un cierto tiempo
         Destroy(bullet1, bulletLifetime);
-        Destroy(bullet2, bulletLifetime);
     }
 
     public void SetDirection(Direction dir)
@@ -90,8 +87,6 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
     public void SombreroRecogido()
     {
         // Aquí puedes realizar cualquier acción que necesites cuando el sombrero es recogido.
-        Debug.Log("Sombrero Copa recogido por el jugador.");
+        Debug.Log("Sombrero Sheriff recogido por el jugador.");
     }
-
-
 }
