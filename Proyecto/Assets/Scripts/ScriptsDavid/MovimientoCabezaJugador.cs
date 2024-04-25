@@ -66,6 +66,10 @@ public class MovimientoCabezaJugador : MonoBehaviour
             Shoot();
             cAnimator.Play("WalkDown_Cabeza");
         }
+        else
+        {
+            isShooting = false;
+        }
     }
           
     public void Shoot()
@@ -131,14 +135,6 @@ public class MovimientoCabezaJugador : MonoBehaviour
                 // Hacer un invoke para volver a activar canShoot en un tiempo p.ej. delayDisparo)
                 Invoke("activaDisparo", delay);
             }
-            else
-            {
-                isShooting = false;
-            }
-
-
-
-
         }
     }
    private void activaDisparo()
