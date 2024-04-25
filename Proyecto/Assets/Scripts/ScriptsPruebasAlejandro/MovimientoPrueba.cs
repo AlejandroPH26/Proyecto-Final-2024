@@ -84,6 +84,22 @@ public class MovimientoPrueba : MonoBehaviour
                 cameraManager.MoveCameraSmoothly(cameraManager.mainCamera.position, cameraTarget.position);
             }
         }
+
+        // Verificar si el jugador colisionó con un sombrero
+        if (other.CompareTag("Sombrero"))
+        {
+            // Obtener el sombrero
+            GameObject sombrero = other.gameObject;
+
+            // Ajustar la posición del sombrero para que coincida con el jugador
+            sombrero.transform.position = transform.position;
+
+            // Hacer que el sombrero sea un hijo del jugador
+            sombrero.transform.parent = transform;
+
+            // Informar al sombrero de que ha sido recogido
+            InformarSombreroRecogido(sombrero.GetComponent<ISombreros>());
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -96,6 +112,15 @@ public class MovimientoPrueba : MonoBehaviour
             {
                 salaManager.ActivarTeleportTargets();
             }
+        }
+    }
+
+    void InformarSombreroRecogido(ISombreros sombreroRecogido)
+    {
+        // Notificar al sombrero recogido de que ha sido recogido
+        if (sombreroRecogido != null)
+        {
+            sombreroRecogido.SombreroRecogido();
         }
     }
 

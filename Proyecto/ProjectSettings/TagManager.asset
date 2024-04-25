@@ -3,32 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Door
-  - CameraTarget
-  - TeleportTarget
-  - SalaActual
-  - Pared
-  - Obstaculo
-  - Topo
-  - BalaJugador
-  - Minero
-  - Undefined
-  - BalaEnemigo
-  - Botiquin
-  - Bomba
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - EnemigoMinero
+  - 
   - Water
   - UI
-  - BalaJugador
-  - Jugador
-  - EnemigoTopo
-  - MenuPausa
-  - Coleccionable
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -53,16 +40,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: ObjetosSala
-    uniqueID: 158467211
-    locked: 0
-  - name: Cuerpo
-    uniqueID: 2198791203
-    locked: 0
-  - name: Cabeza
-    uniqueID: 3717644779
-    locked: 0
-  - name: Bala
-    uniqueID: 1673134997
     locked: 0
