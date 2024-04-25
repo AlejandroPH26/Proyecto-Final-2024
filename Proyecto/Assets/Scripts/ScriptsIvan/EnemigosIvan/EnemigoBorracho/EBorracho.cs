@@ -6,47 +6,50 @@ public class EBorracho : MonoBehaviour
 {
     public GameObject bullet;
     public Transform bulletPos;
-    public GameObject Player;
-
+    public GameObject player;
+   
     public float RangoMin = 8;
-    private float timer;
-    private float TiempoEntreDisparos = 1.5f;
+   
+    public float vidaActual;
+    public float vidaMax = 50;
+
+    public bool canShoot = true;
 
    
 
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
-
+        player = GameObject.FindGameObjectWithTag("Player");
+        
     }
-    // Update is called once per frame
+  
     void Update()
     {
-
         Rango();
     }
 
-    void shoot()
-    {
-       Instantiate(bullet,bulletPos.position, Quaternion.identity);
+    void shoot() // Se llama desde el animator 
+    {          
+            Instantiate(bullet, bulletPos.position, Quaternion.identity);      
     }
     
     void Rango()
     {
-        float distancia = Vector2.Distance(transform.position, Player.transform.position);
+        float distancia = Vector2.Distance(transform.position, player.transform.position);
         Debug.Log(distancia);
 
-        if (distancia < RangoMin)
+        if (distancia < RangoMin && canShoot == true)
         {
-            timer += Time.deltaTime;
-
-            if (timer > TiempoEntreDisparos)
-            {
-                timer = 0;
-                shoot();
-            }
+           shoot();
+            //Reproduce la animacion de disparo , en el ultimo frame de la animacion llamar a la variable canShoot y ponerla a true
+            //canShoot = false;
+   
         }
     }
+
+    public void EnableShoot() // Se llama desde el animator 
+    {
+        canShoot = true;
+    }
   
-    
 }
