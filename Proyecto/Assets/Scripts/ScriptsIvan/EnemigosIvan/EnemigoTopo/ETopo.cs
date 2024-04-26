@@ -4,104 +4,53 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class ETopo : MonoBehaviour
+
 {
-    public float VelocidadMovimiento = 2f; // Velocidad de movimiento
-    public float CambiarDireccionTimer = 3f; // Tiempo en segundos para cambiar de dirección
-   
+    public float velocidadMovimiento = 2f; // Velocidad de movimiento
+    public float tiempoCambioDireccion = 3f; // Tiempo en segundos para cambiar de dirección
+    public LayerMask obstaculoMask; // Máscara de capa para detectar obstáculos
+    public float distanciaRaycast = 1f; // Distancia del raycast para detectar obstáculos
 
     private Rigidbody2D rb;
-    private Vector2 DireccionActual; // Dirección actual del movimiento
+    private Vector2 direccionActual; // Dirección actual del movimiento
     private float timer; // Temporizador para cambiar de dirección
-
-    public int vidaMax = 100; 
-    public int vidaActual;
-    public int daño = 10;
-
-    public Jugador Player;
-
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Player = FindObjectOfType<Jugador>(); // Busca el script del jugador 
-        vidaActual = vidaMax; // Al iniciar, la vida actual es igual a la vida maximaç
-        CambiarDireccion(); // Comienza moviéndose hacia la derecha
-        timer = CambiarDireccionTimer; // Inicializa el temporizador
+        timer = tiempoCambioDireccion; // Inicializa el temporizador
+        CambiarDireccion();
     }
 
     void Update()
     {
-        // Actualiza el temporizador
-        timer -= Time.deltaTime;
-
-        // Si el temporizador llega a cero, cambia la dirección
-        if (timer <= 0f)
+        // Realiza un raycast en la dirección actual para detectar obstáculos
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direccionActual, distanciaRaycast, obstaculoMask);
+        if (hit.collider != null)
         {
-            Debug.Log("Cambio de dirección");
+            // Si se detecta un obstáculo, cambia de dirección
             CambiarDireccion();
-            timer = CambiarDireccionTimer; // Reinicia el temporizador
         }
 
         // Aplica la velocidad de movimiento
-        rb.velocity = DireccionActual * VelocidadMovimiento;
+        rb.velocity = direccionActual * velocidadMovimiento;
     }
 
     void CambiarDireccion()
     {
-        // Cambia la dirección
-        // Eljo que eje se mueve Random enre 0 y 1
-
-        // Para el eje que se mueve, saco 1 o -1
-        
-
-        DireccionActual = new Vector2(DireccionActual.y, -DireccionActual.x);
-        
+        // Genera una dirección aleatoria
+        int direccionX = Random.Range(0, 2) * 2 - 1; // Valor aleatorio de -1 o 1
+        int direccionY = Random.Range(0, 2) * 2 - 1; // Valor aleatorio de -1 o 1
+        direccionActual = new Vector2(direccionX, direccionY).normalized;
     }
 
-    // Detecta colisiones con obstáculos, paredes, otros enemigos y el jugador
+    // Detecta colisiones con obstáculos, paredes, etc.
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Obstaculo") || collision.gameObject.CompareTag("Pared") || collision.gameObject.CompareTag("Topo") || collision.gameObject.CompareTag("Minero"))
+        // Si colisiona con un obstáculo, cambia de dirección
+        if (collision.gameObject.CompareTag("Roca") || collision.gameObject.CompareTag("Pared") || collision.gameObject.CompareTag("Topo"))
         {
-            // Cambia la dirección para evitar el obstáculo
-            
             CambiarDireccion();
-
-           // Debug.Log("CambioDireccion");
-        }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-
-            Player.DamageTaken(daño);
-          //  Debug.Log("DañoRecibidoJugador");
-        }
-
-        if (collision.gameObject.CompareTag("BalaJugador"))
-        {
-            //Debug.Log("dañorecibidoTopo");
-            DamageTaken(20);
-
-            //Destroy(collision.gameObject); // Destruye la bala 
-
-
-            if (vidaActual <= 0)
-            {
-                Muerte();
-            }
         }
     }
-
-    public void Muerte()
-
-    {
-        //Eanimator.Play("TOPO_DEATH");
-        Destroy(this.gameObject);
-    }
-
-    public void DamageTaken(int cantidad)
-    {
-        vidaActual = vidaActual - cantidad;
-    }
-
 }

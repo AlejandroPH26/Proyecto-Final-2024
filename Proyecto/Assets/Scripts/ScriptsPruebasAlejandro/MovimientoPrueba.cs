@@ -10,6 +10,9 @@ public class MovimientoPrueba : MonoBehaviour
     public float speed = 5f;
     private Rigidbody2D rb;
 
+    public int vidaActual;
+    public int vidaMax = 100;
+
     public Transform player;
     public string teleportTargetTag = "TeleportTarget";
     public string currentRoomTag = "SalaActual";
@@ -22,6 +25,7 @@ public class MovimientoPrueba : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); // Obtener el Rigidbody2D del jugador
         cameraManager = FindObjectOfType<CameraManager>();
         isombreros = GetComponentsInChildren<ISombreros>();
+        vidaActual = vidaMax;
     }
 
     // Update se llama una vez por frame
@@ -174,6 +178,24 @@ public class MovimientoPrueba : MonoBehaviour
             // Llamar al método Shoot() en cada objeto
             sombrero.Shoot();
         }
+    }
+
+    //Codigo Ivan (Vida y muerte del jugador), (provisional)
+    public void DamageTaken(int cantidad)
+
+    {
+        vidaActual -= cantidad;
+
+        if (vidaActual <= 0)
+        {
+            Muerte();
+        }
+    }
+
+    public void Muerte()
+
+    {
+        Destroy(this.gameObject);
     }
 
 
