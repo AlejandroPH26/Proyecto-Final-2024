@@ -3,15 +3,27 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - SalaActual
+  - TeleportTarget
+  - Door
+  - CameraTarget
+  - Bomba
+  - Botiquin
+  - Sombrero
+  - BalaJugador
+  - Obstaculo
+  - Roca
+  - Topo
+  - Pared
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Roca
   - Water
   - UI
-  - 
+  - Pared
   - 
   - 
   - 
@@ -40,4 +52,19 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Fondo
+    uniqueID: 1149313377
+    locked: 0
+  - name: Obstaculos
+    uniqueID: 1711426109
+    locked: 0
+  - name: Enemigos
+    uniqueID: 3568612601
+    locked: 0
+  - name: Jugador
+    uniqueID: 2679844531
+    locked: 0
+  - name: Sombreros
+    uniqueID: 1524724053
     locked: 0

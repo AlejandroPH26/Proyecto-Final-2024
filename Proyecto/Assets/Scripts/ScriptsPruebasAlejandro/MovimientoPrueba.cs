@@ -6,9 +6,13 @@ using UnityEngine;
 public class MovimientoPrueba : MonoBehaviour
 {
     public ISombreros[] isombreros;
-    
+    public List<GameObject> sombreros = new List<GameObject>(); // Lista de sombreros del jugador
+
     public float speed = 5f;
     private Rigidbody2D rb;
+
+    public int vidaActual;
+    public int vidaMax = 100;
 
     public Transform player;
     public string teleportTargetTag = "TeleportTarget";
@@ -22,6 +26,7 @@ public class MovimientoPrueba : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); // Obtener el Rigidbody2D del jugador
         cameraManager = FindObjectOfType<CameraManager>();
         isombreros = GetComponentsInChildren<ISombreros>();
+        vidaActual = vidaMax;
     }
 
     // Update se llama una vez por frame
@@ -91,16 +96,45 @@ public class MovimientoPrueba : MonoBehaviour
             // Obtener el sombrero
             GameObject sombrero = other.gameObject;
 
-            // Ajustar la posición del sombrero para que coincida con el jugador
-            sombrero.transform.position = transform.position;
-
             // Hacer que el sombrero sea un hijo del jugador
             sombrero.transform.parent = transform;
+
+            // Agregar el sombrero a la lista de sombreros del jugador
+            sombreros.Add(sombrero);
+
+            // Posicionar los sombreros uno sobre otro
+            PosicionarSombreros();
 
             // Informar al sombrero de que ha sido recogido
             InformarSombreroRecogido(sombrero.GetComponent<ISombreros>());
         }
     }
+
+    private void PosicionarSombreros()
+    {
+        // Verificar si hay al menos dos sombreros en la lista
+        if (sombreros.Count >= 2)
+        {
+            // Iterar a través de los sombreros desde el segundo hasta el último
+            for (int i = 1; i < sombreros.Count; i++)
+            {
+                // Obtener el transform del sombrero actual
+                Transform sombreroTransform = sombreros[i].transform;
+
+                // Verificar si los sombreros tienen los anchors necesarios
+                if (sombreroTransform.Find("anchorDown") != null && sombreroTransform.Find("anchorUp") != null)
+                {
+                    // Posicionar el sombrero actual utilizando el anchorDown del sombrero anterior
+                    sombreroTransform.position = sombreros[i - 1].transform.Find("anchorDown").position;
+                }
+                else
+                {
+                    Debug.LogError("Los anchors 'anchorUp' o 'anchorDown' no están asignados en los sombreros correspondientes.");
+                }
+            }
+        }
+    }
+
 
     void OnTriggerExit2D(Collider2D other)
     {
@@ -174,6 +208,24 @@ public class MovimientoPrueba : MonoBehaviour
             // Llamar al método Shoot() en cada objeto
             sombrero.Shoot();
         }
+    }
+
+    //Codigo Ivan (Vida y muerte del jugador), (provisional)
+    public void DamageTaken(int cantidad)
+
+    {
+        vidaActual -= cantidad;
+
+        if (vidaActual <= 0)
+        {
+            Muerte();
+        }
+    }
+
+    public void Muerte()
+
+    {
+        Destroy(this.gameObject);
     }
 
 
