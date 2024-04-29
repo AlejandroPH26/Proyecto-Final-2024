@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coleccionables : MonoBehaviour
+public class Bombas : MonoBehaviour
 {
-
+    public KeyCode dropBomb = KeyCode.Space;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +14,6 @@ public class Coleccionables : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+  
     }
 }
-

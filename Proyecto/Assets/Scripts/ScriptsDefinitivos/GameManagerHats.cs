@@ -8,7 +8,8 @@ public class GameManagerHats : MonoBehaviour
     static public GameManagerHats instance;     // Se crea la instancia como variable
     public int vidas = 6;
     public int bombas = 3;
-    public TextMeshProUGUI contadorBombas;
+    public TextMeshProUGUI ContadorBombas;
+    public TextMeshProUGUI ContadorVidas;
 
     private void Awake()
     {
@@ -24,24 +25,20 @@ public class GameManagerHats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Botiquin")
         {
             Destroy(collision.gameObject);
-            vidas++;
-            if (vidas > 6)
-            {
-                vidas = 6;
-            }
+            SumarVidas();
         }
         if (collision.tag == "Bomba")
         {
@@ -49,20 +46,22 @@ public class GameManagerHats : MonoBehaviour
             SumarBombas();
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Botiquin")
-        {
-         //   Destroy(collision.gameObject);
-        }
-    }
-    private void SumarBombas ()
+    private void SumarBombas()
     {
         bombas++;
         if (bombas > 10)
         {
             bombas = 10;
-            contadorBombas.text = bombas.ToString();
         }
+            ContadorBombas.text = bombas.ToString();
+    }
+    private void SumarVidas()
+    {
+        vidas++;
+        if (vidas > 6)
+        {
+            vidas = 6;
+        }
+            ContadorVidas.text = vidas.ToString();
     }
 }

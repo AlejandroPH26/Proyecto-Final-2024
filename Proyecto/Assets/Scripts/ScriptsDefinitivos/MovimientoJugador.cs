@@ -14,6 +14,7 @@ public class MovimientoJugador : MonoBehaviour
     public KeyCode moveLeft = KeyCode.A;
     public KeyCode moveDown = KeyCode.S;
     public KeyCode moveRight = KeyCode.D;
+    public KeyCode dropBomb = KeyCode.Space;
     public Animator pAnimator;
     private bool isMoving = false;
     private Rigidbody2D rb;
@@ -29,6 +30,7 @@ public class MovimientoJugador : MonoBehaviour
     void Update()
     {
         InputJugador();
+        PonerBomba();
     }
     private void InputJugador()
     {
@@ -130,5 +132,12 @@ public class MovimientoJugador : MonoBehaviour
         rb.velocity = aux.normalized * speed; // Aqui lo normalizamos y lo multiplicamos por speed para que no vaya mas rapido en diagonal
 
 
+    }
+    public void PonerBomba()
+    {
+        if (Input.GetKeyDown(dropBomb))
+        {
+            //GameObject Bombas = Instantiate(Bomba, transform.position, Quaternion.identity);
+        }
     }
 }
