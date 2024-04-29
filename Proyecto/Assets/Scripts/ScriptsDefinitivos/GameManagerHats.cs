@@ -24,13 +24,13 @@ public class GameManagerHats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -53,15 +53,24 @@ public class GameManagerHats : MonoBehaviour
     {
         if (collision.gameObject.tag == "Botiquin")
         {
-         //   Destroy(collision.gameObject);
+            //   Destroy(collision.gameObject);
         }
     }
-    private void SumarBombas ()
+    private void SumarBombas()
     {
         bombas++;
         if (bombas > 10)
         {
             bombas = 10;
+            contadorBombas.text = bombas.ToString();
+        }
+    }
+    private void SumarVidas()
+    {
+        vidas++;
+        if (vidas > 6)
+        {
+            vidas = 6;
             contadorBombas.text = bombas.ToString();
         }
     }
