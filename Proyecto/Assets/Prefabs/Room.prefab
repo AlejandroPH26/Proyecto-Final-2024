@@ -95,6 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e348016f6e4bed49b8747a5caa4172e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teleportTargetTag: TeleportTarget
+  currentRoomTag: SalaActual
 --- !u!1 &658062064066579822
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,6 +765,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6378600599326663579}
     m_Modifications:
+    - target: {fileID: 961402229376757871, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961402229376757871, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1149313377
+      objectReference: {fileID: 0}
     - target: {fileID: 3747085612887356774, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -825,6 +835,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3010566671785617801}
     m_Modifications:
+    - target: {fileID: 961402229376757871, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961402229376757871, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1149313377
+      objectReference: {fileID: 0}
     - target: {fileID: 3747085612887356774, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -887,6 +905,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3388357583474795802}
     m_Modifications:
+    - target: {fileID: 961402229376757871, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961402229376757871, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1149313377
+      objectReference: {fileID: 0}
     - target: {fileID: 3747085612887356774, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -949,6 +975,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2792043683331496824}
     m_Modifications:
+    - target: {fileID: 961402229376757871, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961402229376757871, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1149313377
+      objectReference: {fileID: 0}
     - target: {fileID: 3747085612887356774, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -7,4 +7,8 @@ public interface ISombreros
     public void Shoot();
     public void SetDirection(Direction dir);
     public void SombreroRecogido();
+
+    public GameObject gameObject {  get; }
+
+    public Transform anclajeSuperior { get; set; }
 }

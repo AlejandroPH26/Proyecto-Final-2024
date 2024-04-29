@@ -11,7 +11,10 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
     public Transform firePointRight;
     public Transform firePointLeft;
     public Transform anchorUp;
-    public Transform anchorDown;
+    public Transform anclajeSuperior { 
+        get { return anchorUp; }
+        set { anchorUp = value; } 
+        }
     public float bulletLifetime = 2f; // Tiempo de vida de las balas
     public Direction hatDir;
 
