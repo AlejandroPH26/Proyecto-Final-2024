@@ -347,6 +347,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7779290473768415580, guid: ab9c8007b0373e64d804b929ca938080, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8155270070644430569, guid: ab9c8007b0373e64d804b929ca938080, type: 3}
       propertyPath: m_Name
       value: Room 0
@@ -365,7 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 563740704}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AnchorInitial
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -400,7 +404,7 @@ GameObject:
   - component: {fileID: 755966106}
   - component: {fileID: 755966109}
   - component: {fileID: 755966110}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: JugadorProvisional
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -763,6 +767,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9c8007b0373e64d804b929ca938080, type: 3}
+--- !u!1001 &1359008612
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2215857264232679208, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.377349
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215857264232679208, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.0061426
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215857264232679208, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215857264232679208, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215857264232679208, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215857264232679208, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215857264232679208, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215857264232679208, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215857264232679208, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2215857264232679208, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579228704656662381, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_Name
+      value: Murcielago
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
 --- !u!1 &1642832747
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,3 +867,4 @@ SceneRoots:
   - {fileID: 21282895}
   - {fileID: 964711470}
   - {fileID: 755966108}
+  - {fileID: 1359008612}

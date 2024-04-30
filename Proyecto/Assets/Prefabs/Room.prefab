@@ -368,9 +368,9 @@ GameObject:
   - component: {fileID: 5528700947473036653}
   - component: {fileID: 8920862091884028825}
   - component: {fileID: 5721055979453028102}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CompositeCollider
-  m_TagString: Untagged
+  m_TagString: Pared
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
