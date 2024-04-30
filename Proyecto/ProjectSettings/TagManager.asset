@@ -16,6 +16,9 @@ TagManager:
   - Roca
   - Topo
   - Pared
+  - BalaEnemigo
+  - Minero
+  - Enemigo
   layers:
   - Default
   - TransparentFX
