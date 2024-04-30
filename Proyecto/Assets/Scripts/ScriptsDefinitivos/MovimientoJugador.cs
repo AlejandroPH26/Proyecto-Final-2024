@@ -4,6 +4,7 @@ using System.Globalization;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MovimientoJugador : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class MovimientoJugador : MonoBehaviour
     public KeyCode moveLeft = KeyCode.A;
     public KeyCode moveDown = KeyCode.S;
     public KeyCode moveRight = KeyCode.D;
-    public KeyCode dropBomb = KeyCode.Space;
+    public float y = -1;
+    public float x = 0;
     public Animator pAnimator;
     private bool isMoving = false;
     private Rigidbody2D rb;
@@ -30,7 +32,6 @@ public class MovimientoJugador : MonoBehaviour
     void Update()
     {
         InputJugador();
-        PonerBomba();
     }
     private void InputJugador()
     {
@@ -133,11 +134,5 @@ public class MovimientoJugador : MonoBehaviour
 
 
     }
-    public void PonerBomba()
-    {
-        if (Input.GetKeyDown(dropBomb))
-        {
-            //GameObject Bombas = Instantiate(Bomba, transform.position, Quaternion.identity);
-        }
     }
-}
+

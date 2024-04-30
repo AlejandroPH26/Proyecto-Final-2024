@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bombas : MonoBehaviour
 {
-    public KeyCode dropBomb = KeyCode.Space;
     // Start is called before the first frame update
     void Start()
     {

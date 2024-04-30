@@ -55,6 +55,17 @@ public class GameManagerHats : MonoBehaviour
         }
             ContadorBombas.text = bombas.ToString();
     }
+
+    public void RestarBombas()
+    {
+        bombas--;
+        if (bombas <= 0)
+        {
+            bombas = 0;
+        }
+        ContadorBombas.text = bombas.ToString();
+    }
+
     private void SumarVidas()
     {
         vidas++;
