@@ -16,6 +16,10 @@ TagManager:
   - Roca
   - Topo
   - Pared
+  - BalaEnemigo
+  - Minero
+  - Enemigo
+  - EBorracho
   layers:
   - Default
   - TransparentFX
@@ -24,9 +28,9 @@ TagManager:
   - Water
   - UI
   - Pared
-  - 
-  - 
-  - 
+  - EnemigoBorracho
+  - EnemigoMurcielago
+  - Player
   - 
   - 
   - 
