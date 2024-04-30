@@ -16,6 +16,10 @@ TagManager:
   - Roca
   - Topo
   - Pared
+  - BalaEnemigo
+  - Minero
+  - Enemigo
+  - EBorracho
   layers:
   - Default
   - TransparentFX
@@ -24,9 +28,9 @@ TagManager:
   - Water
   - UI
   - Pared
-  - 
-  - 
-  - 
+  - EnemigoBorracho
+  - EnemigoMurcielago
+  - Player
   - 
   - 
   - 
@@ -64,6 +68,9 @@ TagManager:
     locked: 0
   - name: Jugador
     uniqueID: 2679844531
+    locked: 0
+  - name: Proyectiles
+    uniqueID: 2871268281
     locked: 0
   - name: Sombreros
     uniqueID: 1524724053
