@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bombas : MonoBehaviour
 {
+    public bool dañoExplosion = false;
+    public bool areaExplosion = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +17,11 @@ public class Bombas : MonoBehaviour
     {
   
     }
+    private void Explosion()
+    {
+        if(areaExplosion == true)
+        {
+
+        }
+    }    
 }
