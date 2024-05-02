@@ -58,7 +58,7 @@ public class EMurcielagoPrueba : MonoBehaviour
         if(ray.collider != null)
         {
             TieneVision = ray.collider.CompareTag("Player");
-            Debug.Log(ray.collider.name);
+            // Debug.Log(ray.collider.name);
             if(TieneVision) 
             {
                 Debug.DrawRay(transform.position, jugador.position - transform.position, Color.green);
