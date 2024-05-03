@@ -5,39 +5,29 @@ using UnityEngine;
 public class SalasManager : MonoBehaviour
 {
 
-    public string teleportTargetTag = "TeleportTarget";     // Tag de los objetos de teletransporte
-    public string currentRoomTag = "SalaActual";            // Tag del objeto vacío que representa la sala actual
+    public string teleportTargetTag = "TeleportTarget";
+    public string currentRoomTag = "SalaActual";
 
     public List<GameObject> puertas;
-    [SerializeField] private List<GameObject> enemigosEnSala = new List<GameObject>(); // Lista para almacenar enemigos en la sala
+    private List<GameObject> enemigosEnSala = new List<GameObject>();
+    private bool jugadorEnSala = false;
 
-    public bool jugadorEnSala = false; // Variable para rastrear si el jugador está dentro de la sala
-
-    // Start is called before the first frame update
     void Start()
     {
-
         foreach (Transform child in transform)
         {
             if (child.CompareTag("Door"))
             {
                 puertas.Add(child.gameObject);
             }
-            if (child.CompareTag("Enemigo"))
+            else if (child.CompareTag("Enemigo"))
             {
                 enemigosEnSala.Add(child.gameObject);
             }
         }
-        DesactivarEnemigos();
+        DesactivarCollidersPuertas();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    // Método para desactivar o activar los colliders de las puertas
     void SetCollidersPuertas(bool estado)
     {
         foreach (var puerta in puertas)
@@ -50,13 +40,11 @@ public class SalasManager : MonoBehaviour
         }
     }
 
-    // Método para desactivar los colliders de las puertas
     private void DesactivarCollidersPuertas()
     {
         SetCollidersPuertas(false);
     }
 
-    // Método para activar los colliders de las puertas
     private void ActivarCollidersPuertas()
     {
         if (enemigosEnSala.Count == 0)
@@ -65,22 +53,20 @@ public class SalasManager : MonoBehaviour
         }
     }
 
-    // Método para desactivar los GameObjects de los enemigos en la sala
     void DesactivarEnemigos()
     {
-        Debug.Log("Cantidad de enemigos en la lista: " + enemigosEnSala.Count);
-
-        // Verificar si hay enemigos en la lista
         if (enemigosEnSala.Count > 0)
         {
-            Debug.Log("Enemigo desactivado");
-            for (int i = 0; i < enemigosEnSala.Count; i++)
+            Debug.Log("Enemigos desactivados");
+            foreach (var enemigo in enemigosEnSala)
             {
-                GameObject enemigo = enemigosEnSala[i];
-                enemigo.SetActive(false);
-                Debug.Log("El enemigo se ha desactivado");
+                EMurcielagoPrueba comportamientoEnemigo = enemigo.GetComponent<EMurcielagoPrueba>();
+                if (comportamientoEnemigo != null)
+                {
+                    comportamientoEnemigo.enabled = false;
+                    CongelarEnemigos(enemigo);
+                }
             }
-            enemigosEnSala.Clear();
         }
         else
         {
@@ -88,14 +74,16 @@ public class SalasManager : MonoBehaviour
         }
     }
 
-    // Método para activar los GameObjects de los enemigos en la sala
     void ActivarEnemigos()
     {
         Debug.Log("Enemigo activado");
-        for (int i = 0; i < enemigosEnSala.Count; i++)
+        foreach (var enemigo in enemigosEnSala)
         {
-            GameObject enemigo = enemigosEnSala[i];
-            enemigo.SetActive(true);
+            EMurcielagoPrueba comportamientoEnemigo = enemigo.GetComponent<EMurcielagoPrueba>();
+            if (comportamientoEnemigo != null)
+            {
+                comportamientoEnemigo.enabled = true;
+            }
         }
     }
 
@@ -120,20 +108,26 @@ public class SalasManager : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemigo"))
         {
-            // DesactivarEnemigos();
+            DesactivarEnemigos();
             DesactivarCollidersPuertas();
         }
 
         if (other.CompareTag("Player"))
         {
             jugadorEnSala = true;
-            // Activa los enemigos solo si el jugador está en la sala
-
-            ActivarEnemigos();
+            if (enemigosEnSala.Count > 0)
+            {
+                ActivarEnemigos();
+            }
+            else
+            {
+                ActivarCollidersPuertas();
+            }
             DesactivarTeleportTargets();
         }
     }
@@ -155,6 +149,15 @@ public class SalasManager : MonoBehaviour
             jugadorEnSala = false;
             DesactivarEnemigos();
             ActivarTeleportTargets();
+        }
+    }
+
+    void CongelarEnemigos(GameObject enemigo)
+    {
+        EnemigoV1 comportamientoEnemigo = enemigo.GetComponent<EnemigoV1>();
+        if (comportamientoEnemigo != null)
+        {
+            comportamientoEnemigo.CongelarEnemigo();
         }
     }
 

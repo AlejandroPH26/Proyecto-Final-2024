@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5285405342537173014}
   - component: {fileID: 2522493941286563665}
   - component: {fileID: 4952766671574365526}
+  - component: {fileID: 4940464013803733787}
   - component: {fileID: 3183104379338802466}
   m_Layer: 8
   m_Name: Murcielago
@@ -150,6 +151,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4940464013803733787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4579228704656662381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bf9151ae3622d4988befd4a65eb0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidadBase: 3
 --- !u!114 &3183104379338802466
 MonoBehaviour:
   m_ObjectHideFlags: 0
