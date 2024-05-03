@@ -40,7 +40,7 @@ public class GameManagerHats : MonoBehaviour
             Destroy(collision.gameObject);
             SumarVidas();
         }
-        if (collision.tag == "Bomba")
+        if (collision.tag == "BombaItem")
         {
             Destroy(collision.gameObject);
             SumarBombas();
@@ -74,5 +74,14 @@ public class GameManagerHats : MonoBehaviour
             vidas = 6;
         }
             ContadorVidas.text = vidas.ToString();
+    }
+    public void RestarVidas()
+    {
+        vidas--;
+        if (vidas <= 0)
+        {
+            vidas = 0;
+        }
+        ContadorVidas.text = vidas.ToString();
     }
 }
