@@ -6,13 +6,14 @@ using UnityEngine;
 public class EMurcielagoPrueba : MonoBehaviour
 {
     public int RangoMin = 5;
-    public float speed = 3;
+    public float speed;
 
     public GameObject bulletPrefab;
     public Transform bulletPos;
 
     private Rigidbody2D rb;
     private Transform jugador; // Referencia al transform del jugador
+    private EnemigoV1 enemigo; // Referencia al componente Enemigo
 
     public float delayDisparo = 2f;
     private float tiempoUltimoDisparo;
@@ -22,6 +23,16 @@ public class EMurcielagoPrueba : MonoBehaviour
 
     void Start()
     {
+        // Obtener la referencia al componente Enemigo
+        enemigo = GetComponent<EnemigoV1>();
+
+        // Restringir el acceso al componente Enemigo solo si está presente
+        if (enemigo != null)
+        {
+            // Establecer la velocidad del murciélago según la velocidad base del enemigo
+            speed = enemigo.velocidadMurcielago;
+        }
+
         rb = GetComponent<Rigidbody2D>();
         jugador = GameObject.FindGameObjectWithTag("Player").transform; // Busca el jugador por su etiqueta "Player"
         tiempoUltimoDisparo = Time.time; // Inicializa el tiempo del último disparo
@@ -109,4 +120,6 @@ public class EMurcielagoPrueba : MonoBehaviour
     {
         Instantiate(bulletPrefab, bulletPos.position, Quaternion.identity);
     }
+
+    
 }
