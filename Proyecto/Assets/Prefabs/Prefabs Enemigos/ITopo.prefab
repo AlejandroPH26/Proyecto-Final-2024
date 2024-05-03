@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2417998376129672409}
   - component: {fileID: 4580862414862009043}
   - component: {fileID: 1543844987469123394}
+  - component: {fileID: 7339030261013441742}
   m_Layer: 8
   m_Name: ITopo
   m_TagString: Topo
@@ -164,6 +165,19 @@ MonoBehaviour:
   velocidadMovimiento: 2
   cambiarDireccionTimer: 3
   "da\xF1o": 20
-  vidaActual: 0
-  vidaMax: 100
   Player: {fileID: 0}
+--- !u!114 &7339030261013441742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227901250011615489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dcaddf72e1ea0c47a8bab729c4b330a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaActual: 0
+  vidaMax: 50
+  vidaPerdida: 10

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4476185914236510612}
   - component: {fileID: 1062093974277873683}
   - component: {fileID: 7846629489531912187}
+  - component: {fileID: -9061386184882647149}
   m_Layer: 7
   m_Name: IBorracho
   m_TagString: EBorracho
@@ -73,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -726354695
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
   m_Color: {r: 0.35124072, g: 0.990566, b: 0, a: 1}
@@ -103,8 +104,6 @@ MonoBehaviour:
   bulletPos: {fileID: 6113225044345388047}
   player: {fileID: 0}
   RangoMin: 8
-  vidaActual: 0
-  vidaMax: 50
   canShoot: 1
 --- !u!70 &7846629489531912187
 CapsuleCollider2D:
@@ -141,6 +140,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &-9061386184882647149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6297467288412213055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dcaddf72e1ea0c47a8bab729c4b330a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaActual: 0
+  vidaMax: 100
+  vidaPerdida: 20
 --- !u!1 &7780176370657112740
 GameObject:
   m_ObjectHideFlags: 0

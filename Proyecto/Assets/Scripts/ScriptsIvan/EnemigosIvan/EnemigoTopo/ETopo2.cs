@@ -7,8 +7,8 @@ public class ETopo2 : MonoBehaviour
     public float velocidadMovimiento = 2f; // Velocidad de movimiento
     public float cambiarDireccionTimer = 3f; // Tiempo en segundos para cambiar de dirección
     public int daño = 20;
-    public int vidaActual;
-    public int vidaMax = 50;
+   
+   
 
     private Rigidbody2D rb;
     private Vector2 direccionActual; // Dirección actual del movimiento
@@ -21,20 +21,30 @@ public class ETopo2 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         Player = FindObjectOfType<MovimientoPrueba>(); // Busca el script del jugador 
-        vidaActual = vidaMax; // Al iniciar, la vida actual es igual a la vida maxima
+                                                       // Al iniciar, la vida actual es igual a la vida maxima
 
-        // Genera una dirección inicial aleatoria entre los ejes X e Y
-        int randomAxis = Random.Range(0, 2);
-        if (randomAxis == 0)
+        if (Player != null)
         {
-            direccionActual = Vector2.right; // Comienza moviéndose hacia la derecha
-        }
-        else
-        {
-            direccionActual = Vector2.up; // Comienza moviéndose hacia arriba
+
+            int randomAxis = Random.Range(0, 2);
+            if (randomAxis == 0)
+            {
+                direccionActual = Vector2.right; // Comienza moviéndose hacia la derecha
+            }
+            else
+            {
+                direccionActual = Vector2.up; // Comienza moviéndose hacia arriba
+            }
+
+            timer = cambiarDireccionTimer; // Inicializa el temporizador
+
         }
 
-        timer = cambiarDireccionTimer; // Inicializa el temporizador
+        else if (Player = null)
+        {
+            rb.velocity = Vector2.zero;
+        }
+
     }
 
     void Update()
@@ -107,32 +117,7 @@ public class ETopo2 : MonoBehaviour
             Debug.Log("DañoRecibidoJugador");
 
         }
-
-        if (collision.gameObject.CompareTag("BalaJugador"))
-        {
-            Debug.Log("dañorecibidoTopo");
-            DamageTaken(20);
-
-            Destroy(collision.gameObject); // Destruye la bala 
-
-
-            if (vidaActual <= 0)
-            {
-                Muerte();
-            }
-        }
     }
-
-    public void Muerte()
-
-    {
-        //Eanimator.Play("TOPO_DEATH");
-        Destroy(this.gameObject);
-    }
-
-    public void DamageTaken(int cantidad)
-    {
-        vidaActual = vidaActual - cantidad;
-    }
+  
 }
 

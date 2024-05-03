@@ -6,14 +6,16 @@ public class BalaMurcielago : MonoBehaviour
 
 {
     public float velocidad = 10f; // Velocidad de la bala
-    private Rigidbody2D rb;
-    private GameObject jugador;
+    private Rigidbody2D rb; 
+    public MovimientoPrueba Player;
+    public int Daño = 20;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        jugador = GameObject.FindGameObjectWithTag("Player");
-        Vector2 direccion = (jugador.transform.position - transform.position).normalized;
+     
+        Player = FindObjectOfType<MovimientoPrueba>();
+        Vector2 direccion = (Player.transform.position - transform.position).normalized;
         rb.velocity = direccion * velocidad;
     }
 
@@ -31,9 +33,19 @@ public class BalaMurcielago : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("Player"))
         {
+            Player.DamageTaken(Daño);
             Destroy(this.gameObject);
             //daño al jugador 
+         
+        }
+
+        else if(collision.gameObject.CompareTag("BalaJugador"))
+        {
+            Destroy(this.gameObject);
+            Destroy(collision.gameObject);
         }
     }
+
+    //Añadir al scrip de la bala jugador que si choca con un obejto con el tag bala.enemigo o .murcielago se destruye ambos objetos
 }
 

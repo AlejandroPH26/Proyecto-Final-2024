@@ -81,9 +81,6 @@ public class EMurcielagoPrueba : MonoBehaviour
             }
         }
 
-
-
-     
     }
 
     void ModosDeAtaque()
