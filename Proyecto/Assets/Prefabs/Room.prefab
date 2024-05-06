@@ -101,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportTargetTag: TeleportTarget
   currentRoomTag: SalaActual
+  bombaPrefab: {fileID: 7567262999501634179, guid: 7317b29d93873024aa45c4c971e388b1, type: 3}
+  botiquinPrefab: {fileID: 7200152505563290455, guid: d40336b1b9a861a4d800ff152982a57b, type: 3}
   puertas: []
 --- !u!1 &658062064066579822
 GameObject:
