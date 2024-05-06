@@ -7,14 +7,14 @@ public class BalaMurcielago : MonoBehaviour
 {
     public float velocidad = 10f; // Velocidad de la bala
     private Rigidbody2D rb; 
-    public MovimientoPrueba Player;
+    public JugadorV1 Player;
     public int Daño = 20;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
      
-        Player = FindObjectOfType<MovimientoPrueba>();
+        Player = FindObjectOfType<JugadorV1>();
         Vector2 direccion = (Player.transform.position - transform.position).normalized;
         rb.velocity = direccion * velocidad;
     }
