@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SalasManager : MonoBehaviour
@@ -7,6 +8,8 @@ public class SalasManager : MonoBehaviour
 
     public string teleportTargetTag = "TeleportTarget";
     public string currentRoomTag = "SalaActual";
+    public GameObject bombaPrefab;
+    public GameObject botiquinPrefab;
 
     public List<GameObject> puertas;
     private List<GameObject> enemigosEnSala = new List<GameObject>();
@@ -14,6 +17,8 @@ public class SalasManager : MonoBehaviour
 
     void Start()
     {
+        //List<Comportamiento_PuertasV1> puertass = GetComponentsInChildren<Comportamiento_PuertasV1>().ToList();
+
         foreach (Transform child in transform)
         {
             if (child.CompareTag("Door"))
@@ -64,6 +69,7 @@ public class SalasManager : MonoBehaviour
                 if (comportamientoEnemigo != null)
                 {
                     comportamientoEnemigo.enabled = false;
+                    enemigo.GetComponent<SpriteRenderer>().enabled = false; // Desactivar el SpriteRenderer
                     CongelarEnemigos(enemigo);
                 }
             }
@@ -83,6 +89,7 @@ public class SalasManager : MonoBehaviour
             if (comportamientoEnemigo != null)
             {
                 comportamientoEnemigo.enabled = true;
+                enemigo.GetComponent<SpriteRenderer>().enabled = true; // Activar el SpriteRenderer
             }
         }
     }
@@ -141,6 +148,31 @@ public class SalasManager : MonoBehaviour
             {
                 DesactivarEnemigos();
                 ActivarCollidersPuertas();
+
+                // Generar un número aleatorio entre 0 y 1
+                float randomValue = Random.Range(0f, 1f);
+
+                // Si el número aleatorio es mayor que 0.5, se instancia un objeto
+                if (randomValue > 0.5f)
+                {
+                    // Generar otro número aleatorio para determinar si se instancia una bomba o un botiquín
+                    float itemTypeChance = Random.Range(0f, 1f);
+
+                    if (itemTypeChance > 0.5f)
+                    {
+                        // Instanciar una bomba
+                        Instantiate(bombaPrefab, transform.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        // Instanciar un botiquín
+                        Instantiate(botiquinPrefab, transform.position, Quaternion.identity);
+                    }
+                }
+                else
+                {
+                    Debug.Log("No se ha consseguido nada");
+                }
             }
         }
 

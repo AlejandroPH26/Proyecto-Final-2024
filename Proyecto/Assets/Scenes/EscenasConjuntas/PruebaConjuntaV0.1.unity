@@ -347,6 +347,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6728807962579208171, guid: ab9c8007b0373e64d804b929ca938080, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7779290473768415580, guid: ab9c8007b0373e64d804b929ca938080, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -355,6 +359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8167447968596003196, guid: ab9c8007b0373e64d804b929ca938080, type: 3}
+      propertyPath: bombaPrefab
+      value: 
+      objectReference: {fileID: 7567262999501634179, guid: 7317b29d93873024aa45c4c971e388b1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -835,6 +843,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2065129336}
     m_Modifications:
+    - target: {fileID: -1855311324614835739, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2215857264232679208, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.377349
@@ -878,6 +890,18 @@ PrefabInstance:
     - target: {fileID: 4579228704656662381, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
       propertyPath: m_Name
       value: Murcielago
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940464013803733787, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4952766671574365526, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5285405342537173014, guid: 9d8dfa950e0161843bb8b4e40c3f85d9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
