@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Comportamiento_PuertasV1 : MonoBehaviour
 {
-    public Animation dAnimator;
+    public Animator dAnimator;
     // Start is called before the first frame update
     void Start()
     {
-        dAnimator = GetComponent<Animation>();
+        dAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -16,12 +16,14 @@ public class Comportamiento_PuertasV1 : MonoBehaviour
     {
         
     }
-    private void AbriendoPuertas()
+    public void AbriendoPuertas()
     {
-        dAnimator.Play("OpeningDoors");
+        dAnimator.SetBool("HayEnemigos", true);
+        //dAnimator.Play("OpeningDoors");
     }
-    private void CerrandoPuertas()
+    public void CerrandoPuertas()
     {
-        dAnimator.Play("ClosingDoors");
+        dAnimator.SetBool("HayEnemigos", false);
+        //dAnimator.Play("ClosingDoors");
     }
 }

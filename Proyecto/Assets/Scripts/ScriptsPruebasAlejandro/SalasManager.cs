@@ -11,21 +11,18 @@ public class SalasManager : MonoBehaviour
     public GameObject bombaPrefab;
     public GameObject botiquinPrefab;
 
-    public List<GameObject> puertas;
+    public List<Comportamiento_PuertasV1> puertas;// Lista de comportamientos de puertas
+
     private List<GameObject> enemigosEnSala = new List<GameObject>();
     private bool jugadorEnSala = false;
 
     void Start()
     {
-        //List<Comportamiento_PuertasV1> puertass = GetComponentsInChildren<Comportamiento_PuertasV1>().ToList();
+        puertas = GetComponentsInChildren<Comportamiento_PuertasV1>().ToList();
 
         foreach (Transform child in transform)
         {
-            if (child.CompareTag("Door"))
-            {
-                puertas.Add(child.gameObject);
-            }
-            else if (child.CompareTag("Enemigo"))
+            if (child.CompareTag("Enemigo"))
             {
                 enemigosEnSala.Add(child.gameObject);
             }
@@ -65,6 +62,7 @@ public class SalasManager : MonoBehaviour
             Debug.Log("Enemigos desactivados");
             foreach (var enemigo in enemigosEnSala)
             {
+                // Cambiar emurcielago por futuro script comun
                 EMurcielagoPrueba comportamientoEnemigo = enemigo.GetComponent<EMurcielagoPrueba>();
                 if (comportamientoEnemigo != null)
                 {
@@ -85,6 +83,7 @@ public class SalasManager : MonoBehaviour
         Debug.Log("Enemigo activado");
         foreach (var enemigo in enemigosEnSala)
         {
+            // Cambiar emurcielago por futuro script comun
             EMurcielagoPrueba comportamientoEnemigo = enemigo.GetComponent<EMurcielagoPrueba>();
             if (comportamientoEnemigo != null)
             {
@@ -130,6 +129,12 @@ public class SalasManager : MonoBehaviour
             if (enemigosEnSala.Count > 0)
             {
                 ActivarEnemigos();
+                // Si hay al menos un enemigo en la sala cuando el jugador entra, cerrar las puertas
+                foreach (var puerta in puertas)
+                {
+                    puerta.CerrandoPuertas();
+                    Debug.Log("Se cierran las puertas");
+                }
             }
             else
             {
@@ -148,6 +153,12 @@ public class SalasManager : MonoBehaviour
             {
                 DesactivarEnemigos();
                 ActivarCollidersPuertas();
+
+                foreach (var puerta in puertas)
+                {
+                    puerta.AbriendoPuertas();
+                    Debug.Log("Se abren las puertas");
+                }
 
                 // Generar un número aleatorio entre 0 y 1
                 float randomValue = Random.Range(0f, 1f);
@@ -171,7 +182,7 @@ public class SalasManager : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("No se ha consseguido nada");
+                    Debug.Log("No se ha conseguido nada");
                 }
             }
         }
