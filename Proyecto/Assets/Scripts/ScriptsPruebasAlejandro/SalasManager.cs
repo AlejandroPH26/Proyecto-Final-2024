@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SalasManager : MonoBehaviour
@@ -16,6 +17,8 @@ public class SalasManager : MonoBehaviour
 
     void Start()
     {
+        //List<Comportamiento_PuertasV1> puertass = GetComponentsInChildren<Comportamiento_PuertasV1>().ToList();
+
         foreach (Transform child in transform)
         {
             if (child.CompareTag("Door"))
