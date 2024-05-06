@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teleportTargetTag: TeleportTarget
   currentRoomTag: SalaActual
-  enemigosEnSala: []
+  puertas: []
 --- !u!1 &658062064066579822
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,7 +648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3747085612887356774, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.745
+      value: -12.58
       objectReference: {fileID: 0}
     - target: {fileID: 3747085612887356774, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -722,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3747085612887356774, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.936
+      value: 7.73
       objectReference: {fileID: 0}
     - target: {fileID: 3747085612887356774, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -788,7 +788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3747085612887356774, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.745
+      value: 12.58
       objectReference: {fileID: 0}
     - target: {fileID: 3747085612887356774, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -862,7 +862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3747085612887356774, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.936
+      value: -7.73
       objectReference: {fileID: 0}
     - target: {fileID: 3747085612887356774, guid: ce312b5f122c61e4eb1a88bb40a42f0a, type: 3}
       propertyPath: m_LocalPosition.z
