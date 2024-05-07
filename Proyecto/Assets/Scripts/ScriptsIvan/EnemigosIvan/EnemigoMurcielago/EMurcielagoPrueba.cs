@@ -25,6 +25,7 @@ public class EMurcielagoPrueba : MonoBehaviour
 
     private Animator animator;
 
+    private EnemigosComun enemy; //Referencia al script EnemigosComun
    
     void Start()
     {
@@ -37,13 +38,22 @@ public class EMurcielagoPrueba : MonoBehaviour
         //jugador = GameObject.FindGameObjectWithTag("Player").transform; // Busca el jugador por su etiqueta "Player"
         jugador = FindObjectOfType<JugadorV1>();
         tiempoUltimoDisparo = Time.time; // Inicializa el tiempo del último disparo
+
+        enemy = GetComponent<EnemigosComun>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        RayCast();
-        ModosDeAtaque();
+        if (enemy.activo) // Si el enemigo está activo
+        {
+            RayCast();
+            ModosDeAtaque();
+        }
+        else // En caso contrario, su velocidad es 0
+        {
+            rb.velocity = Vector3.zero;
+        }
     }
 
     void TrackingJugador()

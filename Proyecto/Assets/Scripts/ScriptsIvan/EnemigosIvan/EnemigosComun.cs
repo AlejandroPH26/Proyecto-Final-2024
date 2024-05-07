@@ -7,6 +7,8 @@ public class EnemigosComun : MonoBehaviour
     public int vidaActual;
     public int vidaMax;
     public int vidaPerdida;
+
+    public bool activo = true;
     void Start()
     {
         vidaActual = vidaMax;

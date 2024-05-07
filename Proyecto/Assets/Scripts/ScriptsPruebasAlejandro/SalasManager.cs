@@ -63,12 +63,12 @@ public class SalasManager : MonoBehaviour
             foreach (var enemigo in enemigosEnSala)
             {
                 // Cambiar emurcielago por futuro script comun
-                EMurcielagoPrueba comportamientoEnemigo = enemigo.GetComponent<EMurcielagoPrueba>();
+                EnemigosComun comportamientoEnemigo = enemigo.GetComponent<EnemigosComun>();
                 if (comportamientoEnemigo != null)
                 {
                     comportamientoEnemigo.enabled = false;
                     enemigo.GetComponent<SpriteRenderer>().enabled = false; // Desactivar el SpriteRenderer
-                    CongelarEnemigos(enemigo);
+                    comportamientoEnemigo.activo = false;
                 }
             }
         }
@@ -84,11 +84,12 @@ public class SalasManager : MonoBehaviour
         foreach (var enemigo in enemigosEnSala)
         {
             // Cambiar emurcielago por futuro script comun
-            EMurcielagoPrueba comportamientoEnemigo = enemigo.GetComponent<EMurcielagoPrueba>();
+            EnemigosComun comportamientoEnemigo = enemigo.GetComponent<EnemigosComun>();
             if (comportamientoEnemigo != null)
             {
                 comportamientoEnemigo.enabled = true;
                 enemigo.GetComponent<SpriteRenderer>().enabled = true; // Activar el SpriteRenderer
+                comportamientoEnemigo.activo = true;
             }
         }
     }
@@ -126,7 +127,7 @@ public class SalasManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             jugadorEnSala = true;
-            if (enemigosEnSala.Count > 0)
+            if (enemigosEnSala.Count > 0 && jugadorEnSala)
             {
                 ActivarEnemigos();
                 // Si hay al menos un enemigo en la sala cuando el jugador entra, cerrar las puertas
@@ -166,6 +167,7 @@ public class SalasManager : MonoBehaviour
                 // Si el número aleatorio es mayor que 0.5, se instancia un objeto
                 if (randomValue > 0.5f)
                 {
+                    Debug.Log("Na de na");
                     // Generar otro número aleatorio para determinar si se instancia una bomba o un botiquín
                     float itemTypeChance = Random.Range(0f, 1f);
 
@@ -194,15 +196,4 @@ public class SalasManager : MonoBehaviour
             ActivarTeleportTargets();
         }
     }
-
-    void CongelarEnemigos(GameObject enemigo)
-    {
-        EnemigoV1 comportamientoEnemigo = enemigo.GetComponent<EnemigoV1>();
-        if (comportamientoEnemigo != null)
-        {
-            comportamientoEnemigo.CongelarEnemigo();
-        }
-    }
-
-
 }
