@@ -84,4 +84,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.1
+    functionName: BorrarExplosion
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: 2c7fa365f101eed459d6afcf631f4bad, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

@@ -8,6 +8,7 @@ public enum Direction {UP, DOWN, LEFT, RIGHT};
 
 public class MovimientoCabezaJugador : MonoBehaviour
 {
+    private GameManagerHats gm;
     public Direction dirCabeza = Direction.DOWN;
     public Animator cAnimator;
     public float speedBullet = 3f;
@@ -26,12 +27,14 @@ public class MovimientoCabezaJugador : MonoBehaviour
     {
         cAnimator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        gm = GetComponent<GameManagerHats>();
     }
 
     // Update is called once per frame
     void Update()
     {
         HeadPosition();
+        DestruirCabeza();
     }
     public void HeadPosition() // Método para determinar la posición de la cabeza
     {
@@ -161,6 +164,13 @@ public class MovimientoCabezaJugador : MonoBehaviour
         if (dirCabeza == Direction.DOWN)
         {
             cAnimator.Play("WalkDown_Cabeza");
+        }
+    }
+    public void DestruirCabeza()
+    {
+        if(gm.vidas <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }

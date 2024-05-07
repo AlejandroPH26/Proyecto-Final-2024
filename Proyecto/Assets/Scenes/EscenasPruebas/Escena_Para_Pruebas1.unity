@@ -489,6 +489,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 235572344}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &591973847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 591973849}
+  - component: {fileID: 591973848}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &591973848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591973847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e945ea6ae2a335c40b38146b0235fd68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidas: 2
+  bombas: 3
+  ContadorBombas: {fileID: 1464225400}
+  ContadorVidas: {fileID: 697055348}
+--- !u!4 &591973849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591973847}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.72038776, y: 0.19517231, z: 1297.2646}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &697055346
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,7 +882,6 @@ GameObject:
   - component: {fileID: 1392623510}
   - component: {fileID: 1392623509}
   - component: {fileID: 1392623514}
-  - component: {fileID: 1392623515}
   m_Layer: 7
   m_Name: Jugador
   m_TagString: Player
@@ -1024,22 +1071,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1392623515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392623508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e945ea6ae2a335c40b38146b0235fd68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidas: 6
-  bombas: 3
-  ContadorBombas: {fileID: 1464225400}
-  ContadorVidas: {fileID: 697055348}
 --- !u!1 &1464225398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,3 +1509,4 @@ SceneRoots:
   - {fileID: 4221412957600899434}
   - {fileID: 6867020194984808178}
   - {fileID: 1163450121}
+  - {fileID: 591973849}
