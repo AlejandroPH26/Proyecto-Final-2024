@@ -126,7 +126,7 @@ public class SalasManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             jugadorEnSala = true;
-            if (enemigosEnSala.Count > 0)
+            if (enemigosEnSala.Count > 0 && jugadorEnSala)
             {
                 ActivarEnemigos();
                 // Si hay al menos un enemigo en la sala cuando el jugador entra, cerrar las puertas
@@ -166,6 +166,7 @@ public class SalasManager : MonoBehaviour
                 // Si el número aleatorio es mayor que 0.5, se instancia un objeto
                 if (randomValue > 0.5f)
                 {
+                    Debug.Log("Na de na");
                     // Generar otro número aleatorio para determinar si se instancia una bomba o un botiquín
                     float itemTypeChance = Random.Range(0f, 1f);
 
