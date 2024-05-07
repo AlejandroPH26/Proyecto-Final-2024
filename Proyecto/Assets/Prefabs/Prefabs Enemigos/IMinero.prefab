@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8807913260104404358}
   - component: {fileID: 2037023599420214744}
   - component: {fileID: 441414451544053413}
-  - component: {fileID: -8079714511083739203}
+  - component: {fileID: 1758937687575041537}
+  - component: {fileID: 1277537350997637327}
   m_Layer: 3
   m_Name: IMinero
   m_TagString: Minero
@@ -159,7 +160,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-8079714511083739203
+--- !u!114 &1758937687575041537
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,8 +169,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7672378028743556268}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d07a481e3d48f2446853e96082add1ff, type: 3}
+  m_Script: {fileID: 11500000, guid: f28c3a9d8b02808418ea9d8250ba0540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  "da\xF1oPorIntervalo": 20
+  speed: 3
+  "da\xF1oPorIntervalo": 10
+--- !u!114 &1277537350997637327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672378028743556268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dcaddf72e1ea0c47a8bab729c4b330a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaActual: 0
+  vidaMax: 50
+  vidaPerdida: 10

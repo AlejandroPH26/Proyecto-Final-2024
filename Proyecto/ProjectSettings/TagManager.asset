@@ -20,6 +20,7 @@ TagManager:
   - Minero
   - Enemigo
   - EBorracho
+  - BombaItem
   layers:
   - Default
   - TransparentFX

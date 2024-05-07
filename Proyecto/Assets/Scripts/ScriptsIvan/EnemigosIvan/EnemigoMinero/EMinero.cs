@@ -1,14 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class Enemigo : MonoBehaviour
+public class EMinero : MonoBehaviour
 {
     //Estadisticas
-    private int vidaActual;
-    private int vidaMax = 100;
     public float speed;
 
     public int dañoPorIntervalo = 10;
@@ -19,28 +15,28 @@ public class Enemigo : MonoBehaviour
     private Rigidbody2D rb;
 
     //Jugador
-    private Jugador Player;
-    
+    private MovimientoPrueba Player;
+
 
 
     //private Animator Eanimator;
 
     void Start()
-   
+
     {
 
         rb = GetComponent<Rigidbody2D>();
 
-        Player = FindObjectOfType<Jugador>(); // Busca el script del jugador 
+        Player = FindObjectOfType<MovimientoPrueba>(); // Busca el script del jugador 
 
         jugador = GameObject.FindGameObjectWithTag("Player").transform; // Busca el jugador por su etiqueta "Player"
 
-        vidaActual = vidaMax; // Al iniciar, la vida actual es igual a la vida maxima
+        // Al iniciar, la vida actual es igual a la vida maxima
 
         //animator = GetComponent<Animator>();
     }
-        
-    
+
+
 
     void Update()
     {
@@ -51,24 +47,15 @@ public class Enemigo : MonoBehaviour
 
         }
 
-        else if(jugador = null) 
+        else if (jugador = null)
         {
             rb.velocity = Vector2.zero;
         }
 
     }
-     
-
-    public void Muerte()
-   
-    {
-        //Eanimator.Play("MINERO_DEATH");
-        Destroy(this.gameObject);
-        
-      
-    }
 
     public void Chase()
+   
     {
 
         // Calcula la dirección hacia la que el enemigo debe moverse (hacia el jugador)
@@ -80,14 +67,8 @@ public class Enemigo : MonoBehaviour
         // Aplica la velocidad al Rigidbody del enemigo
         rb.velocity = velocidadMovimiento;
 
-       
-    }
 
-    public void DamageTaken(int cantidad)
-    {
-        vidaActual = vidaActual - cantidad;
     }
-
 
     private void OnCollisionStay2D(Collision2D collision)
 
@@ -98,39 +79,27 @@ public class Enemigo : MonoBehaviour
             EvadirObstaculo();
         }
 
-       else  if (collision.gameObject.CompareTag("Player"))
+        else if (collision.gameObject.CompareTag("Player"))
         {
-            if(Time.time - tiempoUltimoDaño > 1.5f)
+            if (Time.time - tiempoUltimoDaño > 1.5f)
             {
                 Player.DamageTaken(dañoPorIntervalo);
-                Debug.Log("DañoRecibido");
+                Debug.Log("DañoAlJugador");
                 tiempoUltimoDaño = Time.time;
             }
 
         }
 
-        
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("BalaJugador"))
-        {
-            Debug.Log("dañorecibido");
-            DamageTaken(20);
-           
-            //Destroy(collision.gameObject); // Destruye la bala 
-          
 
-            if (vidaActual <= 0)
-            {
-                Muerte();
-            }
-          
-        }
     }
 
     private void EvadirObstaculo()
+   
     {
         // Calcula una dirección perpendicular a la dirección hacia el jugador
         Vector2 direccionPerpendicular = Vector2.Perpendicular(rb.velocity).normalized;

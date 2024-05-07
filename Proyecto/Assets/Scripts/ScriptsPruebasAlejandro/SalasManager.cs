@@ -1,55 +1,94 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SalasManager : MonoBehaviour
 {
 
-    public string teleportTargetTag = "TeleportTarget";     // Tag de los objetos de teletransporte
-    public string currentRoomTag = "SalaActual";            // Tag del objeto vacío que representa la sala actual
+    public string teleportTargetTag = "TeleportTarget";
+    public string currentRoomTag = "SalaActual";
+    public GameObject bombaPrefab;
+    public GameObject botiquinPrefab;
 
-    private List<GameObject> enemigosEnSala = new List<GameObject>(); // Lista para almacenar enemigos en la sala
+    public List<Comportamiento_PuertasV1> puertas;// Lista de comportamientos de puertas
 
-    // Start is called before the first frame update
+    private List<GameObject> enemigosEnSala = new List<GameObject>();
+    private bool jugadorEnSala = false;
+
     void Start()
     {
-        
-    }
+        puertas = GetComponentsInChildren<Comportamiento_PuertasV1>().ToList();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    // Método para desactivar los colliders de las puertas
-    void DesactivarCollidersPuertas()
-    {
         foreach (Transform child in transform)
         {
-            if (child.CompareTag("Door"))
+            if (child.CompareTag("Enemigo"))
             {
-                Collider2D collider = child.GetComponent<Collider2D>();
-                if (collider != null)
-                {
-                    collider.enabled = false;
-                }
+                enemigosEnSala.Add(child.gameObject);
+            }
+        }
+        DesactivarCollidersPuertas();
+    }
+
+    void SetCollidersPuertas(bool estado)
+    {
+        foreach (var puerta in puertas)
+        {
+            Collider2D collider = puerta.GetComponent<Collider2D>();
+            if (collider != null)
+            {
+                collider.enabled = estado;
             }
         }
     }
 
-    // Método para activar los colliders de las puertas
-    void ActivarCollidersPuertas()
+    private void DesactivarCollidersPuertas()
     {
-        foreach (Transform child in transform)
+        SetCollidersPuertas(false);
+    }
+
+    private void ActivarCollidersPuertas()
+    {
+        if (enemigosEnSala.Count == 0)
         {
-            if (child.CompareTag("Door"))
+            SetCollidersPuertas(true);
+        }
+    }
+
+    void DesactivarEnemigos()
+    {
+        if (enemigosEnSala.Count > 0)
+        {
+            Debug.Log("Enemigos desactivados");
+            foreach (var enemigo in enemigosEnSala)
             {
-                Collider2D collider = child.GetComponent<Collider2D>();
-                if (collider != null)
+                // Cambiar emurcielago por futuro script comun
+                EMurcielagoPrueba comportamientoEnemigo = enemigo.GetComponent<EMurcielagoPrueba>();
+                if (comportamientoEnemigo != null)
                 {
-                    collider.enabled = true;
+                    comportamientoEnemigo.enabled = false;
+                    enemigo.GetComponent<SpriteRenderer>().enabled = false; // Desactivar el SpriteRenderer
+                    CongelarEnemigos(enemigo);
                 }
+            }
+        }
+        else
+        {
+            Debug.Log("No hay enemigos en la lista para desactivar.");
+        }
+    }
+
+    void ActivarEnemigos()
+    {
+        Debug.Log("Enemigo activado");
+        foreach (var enemigo in enemigosEnSala)
+        {
+            // Cambiar emurcielago por futuro script comun
+            EMurcielagoPrueba comportamientoEnemigo = enemigo.GetComponent<EMurcielagoPrueba>();
+            if (comportamientoEnemigo != null)
+            {
+                comportamientoEnemigo.enabled = true;
+                enemigo.GetComponent<SpriteRenderer>().enabled = true; // Activar el SpriteRenderer
             }
         }
     }
@@ -75,68 +114,96 @@ public class SalasManager : MonoBehaviour
             }
         }
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemigo"))
         {
-            enemigosEnSala.Add(other.gameObject);
+            DesactivarEnemigos();
+            DesactivarCollidersPuertas();
         }
 
-        if (other.CompareTag(currentRoomTag))
+        if (other.CompareTag("Player"))
         {
-            // Cada vez que se entra a una habitación nueva, se desactivan los colliders de las puertas y se activa la animación de cerrar puertas
-            // DesactivarCollidersPuertas();
+            jugadorEnSala = true;
+            if (enemigosEnSala.Count > 0 && jugadorEnSala)
+            {
+                ActivarEnemigos();
+                // Si hay al menos un enemigo en la sala cuando el jugador entra, cerrar las puertas
+                foreach (var puerta in puertas)
+                {
+                    puerta.CerrandoPuertas();
+                    Debug.Log("Se cierran las puertas");
+                }
+            }
+            else
+            {
+                ActivarCollidersPuertas();
+            }
             DesactivarTeleportTargets();
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag(currentRoomTag))
+        if (other.CompareTag("Enemigo"))
         {
-            ActivarTeleportTargets();           
-        }
-    }
-
-    // En el GameManager, cuando se detecte que la sala ya no tiene enemigos, se llama al método, por ejemplo, HabitacionLimpia()
-    /*
-    public void HabitacionLimpia()
-    {
-        salasManager.ActivarCollidersPuertas(); // Activar colliders de puertas
-    }
-    */
-
-    public void EnemigoDestruido(GameObject enemigo)
-    {
-        enemigosEnSala.Remove(enemigo);
-    }
-
-    // En el script Enemigo, de debería tener el siguiente código cada vez que se destruye
-    /*
-            public class Enemigo : MonoBehaviour
+            enemigosEnSala.Remove(other.gameObject);
+            if (jugadorEnSala && enemigosEnSala.Count == 0)
             {
-                public SalasManager salasManager;
+                DesactivarEnemigos();
+                ActivarCollidersPuertas();
 
-                private void OnDestroy()
+                foreach (var puerta in puertas)
                 {
-                    if (salasManager != null)
+                    puerta.AbriendoPuertas();
+                    Debug.Log("Se abren las puertas");
+                }
+
+                // Generar un número aleatorio entre 0 y 1
+                float randomValue = Random.Range(0f, 1f);
+
+                // Si el número aleatorio es mayor que 0.5, se instancia un objeto
+                if (randomValue > 0.5f)
+                {
+                    Debug.Log("Na de na");
+                    // Generar otro número aleatorio para determinar si se instancia una bomba o un botiquín
+                    float itemTypeChance = Random.Range(0f, 1f);
+
+                    if (itemTypeChance > 0.5f)
                     {
-                        salasManager.EnemigoDestruido(gameObject);
+                        // Instanciar una bomba
+                        Instantiate(bombaPrefab, transform.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        // Instanciar un botiquín
+                        Instantiate(botiquinPrefab, transform.position, Quaternion.identity);
                     }
                 }
+                else
+                {
+                    Debug.Log("No se ha conseguido nada");
+                }
             }
-    */
-
-    // Método para verificar si no hay enemigos en la sala y activar los colliders de las puertas
-    void ActualizarCollidersPuertas()
-    {
-        if (enemigosEnSala.Count == 0)
-        {
-            ActivarCollidersPuertas();
         }
-        else
+
+        if (other.CompareTag("Player"))
         {
-            DesactivarCollidersPuertas();
+            jugadorEnSala = false;
+            DesactivarEnemigos();
+            ActivarTeleportTargets();
         }
     }
+
+    void CongelarEnemigos(GameObject enemigo)
+    {
+        EnemigoV1 comportamientoEnemigo = enemigo.GetComponent<EnemigoV1>();
+        if (comportamientoEnemigo != null)
+        {
+            comportamientoEnemigo.CongelarEnemigo();
+        }
+    }
+
+
 }

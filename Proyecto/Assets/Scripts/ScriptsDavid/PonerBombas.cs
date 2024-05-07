@@ -9,7 +9,7 @@ public class PonerBombas : MonoBehaviour
     public KeyCode dropBomb = KeyCode.Space;
     public GameObject prefabBomba;
     public bool colocarBomba = true;
-    public float delay = 10f;
+    public float delay = 1f;
     // Start is called before the first frame update
     void Start()
     {
