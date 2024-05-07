@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 441414451544053413}
   - component: {fileID: 1758937687575041537}
   - component: {fileID: 1277537350997637327}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: IMinero
   m_TagString: Minero
   m_Icon: {fileID: 0}
