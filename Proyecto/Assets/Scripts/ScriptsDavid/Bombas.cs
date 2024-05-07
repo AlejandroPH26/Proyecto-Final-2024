@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bombas : MonoBehaviour
 {
     private GameManagerHats gm;
+    public GameObject prefabExplosion;
     public bool destruyeBomba = false;
     private bool segundoFrame = false;
     public Animator bAnimator;
@@ -30,7 +31,8 @@ public class Bombas : MonoBehaviour
     {
             bombaCollider.enabled = true;
             destruyeBomba = true;
-            // Particulas
+            GameObject Explosion = Instantiate(prefabExplosion, transform.position, Quaternion.identity);
+        // Particulas
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

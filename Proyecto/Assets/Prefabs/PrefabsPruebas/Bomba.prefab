@@ -99,6 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea34640af2f2704fa3ea029e0774f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabExplosion: {fileID: 7222187149520719292, guid: d1d24446071a69a47a23643158ab9afc, type: 3}
+  destruyeBomba: 0
   bAnimator: {fileID: 0}
   bombaCollider: {fileID: 0}
 --- !u!58 &2332388756210603888
