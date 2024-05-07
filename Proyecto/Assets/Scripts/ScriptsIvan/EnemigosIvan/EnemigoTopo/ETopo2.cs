@@ -26,28 +26,22 @@ public class ETopo2 : MonoBehaviour
         Player = FindObjectOfType<JugadorV1>(); // Busca el script del jugador 
         enemy = GetComponent<EnemigosComun>();
 
-
-        if (Player != null)
-        {
-
-            int randomAxis = Random.Range(0, 2);
-            if (randomAxis == 0)
+            if (Player != null)
             {
-                direccionActual = Vector2.right; // Comienza moviéndose hacia la derecha
-            }
-            else
-            {
-                direccionActual = Vector2.up; // Comienza moviéndose hacia arriba
+
+                CambiarDireccion();
+
+
+
+
+                timer = cambiarDireccionTimer; // Inicializa el temporizador
+
             }
 
-            timer = cambiarDireccionTimer; // Inicializa el temporizador
-
-        }
-
-        else if (Player = null)
-        {
-            rb.velocity = Vector2.zero;
-        }
+            else if (Player = null)
+            {
+                rb.velocity = Vector2.zero;
+            }
 
     }
 
@@ -72,6 +66,8 @@ public class ETopo2 : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
         }
+
+
 
     }
 
