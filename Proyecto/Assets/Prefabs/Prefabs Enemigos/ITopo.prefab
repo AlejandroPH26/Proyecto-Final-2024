@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4580862414862009043}
   - component: {fileID: 1543844987469123394}
   - component: {fileID: 7339030261013441742}
+  - component: {fileID: 4988359009963784137}
   m_Layer: 8
   m_Name: ITopo
   m_TagString: Topo
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4331, y: 1.4331, z: 1.4331}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: -726354695
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.5283019, g: 0.318952, b: 0.15699537, a: 1}
+  m_Sprite: {fileID: 1876987750, guid: 3780dc8ad00dd134da0a2ec87b6169d2, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -166,6 +167,7 @@ MonoBehaviour:
   cambiarDireccionTimer: 3
   "da\xF1o": 20
   Player: {fileID: 0}
+  animator: {fileID: 4988359009963784137}
 --- !u!114 &7339030261013441742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,3 +183,24 @@ MonoBehaviour:
   vidaActual: 0
   vidaMax: 50
   vidaPerdida: 10
+--- !u!95 &4988359009963784137
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227901250011615489}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 47d0b4b9e8df22849906e760d9ea3a2c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

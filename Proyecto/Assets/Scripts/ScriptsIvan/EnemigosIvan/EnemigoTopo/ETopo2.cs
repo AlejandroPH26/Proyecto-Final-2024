@@ -16,6 +16,8 @@ public class ETopo2 : MonoBehaviour
 
     public MovimientoPrueba Player;
 
+    public Animator animator;
+
 
     void Start()
     {
@@ -74,10 +76,14 @@ public class ETopo2 : MonoBehaviour
             if (randomDirection == 0)
             {
                 direccionActual = Vector2.right; // Derecha
+                animator.Play("TOPO_RIGHT");
+               
             }
             else
             {
                 direccionActual = Vector2.left; // Izquierda
+                animator.Play("TOPO_LEFT");
+
             }
         }
         else
@@ -86,11 +92,15 @@ public class ETopo2 : MonoBehaviour
             int randomDirection = Random.Range(0, 2); // 0 o 1, para arriba o abajo
             if (randomDirection == 0)
             {
+              
                 direccionActual = Vector2.up; // Arriba
+                animator.Play("TOPO_IDLE");
             }
             else
             {
                 direccionActual = Vector2.down; // Abajo
+                animator.Play("TOPO_DOWN");
+
             }
         }
     }
