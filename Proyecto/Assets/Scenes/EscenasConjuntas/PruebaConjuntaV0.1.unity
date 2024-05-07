@@ -752,13 +752,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  moveUp: 119
-  moveLeft: 97
-  moveDown: 115
-  moveRight: 100
-  y: -1
-  x: 0
-  pAnimator: {fileID: 0}
   vidaActual: 0
   vidaMax: 100
   player: {fileID: 755966108}
@@ -1037,11 +1030,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4392193564730976719, guid: 1e9d93247d669ba44afa6a265277e2f4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.03
+      value: 4.33
       objectReference: {fileID: 0}
     - target: {fileID: 4392193564730976719, guid: 1e9d93247d669ba44afa6a265277e2f4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.82
+      value: -20.34
       objectReference: {fileID: 0}
     - target: {fileID: 4392193564730976719, guid: 1e9d93247d669ba44afa6a265277e2f4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1078,7 +1071,7 @@ PrefabInstance:
     - target: {fileID: 4988359009963784137, guid: 1e9d93247d669ba44afa6a265277e2f4, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 47d0b4b9e8df22849906e760d9ea3a2c, type: 2}
+      objectReference: {fileID: 9100000, guid: 208ddeddbfd86dd4fb3c2bf9cede4b88, type: 2}
     - target: {fileID: 8227901250011615489, guid: 1e9d93247d669ba44afa6a265277e2f4, type: 3}
       propertyPath: m_Name
       value: ITopo
