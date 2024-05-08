@@ -64,6 +64,9 @@ TagManager:
   - name: Obstaculos
     uniqueID: 1711426109
     locked: 0
+  - name: Botiquin
+    uniqueID: 902885021
+    locked: 0
   - name: Enemigos
     uniqueID: 3568612601
     locked: 0
