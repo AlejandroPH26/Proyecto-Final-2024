@@ -27,7 +27,7 @@ public class MovimientoCabezaJugador : MonoBehaviour
     {
         cAnimator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-        gm = GetComponent<GameManagerHats>();
+        gm = GameManagerHats.instance;
     }
 
     // Update is called once per frame

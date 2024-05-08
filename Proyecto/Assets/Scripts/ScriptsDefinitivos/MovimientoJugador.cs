@@ -27,7 +27,7 @@ public class MovimientoJugador : MonoBehaviour
         pAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         cabeza = GetComponentInChildren<MovimientoCabezaJugador>();
-        gm = GetComponent<GameManagerHats>();
+        gm = GameManagerHats.instance;
     }
 
     // Update is called once per frame
@@ -136,6 +136,19 @@ public class MovimientoJugador : MonoBehaviour
         rb.velocity = aux.normalized * speed; // Aqui lo normalizamos y lo multiplicamos por speed para que no vaya mas rapido en diagonal
 
 
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Botiquin")
+        {
+            Destroy(collision.gameObject);
+            gm.SumarVidas();
+        }
+        if (collision.tag == "BombaItem")
+        {
+            Destroy(collision.gameObject);
+            gm.SumarBombas();
+        }
     }
     private void MuerteJugador()
     {

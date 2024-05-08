@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidas: 2
-  bombas: 3
+  bombas: 8
   ContadorBombas: {fileID: 1464225400}
   ContadorVidas: {fileID: 697055348}
 --- !u!4 &591973849

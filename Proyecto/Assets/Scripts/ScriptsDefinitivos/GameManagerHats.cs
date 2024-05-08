@@ -33,20 +33,8 @@ public class GameManagerHats : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Botiquin")
-        {
-            Destroy(collision.gameObject);
-            SumarVidas();
-        }
-        if (collision.tag == "BombaItem")
-        {
-            Destroy(collision.gameObject);
-            SumarBombas();
-        }
-    }
-    private void SumarBombas()
+   
+    public void SumarBombas()
     {
         bombas++;
         if (bombas > 10)
@@ -66,7 +54,7 @@ public class GameManagerHats : MonoBehaviour
         ContadorBombas.text = bombas.ToString();
     }
 
-    private void SumarVidas()
+    public void SumarVidas()
     {
         vidas++;
         if (vidas > 6)
