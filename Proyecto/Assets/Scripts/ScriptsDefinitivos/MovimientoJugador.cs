@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 
 public class MovimientoJugador : MonoBehaviour
 {
+    private GameManagerHats gm;
     private MovimientoCabezaJugador cabeza;
     [Tooltip("Velocidad del jugador en unidades de unity / segundo")]
     public float speed = 2f;
@@ -26,12 +27,14 @@ public class MovimientoJugador : MonoBehaviour
         pAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         cabeza = GetComponentInChildren<MovimientoCabezaJugador>();
+        gm = GameManagerHats.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
         InputJugador();
+        MuerteJugador();
     }
     private void InputJugador()
     {
@@ -134,5 +137,25 @@ public class MovimientoJugador : MonoBehaviour
 
 
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Botiquin")
+        {
+            Destroy(collision.gameObject);
+            gm.SumarVidas();
+        }
+        if (collision.tag == "BombaItem")
+        {
+            Destroy(collision.gameObject);
+            gm.SumarBombas();
+        }
     }
+    private void MuerteJugador()
+    {
+        if (gm.vidas <= 0)
+        {
+            pAnimator.Play("Anim_Muerte");
+        }
+    }
+}
 

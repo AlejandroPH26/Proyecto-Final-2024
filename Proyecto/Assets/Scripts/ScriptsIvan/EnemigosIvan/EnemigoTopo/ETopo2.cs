@@ -14,7 +14,8 @@ public class ETopo2 : MonoBehaviour
     private Vector2 direccionActual; // Dirección actual del movimiento
     private float timer; // Temporizador para cambiar de dirección
 
-    public MovimientoPrueba Player;
+    public JugadorV1 Player;
+    private EnemigosComun enemy; //Referencia al script EnemigosComun
 
     public Animator animator;
 
@@ -22,47 +23,52 @@ public class ETopo2 : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Player = FindObjectOfType<MovimientoPrueba>(); // Busca el script del jugador 
-                                                       // Al iniciar, la vida actual es igual a la vida maxima
+        Player = FindObjectOfType<JugadorV1>(); // Busca el script del jugador 
+        enemy = GetComponent<EnemigosComun>();
 
-        if (Player != null)
-        {
-
-            int randomAxis = Random.Range(0, 2);
-            if (randomAxis == 0)
+            if (Player != null)
             {
-                direccionActual = Vector2.right; // Comienza moviéndose hacia la derecha
+
+                CambiarDireccion();
+
+
+
+
+                timer = cambiarDireccionTimer; // Inicializa el temporizador
+
             }
-            else
+
+            else if (Player = null)
             {
-                direccionActual = Vector2.up; // Comienza moviéndose hacia arriba
+                rb.velocity = Vector2.zero;
             }
-
-            timer = cambiarDireccionTimer; // Inicializa el temporizador
-
-        }
-
-        else if (Player = null)
-        {
-            rb.velocity = Vector2.zero;
-        }
 
     }
 
     void Update()
     {
-        // Actualiza el temporizador
-        timer -= Time.deltaTime;
-
-        // Si el temporizador llega a cero, cambia la dirección
-        if (timer <= 0f)
+        if (enemy.activo)
         {
-            CambiarDireccion();
-            timer = cambiarDireccionTimer; // Reinicia el temporizador
+            // Actualiza el temporizador
+            timer -= Time.deltaTime;
+
+            // Si el temporizador llega a cero, cambia la dirección
+            if (timer <= 0f)
+            {
+                CambiarDireccion();
+                timer = cambiarDireccionTimer; // Reinicia el temporizador
+            }
+
+            // Aplica la velocidad de movimiento
+            rb.velocity = direccionActual * velocidadMovimiento;
+        }
+        else // En caso contrario, su velocidad es 0
+        {
+            rb.velocity = Vector3.zero;
         }
 
-        // Aplica la velocidad de movimiento
-        rb.velocity = direccionActual * velocidadMovimiento;
+
+
     }
 
     void CambiarDireccion()
@@ -108,7 +114,7 @@ public class ETopo2 : MonoBehaviour
     // Detecta colisiones con obstáculos, topes y paredes // Cambio on collision Enter por Stay
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Roca") || collision.gameObject.CompareTag("Topo") || collision.gameObject.CompareTag("Pared"))
+        if (collision.gameObject.CompareTag("Roca") || collision.gameObject.CompareTag("Enemigo") || collision.gameObject.CompareTag("Pared"))
         {
             // Cambia la dirección de forma aleatoria entre los ejes X e Y, sin diagonales
             CambiarDireccion();

@@ -63,12 +63,12 @@ public class SalasManager : MonoBehaviour
             foreach (var enemigo in enemigosEnSala)
             {
                 // Cambiar emurcielago por futuro script comun
-                EMurcielagoPrueba comportamientoEnemigo = enemigo.GetComponent<EMurcielagoPrueba>();
+                EnemigosComun comportamientoEnemigo = enemigo.GetComponent<EnemigosComun>();
                 if (comportamientoEnemigo != null)
                 {
                     comportamientoEnemigo.enabled = false;
                     enemigo.GetComponent<SpriteRenderer>().enabled = false; // Desactivar el SpriteRenderer
-                    CongelarEnemigos(enemigo);
+                    comportamientoEnemigo.activo = false;
                 }
             }
         }
@@ -84,11 +84,12 @@ public class SalasManager : MonoBehaviour
         foreach (var enemigo in enemigosEnSala)
         {
             // Cambiar emurcielago por futuro script comun
-            EMurcielagoPrueba comportamientoEnemigo = enemigo.GetComponent<EMurcielagoPrueba>();
+            EnemigosComun comportamientoEnemigo = enemigo.GetComponent<EnemigosComun>();
             if (comportamientoEnemigo != null)
             {
                 comportamientoEnemigo.enabled = true;
                 enemigo.GetComponent<SpriteRenderer>().enabled = true; // Activar el SpriteRenderer
+                comportamientoEnemigo.activo = true;
             }
         }
     }
@@ -195,15 +196,4 @@ public class SalasManager : MonoBehaviour
             ActivarTeleportTargets();
         }
     }
-
-    void CongelarEnemigos(GameObject enemigo)
-    {
-        EnemigoV1 comportamientoEnemigo = enemigo.GetComponent<EnemigoV1>();
-        if (comportamientoEnemigo != null)
-        {
-            comportamientoEnemigo.CongelarEnemigo();
-        }
-    }
-
-
 }
