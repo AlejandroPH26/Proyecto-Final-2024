@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManagerHats : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class GameManagerHats : MonoBehaviour
     public int bombas = 3;
     public TextMeshProUGUI ContadorBombas;
     public TextMeshProUGUI ContadorVidas;
+
+    //VIDAS
+    public GameObject[] spritesVidas;
 
     private void Awake()
     {
@@ -31,7 +36,7 @@ public class GameManagerHats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UIvidas(); 
     }
    
     public void SumarBombas()
@@ -71,5 +76,27 @@ public class GameManagerHats : MonoBehaviour
             vidas = 0;
         }
         ContadorVidas.text = vidas.ToString();
+    }
+
+    public void UIvidas()
+    {
+       int i = 0;
+
+       foreach(GameObject vida in spritesVidas)
+       {
+            if (vidas >= i) //está activa
+            {
+                vida.SetActive(true);
+            }
+            else
+            {
+
+                vida.SetActive(false);
+
+            }
+
+            i++;
+       }
+
     }
 }
