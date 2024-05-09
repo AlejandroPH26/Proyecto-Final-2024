@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 3224128193301394285}
   - component: {fileID: 1099652544232155542}
   - component: {fileID: 8399786197397133998}
+  - component: {fileID: 2901386209213710303}
   m_Layer: 0
   m_Name: Hat_Homeless_Down
   m_TagString: Sombrero
@@ -140,7 +141,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1524724053
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 2058600709, guid: db68e70ab36869c4c9bf67ee35fd289b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -219,6 +220,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8867388, y: 0.9121035}
   m_EdgeRadius: 0
+--- !u!95 &2901386209213710303
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3566856529050457694}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f1ae00de93d2de4e823575309eb299b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5512214447386092078
 GameObject:
   m_ObjectHideFlags: 0

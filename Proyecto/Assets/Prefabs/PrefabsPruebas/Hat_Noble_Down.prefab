@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6150167329541981738}
   - component: {fileID: 7417743102649581468}
   - component: {fileID: 8321698600642313884}
+  - component: {fileID: 2457711842925738795}
   m_Layer: 0
   m_Name: Hat_Noble_Down
   m_TagString: Sombrero
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1524724053
-  m_SortingLayer: 5
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 1843817482, guid: db68e70ab36869c4c9bf67ee35fd289b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -157,6 +158,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6733022, y: 1.2683064}
   m_EdgeRadius: 0
+--- !u!95 &2457711842925738795
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424447345399423658}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba351b73dc617d74081acc298e9ba408, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1661304435366020617
 GameObject:
   m_ObjectHideFlags: 0
