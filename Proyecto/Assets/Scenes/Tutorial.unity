@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 11757037}
   - component: {fileID: 11757038}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: flecha_der
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,9 +193,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1a0a6c8fdb4ade4488077e681a42471f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -217,7 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 23761985}
   - component: {fileID: 23761986}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,8 +278,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 295600445
-  m_SortingLayer: 0
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 58a6eb5eea5623943a8deaceda57a259, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -818,7 +818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 127559011}
   - component: {fileID: 127559012}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: W
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -879,8 +879,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 295600445
-  m_SortingLayer: 0
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 220603fea1425364bbb32e5794811b81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -977,13 +977,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 172329903}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pag1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &172329903
 Transform:
   m_ObjectHideFlags: 0
@@ -1382,7 +1382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 269731640}
   - component: {fileID: 269731641}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: flecha_ab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1442,9 +1442,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1a0a6c8fdb4ade4488077e681a42471f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2506,7 +2506,7 @@ GameObject:
   - component: {fileID: 455779653}
   - component: {fileID: 455779655}
   - component: {fileID: 455779654}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PersonajeWalk_BodyHorizontal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2587,9 +2587,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: 2123716013, guid: 7e0299f6212127f40bb63a6dce3c278b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2908,7 +2908,7 @@ GameObject:
   - component: {fileID: 551777605}
   - component: {fileID: 551777607}
   - component: {fileID: 551777606}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Titulo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3064,8 +3064,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 295600445
-  m_SortingLayer: 0
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &559774434
@@ -3078,7 +3078,7 @@ GameObject:
   m_Component:
   - component: {fileID: 559774435}
   - component: {fileID: 559774436}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: flecha_izq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3138,9 +3138,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1a0a6c8fdb4ade4488077e681a42471f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3176,8 +3176,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 571749747}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3962376, y: -4.3439217, z: 0.29505464}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.3962376, y: -4.3439217, z: 0.29505444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3198,7 +3198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 631809998}
   - component: {fileID: 631809997}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Caminar_abajo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3403,7 +3403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 652494093}
   - component: {fileID: 652494094}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FondoNegro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3463,8 +3463,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -301444217
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.34117648}
@@ -3780,7 +3780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 812682537}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Controles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3918,7 +3918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 888856844}
   - component: {fileID: 888856845}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Papel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3978,8 +3978,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1443164335
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c24b3ae825e1d644785e59a929455253, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4003,7 +4003,7 @@ GameObject:
   - component: {fileID: 895126286}
   - component: {fileID: 895126288}
   - component: {fileID: 895126287}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PersonajeWalk_HeadUp1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4084,9 +4084,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: 983068682, guid: 7e0299f6212127f40bb63a6dce3c278b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4366,7 +4366,7 @@ GameObject:
   - component: {fileID: 1001785452}
   - component: {fileID: 1001785454}
   - component: {fileID: 1001785453}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PersonajeWalk_BodyHorizontal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4447,9 +4447,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: 2123716013, guid: 7e0299f6212127f40bb63a6dce3c278b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4605,7 +4605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1009895659}
   - component: {fileID: 1009895660}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Papel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4665,8 +4665,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1443164335
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c24b3ae825e1d644785e59a929455253, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -4822,7 +4822,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1036659181}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Animaciones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5074,7 +5074,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1161876845}
   - component: {fileID: 1161876844}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Caminar_arriba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5130,7 +5130,7 @@ GameObject:
   - component: {fileID: 1207947373}
   - component: {fileID: 1207947372}
   - component: {fileID: 1207947371}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Cabeza
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5196,9 +5196,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: -957446490, guid: 7e0299f6212127f40bb63a6dce3c278b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5539,7 +5539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1405529447}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Controles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5705,7 +5705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1482945163}
   - component: {fileID: 1482945162}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Caminar_izquierda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5877,7 +5877,7 @@ GameObject:
   - component: {fileID: 1494192614}
   - component: {fileID: 1494192616}
   - component: {fileID: 1494192615}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PersonajeWalk_HeadHorizontal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5958,9 +5958,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: -313298334, guid: 7e0299f6212127f40bb63a6dce3c278b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6153,7 +6153,7 @@ GameObject:
   - component: {fileID: 1514508558}
   - component: {fileID: 1514508560}
   - component: {fileID: 1514508559}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PersonajeWalk_BodyUp1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6234,9 +6234,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1562518072, guid: 7e0299f6212127f40bb63a6dce3c278b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6259,7 +6259,7 @@ GameObject:
   - component: {fileID: 1522151995}
   - component: {fileID: 1522151994}
   - component: {fileID: 1522151993}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Cuerpo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6325,9 +6325,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1914325562, guid: 7e0299f6212127f40bb63a6dce3c278b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6498,7 +6498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1592640474}
   - component: {fileID: 1592640475}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: flecha_ar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6558,9 +6558,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1a0a6c8fdb4ade4488077e681a42471f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6789,13 +6789,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1689477936}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pag2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1689477936
 Transform:
   m_ObjectHideFlags: 0
@@ -7526,7 +7526,7 @@ GameObject:
   - component: {fileID: 1752336544}
   - component: {fileID: 1752336546}
   - component: {fileID: 1752336545}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PersonajeWalk_HeadHorizontal1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7607,9 +7607,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
+  m_SortingOrder: 0
   m_Sprite: {fileID: -313298334, guid: 7e0299f6212127f40bb63a6dce3c278b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7630,7 +7630,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1767327858}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Animaciones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7662,7 +7662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1774952774}
   - component: {fileID: 1774952775}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7723,8 +7723,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 295600445
-  m_SortingLayer: 0
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1c287ed10ff96a6488d79395b45c8864, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7938,7 +7938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1837323606}
   - component: {fileID: 1837323607}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: S
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7999,8 +7999,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 295600445
-  m_SortingLayer: 0
+  m_SortingLayerID: 1761986329
+  m_SortingLayer: 10
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e962dedd3e3f46f45b5947cf5bb73084, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -8305,7 +8305,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 295600445
+  m_SortingLayerID: 1761986329
   m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &1956928077
@@ -8395,7 +8395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1967840146}
   - component: {fileID: 1967840145}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Caminar_derecha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8982,13 +8982,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2039463589}
   - component: {fileID: 2039463590}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Controles_movimiento
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2039463589
 Transform:
   m_ObjectHideFlags: 0
@@ -9770,6 +9770,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 1956928077}
   - {fileID: 571749748}
+  - {fileID: 1956928077}
   - {fileID: 1994205015}
