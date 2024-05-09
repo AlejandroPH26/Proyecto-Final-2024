@@ -29,6 +29,9 @@ public class JugadorV1 : MonoBehaviour
     public string teleportTargetTag = "TeleportTarget";
     public string currentRoomTag = "SalaActual";
 
+    private bool hatInFrame = false;
+
+
     private CameraManager cameraManager;
 
     // Start is called before the first frame update
@@ -49,6 +52,7 @@ public class JugadorV1 : MonoBehaviour
         InputJugador();
         // Manejo de la entrada de sombreros (disparo)
         InputHats();
+        hatInFrame = false;
     }
     private void InputJugador()
     {
@@ -196,8 +200,9 @@ public class JugadorV1 : MonoBehaviour
         }
 
         // Verificar si el jugador colisionó con un sombrero
-        if (other.CompareTag("Sombrero"))
+        if (other.CompareTag("Sombrero") && !hatInFrame)
         {
+            hatInFrame = true;
             // Obtener el sombrero
             GameObject sombrero = other.gameObject;
 
@@ -218,13 +223,14 @@ public class JugadorV1 : MonoBehaviour
 
             // Informar al sombrero de que ha sido recogido
             // InformarSombreroRecogido(sombrero.GetComponent<ISombreros>());
+            
         }
     }
 
     private void PosicionarSombreros()
     {
         int n = sombreros.Count;
-
+        Debug.Log(n.ToString() + " Sombreros");
         if (n <= 1)
         {
             // Obtener la posición de anchorInitial
