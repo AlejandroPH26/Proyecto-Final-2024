@@ -79,3 +79,6 @@ TagManager:
   - name: Sombreros
     uniqueID: 1524724053
     locked: 0
+  - name: Vidas
+    uniqueID: 3993523079
+    locked: 0
