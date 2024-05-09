@@ -46,6 +46,7 @@ public class BalaMurcielago : MonoBehaviour
         }
     }
 
+
     //Añadir al scrip de la bala jugador que si choca con un obejto con el tag bala.enemigo o .murcielago se destruye ambos objetos
 }
 
