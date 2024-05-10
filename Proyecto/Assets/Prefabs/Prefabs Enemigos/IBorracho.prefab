@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 6654781406525077069}
   - component: {fileID: 4476185914236510612}
   - component: {fileID: 1062093974277873683}
-  - component: {fileID: 7846629489531912187}
   - component: {fileID: -9061386184882647149}
+  - component: {fileID: 1727832326179233411}
+  - component: {fileID: 4587325551668925800}
   m_Layer: 7
   m_Name: IBorracho
-  m_TagString: EBorracho
+  m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,10 +76,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -726354695
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.35124072, g: 0.990566, b: 0, a: 1}
+  m_Sprite: {fileID: -248477725, guid: e58c220f91db33540bbda9674727894d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,10 +104,27 @@ MonoBehaviour:
   bullet: {fileID: 6444954383944718577, guid: f8919c095575b074da3e15b407b7f0af, type: 3}
   bulletPos: {fileID: 6113225044345388047}
   player: {fileID: 0}
-  RangoMin: 8
+  RangoMin: 4
+  animator: {fileID: 4587325551668925800}
   canShoot: 1
---- !u!70 &7846629489531912187
-CapsuleCollider2D:
+--- !u!114 &-9061386184882647149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6297467288412213055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dcaddf72e1ea0c47a8bab729c4b330a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaActual: 0
+  vidaMax: 100
+  vidaPerdida: 20
+  activo: 1
+--- !u!61 &1727832326179233411
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,7 +138,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 8192
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -137,24 +155,40 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
---- !u!114 &-9061386184882647149
-MonoBehaviour:
+  m_Offset: {x: 0.01553154, y: -0.40384054}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.8195457, y: 2.192319}
+  m_EdgeRadius: 0
+--- !u!95 &4587325551668925800
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6297467288412213055}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dcaddf72e1ea0c47a8bab729c4b330a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidaActual: 0
-  vidaMax: 100
-  vidaPerdida: 20
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 90abb9c1a9dafff4aa5761810f57d50e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7780176370657112740
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +214,7 @@ Transform:
   m_GameObject: {fileID: 7780176370657112740}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.32, z: 0}
+  m_LocalPosition: {x: 0.57, y: -0.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
