@@ -34,10 +34,6 @@ public class Bombas : MonoBehaviour
             GameObject Explosion = Instantiate(prefabExplosion, transform.position, Quaternion.identity);
         // Particulas
     }
-    private void BorrarExplosion()
-    {
-        
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Colision con bomba");

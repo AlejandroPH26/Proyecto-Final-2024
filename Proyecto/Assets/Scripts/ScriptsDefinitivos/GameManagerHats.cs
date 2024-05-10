@@ -12,6 +12,8 @@ public class GameManagerHats : MonoBehaviour
     public int bombas = 3;
     public TextMeshProUGUI ContadorBombas;
     public TextMeshProUGUI ContadorVidas;
+    public bool Invulnerabilidad = false;
+    public int DelayInvulnerabilidad = 3;
 
     //VIDAS
     public GameObject[] spritesVidas;
@@ -70,12 +72,17 @@ public class GameManagerHats : MonoBehaviour
     }
     public void RestarVidas()
     {
-        vidas--;
-        if (vidas <= 0)
+        if (Invulnerabilidad == false)
         {
-            vidas = 0;
+            vidas--;
+            if (vidas <= 0)
+            {
+                vidas = 0;
+            }
+            ContadorVidas.text = vidas.ToString();
+            Invulnerabilidad = true;
+            Invoke("Invulnerable", DelayInvulnerabilidad);
         }
-        ContadorVidas.text = vidas.ToString();
     }
 
     public void UIvidas()
@@ -98,5 +105,9 @@ public class GameManagerHats : MonoBehaviour
             i++;
        }
 
+    }
+    public void Invulnerable()
+    {
+        Invulnerabilidad = true;
     }
 }

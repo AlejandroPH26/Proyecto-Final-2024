@@ -522,6 +522,7 @@ MonoBehaviour:
   bombas: 3
   ContadorBombas: {fileID: 1464225400}
   ContadorVidas: {fileID: 697055348}
+  spritesVidas: []
 --- !u!4 &591973849
 Transform:
   m_ObjectHideFlags: 0
@@ -719,63 +720,6 @@ MonoBehaviour:
   prefabBomba: {fileID: 4345612283534839279, guid: 9eb064ac5a23cd941a05684db48f7799, type: 3}
   colocarBomba: 1
   delay: 1
---- !u!1001 &1163450121
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4345612283534839279, guid: 9eb064ac5a23cd941a05684db48f7799, type: 3}
-      propertyPath: m_Name
-      value: Bomba
-      objectReference: {fileID: 0}
-    - target: {fileID: 9146742465799885237, guid: 9eb064ac5a23cd941a05684db48f7799, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9146742465799885237, guid: 9eb064ac5a23cd941a05684db48f7799, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.1372368
-      objectReference: {fileID: 0}
-    - target: {fileID: 9146742465799885237, guid: 9eb064ac5a23cd941a05684db48f7799, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9146742465799885237, guid: 9eb064ac5a23cd941a05684db48f7799, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9146742465799885237, guid: 9eb064ac5a23cd941a05684db48f7799, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9146742465799885237, guid: 9eb064ac5a23cd941a05684db48f7799, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9146742465799885237, guid: 9eb064ac5a23cd941a05684db48f7799, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9146742465799885237, guid: 9eb064ac5a23cd941a05684db48f7799, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9146742465799885237, guid: 9eb064ac5a23cd941a05684db48f7799, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9146742465799885237, guid: 9eb064ac5a23cd941a05684db48f7799, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9eb064ac5a23cd941a05684db48f7799, type: 3}
 --- !u!1 &1209244821
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,7 +892,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.0373833}
+  m_Offset: {x: -0.020256758, y: -1.0677686}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -959,7 +903,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.93956995}
+  m_Size: {x: 1.081027, y: 1.0003405}
   m_EdgeRadius: 0
 --- !u!114 &1392623511
 MonoBehaviour:
@@ -1483,6 +1427,5 @@ SceneRoots:
   - {fileID: 234206880}
   - {fileID: 1748784784}
   - {fileID: 4221412957600899434}
-  - {fileID: 1163450121}
   - {fileID: 591973849}
   - {fileID: 2035902283}
