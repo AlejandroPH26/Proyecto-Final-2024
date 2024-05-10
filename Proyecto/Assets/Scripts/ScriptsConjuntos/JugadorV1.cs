@@ -7,6 +7,7 @@ public class JugadorV1 : MonoBehaviour
 {
     [SerializeField] public List<ISombreros> sombreros = new List<ISombreros>(); // Lista de sombreros del jugador
     private MovimientoCabezaJugador cabeza;
+    private GameManagerHats gm;
 
     public float speed = 5f;
     private Rigidbody2D rb;
@@ -183,7 +184,7 @@ public class JugadorV1 : MonoBehaviour
                 player.position = closestTarget.position;
             }
         }
-
+        // Verifica si el jugador colisionó con la sala actual
         if (other.CompareTag(currentRoomTag))
         {
             SalasManager salaManager = other.GetComponent<SalasManager>();
@@ -198,7 +199,6 @@ public class JugadorV1 : MonoBehaviour
                 cameraManager.MoveCameraSmoothly(cameraManager.mainCamera.position, cameraTarget.position);
             }
         }
-
         // Verificar si el jugador colisionó con un sombrero
         if (other.CompareTag("Sombrero") && !hatInFrame)
         {
@@ -224,6 +224,18 @@ public class JugadorV1 : MonoBehaviour
             // Informar al sombrero de que ha sido recogido
             // InformarSombreroRecogido(sombrero.GetComponent<ISombreros>());
             
+        }
+        // Verificar si el jugador colisionó con un botiquín
+        if (other.CompareTag("Botiquin"))
+        {
+            Destroy(other.gameObject);
+            gm.SumarVidas();
+        }
+        // Verificar si el jugador colisionó con una bomba
+        if (other.CompareTag("BombaItem"))
+        {
+            Destroy(other.gameObject);
+            gm.SumarBombas();
         }
     }
 
@@ -363,13 +375,15 @@ public class JugadorV1 : MonoBehaviour
 
         if (vidaActual <= 0)
         {
-            Muerte();
+            DestruirCabeza();
         }
     }
 
-    public void Muerte()
-
+    public void DestruirCabeza()
     {
-        Destroy(this.gameObject);
+        if (gm.vidas <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
