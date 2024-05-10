@@ -11,17 +11,21 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
     public Transform firePointRight;
     public Transform firePointLeft;
     public Transform anchorUp;
+
     public Transform anclajeSuperior { 
         get { return anchorUp; }
         set { anchorUp = value; } 
         }
+
+    public Animator pAnimator;
+
     public float bulletLifetime = 2f; // Tiempo de vida de las balas
     public Direction hatDir;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        pAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -42,24 +46,28 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
             case Direction.UP:
                 direction = Vector3.up;
                 offset = new Vector3(0.5f, 0f, 0f);
+                pAnimator.Play("Hat_Noble_Up");
                 Debug.Log("Sombrero dispara arriba");
                 InstantiateBullet(firePointUp, direction, offset);
                 break;
             case Direction.DOWN:
                 direction = Vector3.down;
                 offset = new Vector3(-0.5f, 0f, 0f);
+                pAnimator.Play("Hat_Noble_Down");
                 Debug.Log("Sombrero dispara abajo");
                 InstantiateBullet(firePointDown, direction, offset);
                 break;
             case Direction.RIGHT:
                 direction = Vector3.right;
                 offset = new Vector3(0f, 0.5f, 0f);
+                pAnimator.Play("Hat_Noble_Right");
                 Debug.Log("Sombrero dispara derecha");
                 InstantiateBullet(firePointRight, direction, offset);
                 break;
             case Direction.LEFT:
                 direction = Vector3.left;
                 offset = new Vector3(0f, -0.5f, 0f);
+                pAnimator.Play("Hat_Noble_Left");
                 Debug.Log("Sombrero dispara izquierda");
                 InstantiateBullet(firePointLeft, direction, offset);
                 break;
@@ -88,6 +96,7 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
     public void SetDirection(Direction dir)
     {
         hatDir = dir;
+
     }
 
     public void SombreroRecogido()
