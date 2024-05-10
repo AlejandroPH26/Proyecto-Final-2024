@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class HGameManager : MonoBehaviour
+public class HUDGameManager : MonoBehaviour
 {
     //BRILLO
     public Slider sliderBrillo;

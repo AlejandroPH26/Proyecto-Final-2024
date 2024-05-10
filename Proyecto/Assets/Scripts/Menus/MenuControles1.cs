@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class MenuControles : MonoBehaviour
+public class MenuControles1 : MonoBehaviour
 {
-    public GameObject pag1;
-    public GameObject pag2;
+    public GameObject pag1, pag2;
     private int number = 1;
 
     // Start is called before the first frame update
@@ -18,29 +18,36 @@ public class MenuControles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cambiarPag();
+        CambiarPag();
+        SaltarPag();
     }
 
-    public void cambiarPag()
+    public void CambiarPag()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Return) && (number % 2) == 1)
+        if(Input.GetKeyDown(KeyCode.Space) && number == 1)
         {
 
             pag1.SetActive(false);
             pag2.SetActive(true);
             number = number + 1;
-
-
         }
-        else if (Input.GetKeyDown(KeyCode.Return) && (number % 2) == 0)
+        else if(Input.GetKeyDown(KeyCode.Space) && number == 2)
         {
             pag1.SetActive(false);
             pag2.SetActive(false);
-            
 
         }
+    }
 
+    public void SaltarPag()
+    {
+        
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+
+            SceneManager.LoadScene("Nivel 1");
+
+        }
 
 
     }
