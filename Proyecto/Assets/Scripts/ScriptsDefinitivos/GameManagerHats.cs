@@ -18,6 +18,9 @@ public class GameManagerHats : MonoBehaviour
     //VIDAS
     public GameObject[] spritesVidas;
 
+    //BOMBAS
+    public GameObject[] spritesBombas;
+
     private void Awake()
     {
         if (instance == null)   //Se el valor es nulo
@@ -38,7 +41,8 @@ public class GameManagerHats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UIvidas(); 
+        UIvidas();
+        UIbombas();
     }
    
     public void SumarBombas()
@@ -85,12 +89,34 @@ public class GameManagerHats : MonoBehaviour
         }
     }
 
-    public void UIvidas()
+    public void UIbombas()
     {
        int i = 0;
 
-       foreach(GameObject vida in spritesVidas)
+       foreach(GameObject bomba in spritesBombas)
        {
+            if (bombas >= i) //está activa
+            {
+                bomba.SetActive(true);
+            }
+            else
+            {
+
+                bomba.SetActive(false);
+
+            }
+
+            i++;
+       }
+
+    }
+
+    public void UIvidas()
+    {
+        int i = 0;
+
+        foreach (GameObject vida in spritesVidas)
+        {
             if (vidas >= i) //está activa
             {
                 vida.SetActive(true);
@@ -103,9 +129,10 @@ public class GameManagerHats : MonoBehaviour
             }
 
             i++;
-       }
+        }
 
     }
+
     public void Invulnerable()
     {
         Invulnerabilidad = true;
