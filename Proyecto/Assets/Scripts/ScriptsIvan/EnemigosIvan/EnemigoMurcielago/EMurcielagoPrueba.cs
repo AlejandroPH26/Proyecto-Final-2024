@@ -71,15 +71,16 @@ public class EMurcielagoPrueba : MonoBehaviour
     void RayCast()
     {
         // crear máscara de capa para afectar solo a las colisiones que queremos
-        int mascara = LayerMask.GetMask("Roca", "Pared","Player"); //~ Invertir la mascara (Pasa de incluir las mascaras a excluirlas)
+        int mascara = LayerMask.GetMask("Roca", "Pared","Player","HeadPlayer"); //~ Invertir la mascara (Pasa de incluir las mascaras a excluirlas)
 
         RaycastHit2D ray = Physics2D.Raycast(transform.position, jugador.transform.position - transform.position,
-            50, mascara); // trazo el raycast
+            100, mascara); // trazo el raycast
      
 
         if(ray.collider != null)
         {
-            TieneVision = ray.collider.CompareTag("Player");
+            Debug.Log(ray.collider.tag);
+            TieneVision = ray.collider.CompareTag("Player") || ray.collider.CompareTag("HeadPlayer");
             // Debug.Log(ray.collider.name);
             if(TieneVision) 
             {
@@ -90,6 +91,8 @@ public class EMurcielagoPrueba : MonoBehaviour
             {
                 Debug.DrawRay(transform.position, jugador.transform.position - transform.position, Color.red);
             }
+            Debug.DrawLine(transform.position, ray.point, Color.blue);
+
         }
 
     }

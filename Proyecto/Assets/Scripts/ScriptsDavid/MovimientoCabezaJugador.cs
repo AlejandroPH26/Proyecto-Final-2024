@@ -11,7 +11,6 @@ public class MovimientoCabezaJugador : MonoBehaviour
     private GameManagerHats gm;
     public Direction dirCabeza = Direction.DOWN;
     public Animator cAnimator;
-    public float speedBullet = 3f;
     public GameObject balaprefab;
     bool canShoot = true;
     public  bool isShooting = true;

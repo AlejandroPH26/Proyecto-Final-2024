@@ -149,6 +149,10 @@ public class MovimientoJugador : MonoBehaviour
             Destroy(collision.gameObject);
             gm.SumarBombas();
         }
+        if (collision.tag == "Enemigo")
+        {
+            
+        }
     }
     private void MuerteJugador()
     {
