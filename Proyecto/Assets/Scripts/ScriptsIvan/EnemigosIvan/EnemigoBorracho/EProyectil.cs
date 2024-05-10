@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EProyectil : MonoBehaviour
 {
-    private MovimientoPrueba Player;
+    private JugadorV1 Player;
     
     private Rigidbody2D rb;
     public float speed;
@@ -13,7 +13,7 @@ public class EProyectil : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
        
-        Player = FindObjectOfType<MovimientoPrueba>(); // Busca el script del jugador 
+        Player = FindObjectOfType<JugadorV1>(); // Busca el script del jugador 
 
         Vector3 direction = Player.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * speed;
@@ -37,7 +37,7 @@ public class EProyectil : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("Player"))
         {
-            //Destroy(this.gameObject);
+            Destroy(this.gameObject);
             //Player.DamageTaken(20); // Jugador
         }
     }

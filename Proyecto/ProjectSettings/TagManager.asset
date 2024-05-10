@@ -35,7 +35,7 @@ TagManager:
   - EnemigoMinero
   - BalaJugador
   - HeadPlayer
-  - 
+  - BalaBorracho
   - 
   - 
   - 
@@ -81,4 +81,10 @@ TagManager:
     locked: 0
   - name: Vidas
     uniqueID: 3993523079
+    locked: 0
+  - name: fondoUI
+    uniqueID: 1443164335
+    locked: 0
+  - name: UI
+    uniqueID: 1761986329
     locked: 0

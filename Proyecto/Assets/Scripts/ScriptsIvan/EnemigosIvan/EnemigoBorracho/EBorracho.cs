@@ -6,9 +6,11 @@ public class EBorracho : MonoBehaviour
 {
     public GameObject bullet;
     public Transform bulletPos;
-    public MovimientoPrueba player;
+    public JugadorV1 player;
    
     public float RangoMin = 8;
+
+    public Animator animator;
    
    
    
@@ -19,7 +21,7 @@ public class EBorracho : MonoBehaviour
 
     void Start()
     {
-        player = FindObjectOfType<MovimientoPrueba>();
+        player = FindObjectOfType<JugadorV1>();
            
     }
   
@@ -28,7 +30,7 @@ public class EBorracho : MonoBehaviour
         Rango();
     }
 
-    void shoot() // Se llama desde el animator 
+    public void shoot() // Se llama desde el animator 
     {          
             Instantiate(bullet, bulletPos.position, Quaternion.identity);      
     }
@@ -38,12 +40,25 @@ public class EBorracho : MonoBehaviour
         float distancia = Vector2.Distance(transform.position, player.transform.position);
         Debug.Log(distancia);
 
-        if (distancia < RangoMin && canShoot == true)
+        if (distancia < RangoMin)
         {
-            Debug.Log("Disparo");
-            //Reproduce la animacion de disparo , en el ultimo frame de la animacion llamar a la variable canShoot y ponerla a true
-            canShoot = false;
-   
+
+            if (canShoot == true)
+            {
+                Debug.Log("Disparo");
+                animator.Play("BORRACHO_ATTACK");
+                //Reproduce la animacion de disparo , en el ultimo frame de la animacion llamar a la variable canShoot y ponerla a true
+                
+            }
+            else // pausa entre disparos
+            {
+                animator.Play("BORRACHO_IDLE");
+            }
+        }
+
+        else if (canShoot==false)
+        {
+            animator.Play("BORRACHO_IDLE");
         }
     }
 
@@ -51,5 +66,11 @@ public class EBorracho : MonoBehaviour
     {
         canShoot = true;
     }
+    public void DelayShoot()
+    {
+        canShoot = false;
+        Invoke("EnableShoot", 3);
+    }
 
+  
 }
