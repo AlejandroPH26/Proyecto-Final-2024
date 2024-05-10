@@ -66,6 +66,7 @@ public class JugadorV1 : MonoBehaviour
             if (!cabeza.isShooting)
             {
                 cabeza.orientarCabeza(Direction.UP);
+                SetDirectionForHats(Direction.UP);
             }
 
         }
@@ -77,6 +78,7 @@ public class JugadorV1 : MonoBehaviour
             if (!cabeza.isShooting)
             {
                 cabeza.orientarCabeza(Direction.UP);
+                SetDirectionForHats(Direction.UP);
             }
         }
         else if (Input.GetKey(moveDown) && Input.GetKey(moveLeft))// Diagonal arriba izquierda
@@ -87,6 +89,7 @@ public class JugadorV1 : MonoBehaviour
             if (!cabeza.isShooting)
             {
                 cabeza.orientarCabeza(Direction.DOWN);
+                SetDirectionForHats(Direction.DOWN);
             }
         }
         else if (Input.GetKey(moveDown) && Input.GetKey(moveRight))// Diagonal arriba izquierda
@@ -97,6 +100,7 @@ public class JugadorV1 : MonoBehaviour
             if (!cabeza.isShooting)
             {
                 cabeza.orientarCabeza(Direction.DOWN);
+                SetDirectionForHats(Direction.DOWN);
             }
         }
         else if (Input.GetKey(moveUp)) // Comprobamos que se está pulsando la tecla W
@@ -108,6 +112,7 @@ public class JugadorV1 : MonoBehaviour
             if (!cabeza.isShooting)
             {
                 cabeza.orientarCabeza(Direction.UP);
+                SetDirectionForHats(Direction.UP);
             }
         }
         else if (Input.GetKey(moveDown))
@@ -118,6 +123,7 @@ public class JugadorV1 : MonoBehaviour
             if (!cabeza.isShooting)
             {
                 cabeza.orientarCabeza(Direction.DOWN);
+                SetDirectionForHats(Direction.DOWN);
             }
         }
         else if (Input.GetKey(moveLeft))
@@ -128,6 +134,7 @@ public class JugadorV1 : MonoBehaviour
             if (!cabeza.isShooting)
             {
                 cabeza.orientarCabeza(Direction.LEFT);
+                SetDirectionForHats(Direction.LEFT);
             }
         }
         else if (Input.GetKey(moveRight))
@@ -138,6 +145,7 @@ public class JugadorV1 : MonoBehaviour
             if (!cabeza.isShooting)
             {
                 cabeza.orientarCabeza(Direction.RIGHT);
+                SetDirectionForHats(Direction.RIGHT);
             }
 
         }
