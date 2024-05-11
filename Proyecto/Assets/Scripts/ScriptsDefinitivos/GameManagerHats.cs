@@ -38,7 +38,7 @@ public class GameManagerHats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UIvidas(); 
+
     }
    
     public void SumarBombas()
@@ -68,11 +68,13 @@ public class GameManagerHats : MonoBehaviour
         {
             vidas = 6;
         }
-            ContadorVidas.text = vidas.ToString();
+        ContadorVidas.text = vidas.ToString();
+        UIvidas();
+
     }
     public void RestarVidas()
     {
-        if (Invulnerabilidad == false)
+        if (!Invulnerabilidad)
         {
             vidas--;
             if (vidas <= 0)
@@ -81,7 +83,8 @@ public class GameManagerHats : MonoBehaviour
             }
             ContadorVidas.text = vidas.ToString();
             Invulnerabilidad = true;
-            Invoke("Invulnerable", DelayInvulnerabilidad);
+            Invoke("DesactivarInvulnerabilidad", DelayInvulnerabilidad);
+            UIvidas();
         }
     }
 
@@ -106,8 +109,8 @@ public class GameManagerHats : MonoBehaviour
        }
 
     }
-    public void Invulnerable()
+    public void DesactivarInvulnerabilidad()
     {
-        Invulnerabilidad = true;
+        Invulnerabilidad = false;
     }
 }

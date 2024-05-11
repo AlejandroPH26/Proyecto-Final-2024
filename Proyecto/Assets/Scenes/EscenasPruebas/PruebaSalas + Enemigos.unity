@@ -247,6 +247,8 @@ MonoBehaviour:
   bombas: 3
   ContadorBombas: {fileID: 0}
   ContadorVidas: {fileID: 0}
+  Invulnerabilidad: 0
+  DelayInvulnerabilidad: 3
   spritesVidas: []
 --- !u!1001 &21282895
 PrefabInstance:
@@ -461,6 +463,8 @@ MonoBehaviour:
   bombas: 3
   ContadorBombas: {fileID: 0}
   ContadorVidas: {fileID: 0}
+  Invulnerabilidad: 0
+  DelayInvulnerabilidad: 3
   spritesVidas: []
 --- !u!95 &267165371
 Animator:
@@ -1277,7 +1281,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dirCabeza: 0
   cAnimator: {fileID: 0}
-  speedBullet: 3
   balaprefab: {fileID: 6456722747545390788, guid: a7deb1e3566fc4a4ca4cd4593070f916, type: 3}
   isShooting: 0
   delay: 1
@@ -1726,10 +1729,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1062093974277873683, guid: fd5b82fd657595c45af13fb6de14937e, type: 3}
-      propertyPath: RangoMin
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 6297467288412213055, guid: fd5b82fd657595c45af13fb6de14937e, type: 3}
       propertyPath: m_Name
       value: IBorracho
@@ -1853,7 +1852,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dirCabeza: 0
   cAnimator: {fileID: 0}
-  speedBullet: 3
   balaprefab: {fileID: 1883427944473689993, guid: f441d739edd27fa4f8cf021fa6c4bb1a, type: 3}
   isShooting: 0
   delay: 1

@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
-public class PruebaSombreroSheriff : MonoBehaviour, ISombreros
+public class PruebaSombreroPayaso : MonoBehaviour, ISombreros
 {
     public GameObject bulletPrefab;
     public float bulletSpeed = 5f;
@@ -44,26 +43,26 @@ public class PruebaSombreroSheriff : MonoBehaviour, ISombreros
         {
             case Direction.UP:
                 direction = Vector3.up;
-                pAnimator.Play("Hat_Sheriff_Up");
+                pAnimator.Play("Hat_Clown_Up");
                 Debug.Log("Sombrero dispara arriba");
                 InstantiateBullet(firePointUp, direction);
                 break;
             case Direction.DOWN:
                 direction = Vector3.down;
                 Debug.Log("Sombrero dispara abajo");
-                pAnimator.Play("Hat_Sheriff_Down");
+                pAnimator.Play("Hat_Clown_Down");
                 InstantiateBullet(firePointDown, direction);
                 break;
             case Direction.RIGHT:
                 direction = Vector3.right;
                 Debug.Log("Sombrero dispara derecha");
-                pAnimator.Play("Hat_Sheriff_Right");
+                pAnimator.Play("Hat_Clown_Right");
                 InstantiateBullet(firePointRight, direction);
                 break;
             case Direction.LEFT:
                 direction = Vector3.left;
                 Debug.Log("Sombrero dispara izquierda");
-                pAnimator.Play("Hat_Sheriff_Left");
+                pAnimator.Play("Hat_Clown_Left");
                 InstantiateBullet(firePointLeft, direction);
                 break;
             default:
@@ -92,16 +91,16 @@ public class PruebaSombreroSheriff : MonoBehaviour, ISombreros
         switch (hatDir)
         {
             case Direction.UP:
-                pAnimator.Play("Hat_Sheriff_Up");
+                pAnimator.Play("Hat_Clown_Up");
                 break;
             case Direction.DOWN:
-                pAnimator.Play("Hat_Sheriff_Down");
+                pAnimator.Play("Hat_Clown_Down");
                 break;
             case Direction.RIGHT:
-                pAnimator.Play("Hat_Sheriff_Right");
+                pAnimator.Play("Hat_Clown_Right");
                 break;
             case Direction.LEFT:
-                pAnimator.Play("Hat_Sheriff_Left");
+                pAnimator.Play("Hat_Clown_Left");
                 break;
             default:
                 Debug.LogWarning("La dirección del sombrero no está definida.");

@@ -170,6 +170,7 @@ public class MovimientoCabezaJugador : MonoBehaviour
         if(gm.vidas <= 0)
         {
             Destroy(gameObject);
+            Debug.Log("Se destruye la cabeza");
         }
     }
 }

@@ -38,7 +38,7 @@ public class EBorracho : MonoBehaviour
     void Rango()
     {
         float distancia = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log(distancia);
+        //Debug.Log(distancia);
 
         if (distancia < RangoMin)
         {
