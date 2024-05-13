@@ -18,7 +18,8 @@ public class BalaMurcielago : MonoBehaviour
         Vector2 direccion = (Player.transform.position - transform.position).normalized;
         rb.velocity = direccion * velocidad;
     }
-
+    /*
+     */
     void Update()
     {
         
@@ -55,7 +56,14 @@ public class BalaMurcielago : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        
+
+        if (collision.gameObject.CompareTag("Pared") || collision.gameObject.CompareTag("Roca"))
+        {
+            Destroy(this.gameObject);
+        }
+
+        else if (collision.CompareTag("Player"))
         {
             // Acceder al GameManager y restarle vida al jugador
             GameManagerHats.instance.RestarVidas();
@@ -63,6 +71,12 @@ public class BalaMurcielago : MonoBehaviour
 
             // Destruir la bala enemiga cuando colisiona con el jugador
             Destroy(gameObject);
+        }
+
+        else if (collision.gameObject.CompareTag("BalaJugador"))
+        {
+            Destroy(this.gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }

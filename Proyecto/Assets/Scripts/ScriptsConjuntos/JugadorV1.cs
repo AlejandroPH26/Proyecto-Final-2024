@@ -10,6 +10,8 @@ public class JugadorV1 : MonoBehaviour
     private GameManagerHats gm;
 
     public float speed = 5f;
+    public float initialSpeed;
+    public float slowedSpeed = 3f;
     private Rigidbody2D rb;
 
     public KeyCode moveUp = KeyCode.W;
@@ -19,6 +21,7 @@ public class JugadorV1 : MonoBehaviour
     public float y = -1;
     public float x = 0;
 
+    public SpriteRenderer rbSprite;
     public Animator pAnimator;
     private bool isMoving = false;
 
@@ -38,6 +41,7 @@ public class JugadorV1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rbSprite = GetComponent<SpriteRenderer>();
         pAnimator = GetComponent<Animator>();
         cabeza = GetComponentInChildren<MovimientoCabezaJugador>();
         rb = GetComponent<Rigidbody2D>(); // Obtener el Rigidbody2D del jugador
@@ -45,8 +49,9 @@ public class JugadorV1 : MonoBehaviour
         sombreros = GetComponentsInChildren<ISombreros>().ToList();
         vidaActual = vidaMax;
         gm = GameManagerHats.instance;
-    }
+        initialSpeed = speed;
 
+    }
     // Update se llama una vez por frame
     void Update()
     {
@@ -166,7 +171,6 @@ public class JugadorV1 : MonoBehaviour
 
 
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Verifica si el jugador colisionó con una puerta
@@ -222,18 +226,16 @@ public class JugadorV1 : MonoBehaviour
                 sombreroCollider.enabled = false;
             }
 
-            // Hacer que el sombrero sea un hijo del jugador
-            sombrero.transform.SetParent(gameObject.transform);
+            
+            sombrero.transform.SetParent(gameObject.transform); // Hacer que el sombrero sea un hijo del jugador         
+            sombreros.Add(sombrero.GetComponent<ISombreros>()); // Agregar el sombrero a la lista de sombreros del jugador           
+            PosicionarSombreros();                              // Posicionar los sombreros uno sobre otro
 
-            // Agregar el sombrero a la lista de sombreros del jugador
-            sombreros.Add(sombrero.GetComponent<ISombreros>());
-
-            // Posicionar los sombreros uno sobre otro
-            PosicionarSombreros();
+            // SONIDO PARA CUANDO SE POE EL SOMBRERO
 
             // Informar al sombrero de que ha sido recogido
             // InformarSombreroRecogido(sombrero.GetComponent<ISombreros>());
-            
+
         }
         // Verificar si el jugador colisionó con un botiquín
         if (other.CompareTag("Botiquin"))
@@ -249,28 +251,23 @@ public class JugadorV1 : MonoBehaviour
             Destroy(other.gameObject);
             gm.SumarBombas();
         }
+        // Verificar si el jugador colisionó con los clavos
+        if (other.CompareTag("ClavosObstaculo"))
+        {
+            gm.RestarVidas();
+        }
+        // Verificar si el jugador colisionó con las zarzas
+        if (other.CompareTag("ZarzasObstaculo"))
+        {
+            speed = speed - slowedSpeed;
+        }
     }
-
     private void PosicionarSombreros()
     {
         int n = sombreros.Count;
         Debug.Log(n.ToString() + " Sombreros");
+        // Verificar si hay menos de un sombrero en la lista
         if (n <= 1)
-        {
-            // Obtener la posición de anchorInitial
-            Vector3 anchorInitialPosition = anchorInitial.position;
-
-            // Iterar a través de los sombreros desde el segundo hasta el último
-            for (int i = 0; i < n; i++)
-            {
-                // Obtener el transform del sombrero actual
-                Transform sombreroTransform = sombreros[i].gameObject.transform;
-
-                // Establecer la posición del sombrero actual en la posición de anchorInitial
-                sombreroTransform.position = anchorInitialPosition;
-            }
-        }
-
         // Verificar si hay al menos dos sombreros en la lista
         if (n >= 2)
         {
@@ -303,8 +300,6 @@ public class JugadorV1 : MonoBehaviour
             }
         }
     }
-
-
     void OnTriggerExit2D(Collider2D other)
     {
         // Verificar si el jugador ya no está en contacto con la SalaActual
@@ -316,8 +311,12 @@ public class JugadorV1 : MonoBehaviour
                 salaManager.ActivarTeleportTargets();
             }
         }
+        // Verificar si el jugador ya no está en contacto con las zarzas
+        if (other.CompareTag("ZarzasObstaculo"))
+        {
+            speed = initialSpeed;
+        }
     }
-
     void InformarSombreroRecogido(ISombreros sombreroRecogido)
     {
         // Notificar al sombrero recogido de que ha sido recogido
