@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManagerHats : MonoBehaviour
 {
     static public GameManagerHats instance;     // Se crea la instancia como variable
+    static public JugadorV1 jugador;
     public int vidas = 6;
     public int bombas = 3;
     public TextMeshProUGUI ContadorBombas;
@@ -35,7 +36,7 @@ public class GameManagerHats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+       jugador = FindObjectOfType<JugadorV1>();
     }
 
     // Update is called once per frame
@@ -86,6 +87,7 @@ public class GameManagerHats : MonoBehaviour
                 vidas = 0;
             }
             ContadorVidas.text = vidas.ToString();
+            jugador.ActivarParpadeo();
             Invulnerabilidad = true;
             Invoke("DesactivarInvulnerabilidad", DelayInvulnerabilidad);
             UIvidas();
