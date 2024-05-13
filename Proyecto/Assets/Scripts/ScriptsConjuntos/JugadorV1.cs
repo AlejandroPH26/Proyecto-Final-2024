@@ -44,6 +44,7 @@ public class JugadorV1 : MonoBehaviour
         cameraManager = FindObjectOfType<CameraManager>();
         sombreros = GetComponentsInChildren<ISombreros>().ToList();
         vidaActual = vidaMax;
+        gm = GameManagerHats.instance;
     }
 
     // Update se llama una vez por frame
@@ -237,7 +238,9 @@ public class JugadorV1 : MonoBehaviour
         // Verificar si el jugador colisionó con un botiquín
         if (other.CompareTag("Botiquin"))
         {
+            Debug.Log("Se ha chocado con un botiquin");
             Destroy(other.gameObject);
+
             gm.SumarVidas();
         }
         // Verificar si el jugador colisionó con una bomba
