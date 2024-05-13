@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3183104379338802466}
   - component: {fileID: -1855311324614835739}
   - component: {fileID: 6245568104248117744}
-  - component: {fileID: 859387043698825546}
+  - component: {fileID: 576612083788678841}
   m_Layer: 8
   m_Name: Murcielago
   m_TagString: Enemigo
@@ -102,7 +102,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 2
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -198,7 +198,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9431229, y: 0.63486576}
   m_EdgeRadius: 0
---- !u!95 &859387043698825546
+--- !u!95 &576612083788678841
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

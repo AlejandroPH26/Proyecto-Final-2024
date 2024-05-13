@@ -10,6 +10,9 @@ public class EProyectil : MonoBehaviour
     public Animator Animator;
     
     private Rigidbody2D rb;
+
+    private GameManagerHats gm;
+
     public float speed;
     void Start()
     {
@@ -18,6 +21,8 @@ public class EProyectil : MonoBehaviour
         Player = FindObjectOfType<JugadorV1>(); // Busca el script del jugador 
 
         Animator = GetComponent<Animator>(); // Busco el animator de la bala
+
+        gm = GameManagerHats.instance; // Instancia del GameManager
 
         Vector3 direction = Player.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * speed;
@@ -38,18 +43,17 @@ public class EProyectil : MonoBehaviour
         {
             Animator.Play("BOTTLE_BREAK");
             
-
         }
 
         else if (collision.gameObject.CompareTag("Player"))
         {
+            gm.RestarVidas(); // Llamada al metodo RestarVidas del game manager
             Animator.Play("BOTTLE_BREAK");
-            //Player.DamageTaken(20); // Jugador     
+                      
         }
     }
 
-
-    public void DestruirObjeto()
+    public void DestruirObjeto() // Se llama en el ultimo frame de la animacion BOTTLE_BREAK
     {
         Destroy(this.gameObject);
     }
