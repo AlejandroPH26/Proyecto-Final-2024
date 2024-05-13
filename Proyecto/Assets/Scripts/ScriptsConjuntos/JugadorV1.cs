@@ -28,6 +28,10 @@ public class JugadorV1 : MonoBehaviour
     public int vidaActual;
     public int vidaMax = 100;
 
+    // Agrega una variable para el tiempo que el SpriteRenderer debe estar activo
+    public float activationTime;
+    private bool isActivating = false;
+
     public Transform player;
     public Transform anchorInitial;
     public string teleportTargetTag = "TeleportTarget";
@@ -41,17 +45,19 @@ public class JugadorV1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gm = GameManagerHats.instance;
         rbSprite = GetComponent<SpriteRenderer>();
         pAnimator = GetComponent<Animator>();
         cabeza = GetComponentInChildren<MovimientoCabezaJugador>();
-        rb = GetComponent<Rigidbody2D>(); // Obtener el Rigidbody2D del jugador
+        rb = GetComponent<Rigidbody2D>();                           // Obtener el Rigidbody2D del jugador
         cameraManager = FindObjectOfType<CameraManager>();
         sombreros = GetComponentsInChildren<ISombreros>().ToList();
         vidaActual = vidaMax;
-        gm = GameManagerHats.instance;
+        activationTime = gm.DelayInvulnerabilidad;
         initialSpeed = speed;
 
     }
+
     // Update se llama una vez por frame
     void Update()
     {
@@ -61,7 +67,11 @@ public class JugadorV1 : MonoBehaviour
         InputHats();
         hatInFrame = false;
         MuerteJugador();
+
+        // Verifica si se está activando el SpriteRenderer
+        ActivarParpadeo();
     }
+
     private void InputJugador()
     {
         Vector2 aux = Vector2.zero; // Declaramos el Vector2 para el movimiento y lo identificamos como aux la variable y ponemos que es 0 para que en caso de no pulsar nada se quede quieto
@@ -171,6 +181,7 @@ public class JugadorV1 : MonoBehaviour
 
 
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Verifica si el jugador colisionó con una puerta
@@ -262,6 +273,7 @@ public class JugadorV1 : MonoBehaviour
             speed = speed - slowedSpeed;
         }
     }
+
     private void PosicionarSombreros()
     {
         int n = sombreros.Count;
@@ -317,20 +329,21 @@ public class JugadorV1 : MonoBehaviour
             speed = initialSpeed;
         }
     }
-    void InformarSombreroRecogido(ISombreros sombreroRecogido)
+
+    /*void InformarSombreroRecogido(ISombreros sombreroRecogido)
     {
         // Notificar al sombrero recogido de que ha sido recogido
         if (sombreroRecogido != null)
         {
             sombreroRecogido.SombreroRecogido();
         }
-    }
+    }*/
 
     public void InputHats()
     {
         // Manejo de la entrada para disparar y asignar dirección a los sombreros
         Vector3 direction = Vector3.zero;
-
+        // Establecer las direcciones de las teclas de disparo
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             direction = Vector3.up;
@@ -351,7 +364,6 @@ public class JugadorV1 : MonoBehaviour
             direction = Vector3.left;
             SetDirectionForHats(Direction.LEFT);
         }
-
         // Después de establecer la dirección, realizar el disparo
         if (direction != Vector3.zero)
         {
@@ -396,5 +408,40 @@ public class JugadorV1 : MonoBehaviour
         {
             pAnimator.Play("Anim_Muerte");
         }
+        Debug.Log("Se ha muerto");
+    }
+
+    public void ActivarParpadeo()
+    {
+        if (isActivating)
+        {
+            StartCoroutine(ActivateSpriteRendererForSeconds(activationTime));
+        }
+    }
+    // Método para activar y desactivar el SpriteRenderer durante un número de segundos dados
+    public void ActivateAndDeactivateSpriteRendererForSeconds(float seconds)
+    {
+        // Activa el SpriteRenderer
+        rbSprite.enabled = true;
+        // Inicia la corutina para desactivar después de un tiempo
+        StartCoroutine(DeactivateSpriteRendererAfterSeconds(seconds));
+    }
+
+    // Corutina para desactivar el SpriteRenderer después de un tiempo dado
+    IEnumerator DeactivateSpriteRendererAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        // Desactiva el SpriteRenderer después de los segundos dados
+        rbSprite.enabled = false;
+    }
+
+    // Corutina para activar el SpriteRenderer durante un tiempo dado
+    IEnumerator ActivateSpriteRendererForSeconds(float seconds)
+    {
+        
+        rbSprite.enabled = true; // Activa el SpriteRenderer       
+        yield return new WaitForSeconds(seconds); // Espera durante el tiempo dado       
+        GetComponent<SpriteRenderer>().enabled = false; // Desactiva el SpriteRenderer después de los segundos dados     
+        isActivating = false; // Indica que la activación ha terminado
     }
 }
