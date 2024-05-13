@@ -82,6 +82,12 @@ TagManager:
   - name: Vidas
     uniqueID: 3993523079
     locked: 0
+  - name: animatica_fondo
+    uniqueID: 1294645967
+    locked: 0
+  - name: Animatica
+    uniqueID: 2216298369
+    locked: 0
   - name: fondoUI
     uniqueID: 1443164335
     locked: 0
