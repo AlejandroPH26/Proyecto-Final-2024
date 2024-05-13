@@ -10,6 +10,8 @@ public class JugadorV1 : MonoBehaviour
     private GameManagerHats gm;
 
     public float speed = 5f;
+    public float initialSpeed;
+    public float slowedSpeed = 3f;
     private Rigidbody2D rb;
 
     public KeyCode moveUp = KeyCode.W;
@@ -19,11 +21,16 @@ public class JugadorV1 : MonoBehaviour
     public float y = -1;
     public float x = 0;
 
+    public SpriteRenderer rbSprite;
     public Animator pAnimator;
     private bool isMoving = false;
 
     public int vidaActual;
     public int vidaMax = 100;
+
+    // Agrega una variable para el tiempo que el SpriteRenderer debe estar activo
+    public float activationTime;
+    private bool isActivating = false;
 
     public Transform player;
     public Transform anchorInitial;
@@ -38,13 +45,17 @@ public class JugadorV1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gm = GameManagerHats.instance;
+        rbSprite = GetComponent<SpriteRenderer>();
         pAnimator = GetComponent<Animator>();
         cabeza = GetComponentInChildren<MovimientoCabezaJugador>();
-        rb = GetComponent<Rigidbody2D>(); // Obtener el Rigidbody2D del jugador
+        rb = GetComponent<Rigidbody2D>();                           // Obtener el Rigidbody2D del jugador
         cameraManager = FindObjectOfType<CameraManager>();
         sombreros = GetComponentsInChildren<ISombreros>().ToList();
         vidaActual = vidaMax;
-        gm = GameManagerHats.instance;
+        activationTime = gm.DelayInvulnerabilidad;
+        initialSpeed = speed;
+
     }
 
     // Update se llama una vez por frame
@@ -56,7 +67,11 @@ public class JugadorV1 : MonoBehaviour
         InputHats();
         hatInFrame = false;
         MuerteJugador();
+
+        // Verifica si se está activando el SpriteRenderer
+        ActivarParpadeo();
     }
+
     private void InputJugador()
     {
         Vector2 aux = Vector2.zero; // Declaramos el Vector2 para el movimiento y lo identificamos como aux la variable y ponemos que es 0 para que en caso de no pulsar nada se quede quieto
@@ -222,18 +237,16 @@ public class JugadorV1 : MonoBehaviour
                 sombreroCollider.enabled = false;
             }
 
-            // Hacer que el sombrero sea un hijo del jugador
-            sombrero.transform.SetParent(gameObject.transform);
+            
+            sombrero.transform.SetParent(gameObject.transform); // Hacer que el sombrero sea un hijo del jugador         
+            sombreros.Add(sombrero.GetComponent<ISombreros>()); // Agregar el sombrero a la lista de sombreros del jugador           
+            PosicionarSombreros();                              // Posicionar los sombreros uno sobre otro
 
-            // Agregar el sombrero a la lista de sombreros del jugador
-            sombreros.Add(sombrero.GetComponent<ISombreros>());
-
-            // Posicionar los sombreros uno sobre otro
-            PosicionarSombreros();
+            // SONIDO PARA CUANDO SE POE EL SOMBRERO
 
             // Informar al sombrero de que ha sido recogido
             // InformarSombreroRecogido(sombrero.GetComponent<ISombreros>());
-            
+
         }
         // Verificar si el jugador colisionó con un botiquín
         if (other.CompareTag("Botiquin"))
@@ -249,28 +262,24 @@ public class JugadorV1 : MonoBehaviour
             Destroy(other.gameObject);
             gm.SumarBombas();
         }
+        // Verificar si el jugador colisionó con los clavos
+        if (other.CompareTag("ClavosObstaculo"))
+        {
+            gm.RestarVidas();
+        }
+        // Verificar si el jugador colisionó con las zarzas
+        if (other.CompareTag("ZarzasObstaculo"))
+        {
+            speed = speed - slowedSpeed;
+        }
     }
 
     private void PosicionarSombreros()
     {
         int n = sombreros.Count;
         Debug.Log(n.ToString() + " Sombreros");
+        // Verificar si hay menos de un sombrero en la lista
         if (n <= 1)
-        {
-            // Obtener la posición de anchorInitial
-            Vector3 anchorInitialPosition = anchorInitial.position;
-
-            // Iterar a través de los sombreros desde el segundo hasta el último
-            for (int i = 0; i < n; i++)
-            {
-                // Obtener el transform del sombrero actual
-                Transform sombreroTransform = sombreros[i].gameObject.transform;
-
-                // Establecer la posición del sombrero actual en la posición de anchorInitial
-                sombreroTransform.position = anchorInitialPosition;
-            }
-        }
-
         // Verificar si hay al menos dos sombreros en la lista
         if (n >= 2)
         {
@@ -303,8 +312,6 @@ public class JugadorV1 : MonoBehaviour
             }
         }
     }
-
-
     void OnTriggerExit2D(Collider2D other)
     {
         // Verificar si el jugador ya no está en contacto con la SalaActual
@@ -316,22 +323,27 @@ public class JugadorV1 : MonoBehaviour
                 salaManager.ActivarTeleportTargets();
             }
         }
+        // Verificar si el jugador ya no está en contacto con las zarzas
+        if (other.CompareTag("ZarzasObstaculo"))
+        {
+            speed = initialSpeed;
+        }
     }
 
-    void InformarSombreroRecogido(ISombreros sombreroRecogido)
+    /*void InformarSombreroRecogido(ISombreros sombreroRecogido)
     {
         // Notificar al sombrero recogido de que ha sido recogido
         if (sombreroRecogido != null)
         {
             sombreroRecogido.SombreroRecogido();
         }
-    }
+    }*/
 
     public void InputHats()
     {
         // Manejo de la entrada para disparar y asignar dirección a los sombreros
         Vector3 direction = Vector3.zero;
-
+        // Establecer las direcciones de las teclas de disparo
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             direction = Vector3.up;
@@ -352,7 +364,6 @@ public class JugadorV1 : MonoBehaviour
             direction = Vector3.left;
             SetDirectionForHats(Direction.LEFT);
         }
-
         // Después de establecer la dirección, realizar el disparo
         if (direction != Vector3.zero)
         {
@@ -397,5 +408,40 @@ public class JugadorV1 : MonoBehaviour
         {
             pAnimator.Play("Anim_Muerte");
         }
+        Debug.Log("Se ha muerto");
+    }
+
+    public void ActivarParpadeo()
+    {
+        if (isActivating)
+        {
+            StartCoroutine(ActivateSpriteRendererForSeconds(activationTime));
+        }
+    }
+    // Método para activar y desactivar el SpriteRenderer durante un número de segundos dados
+    public void ActivateAndDeactivateSpriteRendererForSeconds(float seconds)
+    {
+        // Activa el SpriteRenderer
+        rbSprite.enabled = true;
+        // Inicia la corutina para desactivar después de un tiempo
+        StartCoroutine(DeactivateSpriteRendererAfterSeconds(seconds));
+    }
+
+    // Corutina para desactivar el SpriteRenderer después de un tiempo dado
+    IEnumerator DeactivateSpriteRendererAfterSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        // Desactiva el SpriteRenderer después de los segundos dados
+        rbSprite.enabled = false;
+    }
+
+    // Corutina para activar el SpriteRenderer durante un tiempo dado
+    IEnumerator ActivateSpriteRendererForSeconds(float seconds)
+    {
+        
+        rbSprite.enabled = true; // Activa el SpriteRenderer       
+        yield return new WaitForSeconds(seconds); // Espera durante el tiempo dado       
+        GetComponent<SpriteRenderer>().enabled = false; // Desactiva el SpriteRenderer después de los segundos dados     
+        isActivating = false; // Indica que la activación ha terminado
     }
 }

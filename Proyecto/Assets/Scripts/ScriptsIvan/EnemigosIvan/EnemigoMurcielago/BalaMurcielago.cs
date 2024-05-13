@@ -9,16 +9,20 @@ public class BalaMurcielago : MonoBehaviour
     private Rigidbody2D rb; 
     public JugadorV1 Player;
     public int Daño = 1;
+    private GameManagerHats gm;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
      
         Player = FindObjectOfType<JugadorV1>();
+        gm = GameManagerHats.instance;
+
         Vector2 direccion = (Player.transform.position - transform.position).normalized;
         rb.velocity = direccion * velocidad;
     }
-
+    
+    
     void Update()
     {
         
@@ -55,14 +59,27 @@ public class BalaMurcielago : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        
+
+        if (collision.gameObject.CompareTag("Pared") || collision.gameObject.CompareTag("Roca"))
+        {
+            Destroy(this.gameObject);
+        }
+
+        else if (collision.CompareTag("Player"))
         {
             // Acceder al GameManager y restarle vida al jugador
             GameManagerHats.instance.RestarVidas();
-            Player.DamageTaken(Daño);
+            gm.RestarVidas();
 
             // Destruir la bala enemiga cuando colisiona con el jugador
             Destroy(gameObject);
+        }
+
+        else if (collision.gameObject.CompareTag("BalaJugador"))
+        {
+            Destroy(this.gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }
