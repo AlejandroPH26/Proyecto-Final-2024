@@ -6,6 +6,8 @@ using UnityEngine;
 public class EProyectil : MonoBehaviour
 {
     private JugadorV1 Player;
+
+    public Animator Animator;
     
     private Rigidbody2D rb;
     public float speed;
@@ -14,6 +16,8 @@ public class EProyectil : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
        
         Player = FindObjectOfType<JugadorV1>(); // Busca el script del jugador 
+
+        Animator = GetComponent<Animator>(); // Busco el animator de la bala
 
         Vector3 direction = Player.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * speed;
@@ -32,13 +36,21 @@ public class EProyectil : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstaculo") || collision.gameObject.CompareTag("Pared"))
         {
-            Destroy(this.gameObject);
+            Animator.Play("BOTTLE_BREAK");
+            
+
         }
 
         else if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(this.gameObject);
-            //Player.DamageTaken(20); // Jugador
+            Animator.Play("BOTTLE_BREAK");
+            //Player.DamageTaken(20); // Jugador     
         }
+    }
+
+
+    public void DestruirObjeto()
+    {
+        Destroy(this.gameObject);
     }
 }
