@@ -41,12 +41,8 @@ public class GameManagerHats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< HEAD
         UIvidas();
         UIbombas();
-=======
-
->>>>>>> 6a7cc4c5bc67b8a29ecd2039c75d52f14b489463
     }
    
     public void SumarBombas()
@@ -139,12 +135,8 @@ public class GameManagerHats : MonoBehaviour
         }
 
     }
-<<<<<<< HEAD
 
-    public void Invulnerable()
-=======
     public void DesactivarInvulnerabilidad()
->>>>>>> 6a7cc4c5bc67b8a29ecd2039c75d52f14b489463
     {
         Invulnerabilidad = false;
     }
