@@ -54,6 +54,7 @@ public class JugadorV1 : MonoBehaviour
         // Manejo de la entrada de sombreros (disparo)
         InputHats();
         hatInFrame = false;
+        MuerteJugador();
     }
     private void InputJugador()
     {
@@ -382,16 +383,16 @@ public class JugadorV1 : MonoBehaviour
 
         if (gm.vidas <= 0)
         {
-            DestruirCuerpo();
+            MuerteJugador();
             Debug.Log("Se destruye el cuerpo");
         }
     }
 
-    public void DestruirCuerpo()
+    private void MuerteJugador()
     {
         if (gm.vidas <= 0)
         {
-            Destroy(gameObject);
+            pAnimator.Play("Anim_Muerte");
         }
     }
 }
