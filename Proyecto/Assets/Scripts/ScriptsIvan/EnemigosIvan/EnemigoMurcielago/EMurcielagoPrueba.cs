@@ -26,7 +26,9 @@ public class EMurcielagoPrueba : MonoBehaviour
     private Animator animator;
 
     private EnemigosComun enemy; //Referencia al script EnemigosComun
-   
+
+    private GameManagerHats gm;
+
     void Start()
     {
         // Obtener la referencia al componente Enemigo
@@ -40,6 +42,8 @@ public class EMurcielagoPrueba : MonoBehaviour
         tiempoUltimoDisparo = Time.time; // Inicializa el tiempo del último disparo
 
         enemy = GetComponent<EnemigosComun>();
+
+        gm = GameManagerHats.instance;
     }
 
     // Update is called once per frame
@@ -140,13 +144,10 @@ public class EMurcielagoPrueba : MonoBehaviour
     {
 
         if (collision.gameObject.CompareTag("Player"))
-        {
-            if (Time.time - tiempoUltimoDaño > 1.5f)
-            {
-                jugador.DamageTaken(20);
+        {       
+                gm.RestarVidas();
                 Debug.Log("DañoAlJugador");
-                tiempoUltimoDaño = Time.time;
-            }
+                       
         }
     }
 
