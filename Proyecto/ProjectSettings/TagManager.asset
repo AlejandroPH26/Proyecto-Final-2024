@@ -21,6 +21,8 @@ TagManager:
   - Enemigo
   - EBorracho
   - BombaItem
+  - ClavosObstaculo
+  - ZarzasObstaculo
   layers:
   - Default
   - TransparentFX

@@ -129,7 +129,7 @@ public class ETopo2 : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             CambiarDireccion();
-            Player.DamageTaken(daño);
+            // Referencia al gamemanager restarvida();
             Debug.Log("DañoRecibidoJugador");
 
         }

@@ -66,10 +66,8 @@ public class JugadorV1 : MonoBehaviour
         // Manejo de la entrada de sombreros (disparo)
         InputHats();
         hatInFrame = false;
-        MuerteJugador();
+        DamageTaken();
 
-        // Verifica si se está activando el SpriteRenderer
-        ActivarParpadeo();
     }
 
     private void InputJugador()
@@ -391,9 +389,8 @@ public class JugadorV1 : MonoBehaviour
     }
 
     //Codigo Ivan (Vida y muerte del jugador), (provisional)
-    public void DamageTaken(int cantidad)
+    public void DamageTaken()
     {
-        // vidaActual -= cantidad;
 
         if (gm.vidas <= 0)
         {
@@ -404,44 +401,21 @@ public class JugadorV1 : MonoBehaviour
 
     private void MuerteJugador()
     {
-        if (gm.vidas <= 0)
-        {
             pAnimator.Play("Anim_Muerte");
-        }
-        Debug.Log("Se ha muerto");
+            Debug.Log("Se ha muerto");             
     }
 
-    public void ActivarParpadeo()
+    // Cambia el color del SpriteRenderer a blanco o rojo
+    public void CambiarColorSprite(bool isRed)
     {
-        if (isActivating)
+        if (isRed)
         {
-            StartCoroutine(ActivateSpriteRendererForSeconds(activationTime));
+            rbSprite.color = Color.red;
+        }
+        else
+        {
+            rbSprite.color = Color.white;
         }
     }
-    // Método para activar y desactivar el SpriteRenderer durante un número de segundos dados
-    public void ActivateAndDeactivateSpriteRendererForSeconds(float seconds)
-    {
-        // Activa el SpriteRenderer
-        rbSprite.enabled = true;
-        // Inicia la corutina para desactivar después de un tiempo
-        StartCoroutine(DeactivateSpriteRendererAfterSeconds(seconds));
-    }
 
-    // Corutina para desactivar el SpriteRenderer después de un tiempo dado
-    IEnumerator DeactivateSpriteRendererAfterSeconds(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-        // Desactiva el SpriteRenderer después de los segundos dados
-        rbSprite.enabled = false;
-    }
-
-    // Corutina para activar el SpriteRenderer durante un tiempo dado
-    IEnumerator ActivateSpriteRendererForSeconds(float seconds)
-    {
-        
-        rbSprite.enabled = true; // Activa el SpriteRenderer       
-        yield return new WaitForSeconds(seconds); // Espera durante el tiempo dado       
-        GetComponent<SpriteRenderer>().enabled = false; // Desactiva el SpriteRenderer después de los segundos dados     
-        isActivating = false; // Indica que la activación ha terminado
-    }
 }
