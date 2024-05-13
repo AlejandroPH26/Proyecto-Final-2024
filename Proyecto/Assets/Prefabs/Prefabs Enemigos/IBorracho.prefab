@@ -104,7 +104,7 @@ MonoBehaviour:
   bullet: {fileID: 6444954383944718577, guid: f8919c095575b074da3e15b407b7f0af, type: 3}
   bulletPos: {fileID: 6113225044345388047}
   player: {fileID: 0}
-  RangoMin: 4
+  RangoMin: 6
   animator: {fileID: 4587325551668925800}
   canShoot: 1
 --- !u!114 &-9061386184882647149

@@ -377,17 +377,17 @@ public class JugadorV1 : MonoBehaviour
 
     //Codigo Ivan (Vida y muerte del jugador), (provisional)
     public void DamageTaken(int cantidad)
-
     {
-        vidaActual -= cantidad;
+        // vidaActual -= cantidad;
 
-        if (vidaActual <= 0)
+        if (gm.vidas <= 0)
         {
-            DestruirCabeza();
+            DestruirCuerpo();
+            Debug.Log("Se destruye el cuerpo");
         }
     }
 
-    public void DestruirCabeza()
+    public void DestruirCuerpo()
     {
         if (gm.vidas <= 0)
         {

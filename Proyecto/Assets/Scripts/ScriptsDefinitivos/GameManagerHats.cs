@@ -41,8 +41,12 @@ public class GameManagerHats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         UIvidas();
         UIbombas();
+=======
+
+>>>>>>> 6a7cc4c5bc67b8a29ecd2039c75d52f14b489463
     }
    
     public void SumarBombas()
@@ -72,11 +76,13 @@ public class GameManagerHats : MonoBehaviour
         {
             vidas = 6;
         }
-            ContadorVidas.text = vidas.ToString();
+        ContadorVidas.text = vidas.ToString();
+        UIvidas();
+
     }
     public void RestarVidas()
     {
-        if (Invulnerabilidad == false)
+        if (!Invulnerabilidad)
         {
             vidas--;
             if (vidas <= 0)
@@ -85,7 +91,8 @@ public class GameManagerHats : MonoBehaviour
             }
             ContadorVidas.text = vidas.ToString();
             Invulnerabilidad = true;
-            Invoke("Invulnerable", DelayInvulnerabilidad);
+            Invoke("DesactivarInvulnerabilidad", DelayInvulnerabilidad);
+            UIvidas();
         }
     }
 
@@ -95,7 +102,7 @@ public class GameManagerHats : MonoBehaviour
 
        foreach(GameObject bomba in spritesBombas)
        {
-            if (bombas >= i) //está activa
+            if (bombas >= i) //esta activa
             {
                 bomba.SetActive(true);
             }
@@ -117,7 +124,7 @@ public class GameManagerHats : MonoBehaviour
 
         foreach (GameObject vida in spritesVidas)
         {
-            if (vidas >= i) //está activa
+            if (vidas >= i) //esta activa
             {
                 vida.SetActive(true);
             }
@@ -132,9 +139,13 @@ public class GameManagerHats : MonoBehaviour
         }
 
     }
+<<<<<<< HEAD
 
     public void Invulnerable()
+=======
+    public void DesactivarInvulnerabilidad()
+>>>>>>> 6a7cc4c5bc67b8a29ecd2039c75d52f14b489463
     {
-        Invulnerabilidad = true;
+        Invulnerabilidad = false;
     }
 }

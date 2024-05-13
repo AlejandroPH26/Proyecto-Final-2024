@@ -8,7 +8,7 @@ public class BalaMurcielago : MonoBehaviour
     public float velocidad = 10f; // Velocidad de la bala
     private Rigidbody2D rb; 
     public JugadorV1 Player;
-    public int Daño = 20;
+    public int Daño = 1;
 
     void Start()
     {
@@ -31,6 +31,7 @@ public class BalaMurcielago : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        /*
         else if (collision.gameObject.CompareTag("Player"))
         {
             Player.DamageTaken(Daño);
@@ -38,6 +39,7 @@ public class BalaMurcielago : MonoBehaviour
             //daño al jugador 
          
         }
+        */
 
         else if(collision.gameObject.CompareTag("BalaJugador"))
         {
@@ -48,5 +50,20 @@ public class BalaMurcielago : MonoBehaviour
 
 
     //Añadir al scrip de la bala jugador que si choca con un obejto con el tag bala.enemigo o .murcielago se destruye ambos objetos
+
+    // CODIGO DE PRUEBA ALEJANDRO
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            // Acceder al GameManager y restarle vida al jugador
+            GameManagerHats.instance.RestarVidas();
+            Player.DamageTaken(Daño);
+
+            // Destruir la bala enemiga cuando colisiona con el jugador
+            Destroy(gameObject);
+        }
+    }
 }
 
