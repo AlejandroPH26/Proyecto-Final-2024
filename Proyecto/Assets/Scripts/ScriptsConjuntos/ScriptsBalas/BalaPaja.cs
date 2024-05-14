@@ -16,12 +16,7 @@ public class BalaPaja : MonoBehaviour
     }
     public void asignarDireccion(Direction dir)
     {
-        // Asignar dirBala     
         dirBala = dir;
-        // Modificar rb.velocity
-        // direcciones para usar la lista, el corchete [] es para seleccionar la posición en la lista,
-        // que dirBala es int y no otro tipo de dato (int),
-        // mutiplicarlo por speed para indicarle la velocidad
         rb.velocity = direcciones[(int)dirBala] * speed;
     }
 }

@@ -32,15 +32,19 @@ public class PruebaSombreroVagabundo : MonoBehaviour, ISombreros
     void Start()
     {
         pAnimator = GetComponent<Animator>();
+        gm = GetComponent<GameManagerHats>();
     }
 
+    // NO FUNCIONA
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            // Aquí agregas el código para llamar al método restarvidas del GameManager cuando el sombrero se convierte en hijo del jugador
-            other.GetComponent<JugadorV1>().gm.RestarVidas();
-            gm.vidas = (int)(gm.vidas - 1f);
+            gm.RestarVidas();
+            // Reducir la vida máxima del jugador en 1 unidad
+            gm.vidas--;
+            // Actualizar el contador de vidas en el GameManagerHats
+            gm.ContadorVidas.text = gm.vidas.ToString();
         }
     }
 

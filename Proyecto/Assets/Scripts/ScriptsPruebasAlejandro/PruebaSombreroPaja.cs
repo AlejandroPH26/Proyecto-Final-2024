@@ -32,12 +32,6 @@ public class PruebaSombreroPaja : MonoBehaviour, ISombreros
         pAnimator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void Shoot()
     {
         if (!canShoot) return; // Si no puede disparar, sal del método
@@ -90,10 +84,8 @@ public class PruebaSombreroPaja : MonoBehaviour, ISombreros
     {
         // Instanciar la bala en el punto de fuego del sombrero
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-
         // Establecer la dirección de movimiento de la bala
         bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-
         // Destruir la bala después de un cierto tiempo
         Destroy(bullet, bulletLifetime);
     }
@@ -126,5 +118,13 @@ public class PruebaSombreroPaja : MonoBehaviour, ISombreros
     {
         // Aquí puedes realizar cualquier acción que necesites cuando el sombrero es recogido.
         Debug.Log("Sombrero Sheriff recogido por el jugador.");
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Reflejar la velocidad de la bala cuando colisiona con cualquier cosa
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        Vector2 reflection = Vector2.Reflect(rb.velocity, collision.contacts[0].normal);
+        rb.velocity = reflection;
     }
 }

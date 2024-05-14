@@ -6,7 +6,6 @@ public class EnemigosComun : MonoBehaviour
 {
     public int vidaActual;
     public int vidaMax;
-    public int vidaPerdida;
 
     public bool activo = true;
     void Start()
@@ -21,7 +20,6 @@ public class EnemigosComun : MonoBehaviour
     }
 
     public void Muerte()
-
     {
         //Eanimator.Play("MINERO_DEATH");
         Destroy(this.gameObject);
@@ -39,10 +37,9 @@ public class EnemigosComun : MonoBehaviour
         if (collision.gameObject.CompareTag("BalaJugador"))
         {
             Debug.Log("DañoRecibido");
-            DañoRecibido(vidaPerdida);
+            DañoRecibido(20);
 
             Destroy(collision.gameObject); // Destruye la bala 
-
 
             if (vidaActual <= 0)
             {
