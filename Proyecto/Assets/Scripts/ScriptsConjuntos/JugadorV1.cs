@@ -7,7 +7,7 @@ public class JugadorV1 : MonoBehaviour
 {
     [SerializeField] public List<ISombreros> sombreros = new List<ISombreros>(); // Lista de sombreros del jugador
     private MovimientoCabezaJugador cabeza;
-    private GameManagerHats gm;
+    public GameManagerHats gm;
 
     public float speed = 5f;
     public float initialSpeed;

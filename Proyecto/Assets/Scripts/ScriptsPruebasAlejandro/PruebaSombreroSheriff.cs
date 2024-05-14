@@ -12,6 +12,10 @@ public class PruebaSombreroSheriff : MonoBehaviour, ISombreros
     public Transform firePointRight;
     public Transform firePointLeft;
     public Transform anchorUp;
+
+    public float delay = 1f; // Delay entre disparos
+    private bool canShoot = true; // Variable para controlar si puede disparar o no
+
     public Transform anclajeSuperior
     {
         get { return anchorUp; }
@@ -37,6 +41,8 @@ public class PruebaSombreroSheriff : MonoBehaviour, ISombreros
 
     public void Shoot()
     {
+        if (!canShoot) return; // Si no puede disparar, sal del método
+
         // Establecer la dirección de movimiento de las balas basada en la dirección del sombrero
         Vector3 direction = Vector3.zero;
 
@@ -71,6 +77,13 @@ public class PruebaSombreroSheriff : MonoBehaviour, ISombreros
                 Debug.LogWarning("La dirección del sombrero no está definida. No se puede disparar.");
                 break;
         }
+
+        canShoot = false; // Desactivar disparo temporalmente
+        Invoke("ActivateShoot", delay); // Invocar método para activar el disparo después del delay
+    }
+    void ActivateShoot()
+    {
+        canShoot = true; // Volver a activar el disparo
     }
 
     void InstantiateBullet(Transform firePoint, Vector3 direction)

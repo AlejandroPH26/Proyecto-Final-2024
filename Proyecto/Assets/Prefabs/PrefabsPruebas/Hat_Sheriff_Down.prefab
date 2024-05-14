@@ -166,13 +166,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ecedef11f4fac4aacab84db659e1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1883427944473689993, guid: f441d739edd27fa4f8cf021fa6c4bb1a, type: 3}
+  bulletPrefab: {fileID: 1883427944473689993, guid: 4a34221ed2c27eb4d85cb0c18f641181, type: 3}
   bulletSpeed: 5
   firePointDown: {fileID: 5487300429961080107}
   firePointUp: {fileID: 7259240279206891641}
   firePointRight: {fileID: 1375847033914117674}
   firePointLeft: {fileID: 1253023595049576138}
   anchorUp: {fileID: 3032998337579635848}
+  pAnimator: {fileID: 0}
   bulletLifetime: 2
   hatDir: 0
 --- !u!61 &8399786197397133998

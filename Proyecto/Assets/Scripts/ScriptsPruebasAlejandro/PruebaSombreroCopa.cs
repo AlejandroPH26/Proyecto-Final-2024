@@ -12,6 +12,10 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
     public Transform firePointLeft;
     public Transform anchorUp;
 
+    public float delay = 1f; // Delay entre disparos
+    private bool canShoot = true; // Variable para controlar si puede disparar o no
+
+
     public Transform anclajeSuperior { 
         get { return anchorUp; }
         set { anchorUp = value; } 
@@ -36,6 +40,8 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
 
     public void Shoot()
     {
+        if (!canShoot) return; // Si no puede disparar, sal del método
+
         // Establecer la dirección de movimiento de las balas basada en la dirección del sombrero
         Vector3 direction = Vector3.zero;
         // Determinar la dirección de disparo y el desplazamiento en el eje y
@@ -45,28 +51,28 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
         {
             case Direction.UP:
                 direction = Vector3.up;
-                offset = new Vector3(0.5f, 0f, 0f);
+                offset = new Vector3(0.3f, 0f, 0f);
                 //pAnimator.Play("Hat_Noble_Up");
                 Debug.Log("Sombrero dispara arriba");
                 InstantiateBullet(firePointUp, direction, offset);
                 break;
             case Direction.DOWN:
                 direction = Vector3.down;
-                offset = new Vector3(-0.5f, 0f, 0f);
+                offset = new Vector3(-0.3f, 0f, 0f);
                 //pAnimator.Play("Hat_Noble_Down");
                 Debug.Log("Sombrero dispara abajo");
                 InstantiateBullet(firePointDown, direction, offset);
                 break;
             case Direction.RIGHT:
                 direction = Vector3.right;
-                offset = new Vector3(0f, 0.5f, 0f);
+                offset = new Vector3(0f, 0.3f, 0f);
                 //pAnimator.Play("Hat_Noble_Right");
                 Debug.Log("Sombrero dispara derecha");
                 InstantiateBullet(firePointRight, direction, offset);
                 break;
             case Direction.LEFT:
                 direction = Vector3.left;
-                offset = new Vector3(0f, -0.5f, 0f);
+                offset = new Vector3(0f, -0.3f, 0f);
                 //pAnimator.Play("Hat_Noble_Left");
                 Debug.Log("Sombrero dispara izquierda");
                 InstantiateBullet(firePointLeft, direction, offset);
@@ -76,6 +82,14 @@ public class PruebaSombreroCopa : MonoBehaviour, ISombreros
                 Debug.LogWarning("La dirección del sombrero no está definida. No se puede disparar.");
                 break;
         }
+
+        canShoot = false; // Desactivar disparo temporalmente
+        Invoke("ActivateShoot", delay); // Invocar método para activar el disparo después del delay
+    }
+
+    void ActivateShoot()
+    {
+        canShoot = true; // Volver a activar el disparo
     }
 
     void InstantiateBullet(Transform firePoint, Vector3 direction, Vector3 offset)
