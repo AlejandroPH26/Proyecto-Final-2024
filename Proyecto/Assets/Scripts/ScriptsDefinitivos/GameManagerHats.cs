@@ -87,8 +87,9 @@ public class GameManagerHats : MonoBehaviour
                 vidas = 0;
             }
             ContadorVidas.text = vidas.ToString();
-            jugador.ActivarParpadeo();
             Invulnerabilidad = true;
+            // Llama al método para cambiar el color del jugador tres veces durante el intervalo de DelayInvulnerabilidad
+            StartCoroutine(CambiarColorJugadorDuranteDelay());
             Invoke("DesactivarInvulnerabilidad", DelayInvulnerabilidad);
             UIvidas();
         }
@@ -141,5 +142,20 @@ public class GameManagerHats : MonoBehaviour
     public void DesactivarInvulnerabilidad()
     {
         Invulnerabilidad = false;
+        Debug.Log("Ya no es invulnerable 1");
+    }
+
+    // Cambia el color del jugador entre blanco y rojo tres veces durante el intervalo de DelayInvulnerabilidad
+    IEnumerator CambiarColorJugadorDuranteDelay()
+    {
+        Color rojo = new Color(1f, 0.675f, 0.675f); // Define el color rojo en formato RGB
+        for (int i = 0; i < 3; i++) // Repite el proceso tres veces
+        {
+            jugador.CambiarColor(rojo); // Cambia el color del jugador y sus hijos a rojo
+            yield return new WaitForSeconds(DelayInvulnerabilidad / 6f); // Espera un tiempo determinado
+            jugador.CambiarColor(Color.white); // Cambia el color del jugador y sus hijos a blanco
+            yield return new WaitForSeconds(DelayInvulnerabilidad / 6f); // Espera otro tiempo determinado
+        }
+        jugador.CambiarColor(Color.white); // Asegura que el color final sea blanco
     }
 }
