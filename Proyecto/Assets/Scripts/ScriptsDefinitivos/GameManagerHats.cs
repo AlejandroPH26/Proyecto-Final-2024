@@ -15,6 +15,8 @@ public class GameManagerHats : MonoBehaviour
     public TextMeshProUGUI ContadorVidas;
     public bool Invulnerabilidad = false;
     public int DelayInvulnerabilidad = 3;
+    public MusicManager mm;
+    public AudioClip dañoJugador;
 
     //VIDAS
     public GameObject[] spritesVidas;
@@ -37,6 +39,7 @@ public class GameManagerHats : MonoBehaviour
     void Start()
     {
        jugador = FindObjectOfType<JugadorV1>();
+       mm = MusicManager.instance;
     }
 
     // Update is called once per frame
@@ -82,6 +85,7 @@ public class GameManagerHats : MonoBehaviour
         if (!Invulnerabilidad)
         {
             vidas--;
+            mm.PlaySFX(dañoJugador);
             if (vidas <= 0)
             {
                 vidas = 0;
