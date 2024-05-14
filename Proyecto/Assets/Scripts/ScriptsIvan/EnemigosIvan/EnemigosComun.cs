@@ -6,7 +6,6 @@ public class EnemigosComun : MonoBehaviour
 {
     public int vidaActual;
     public int vidaMax;
-    public int vidaPerdida;
 
     public bool activo = true;
     public float TCambioColor = 0.1f;
@@ -39,30 +38,15 @@ public class EnemigosComun : MonoBehaviour
    
     {
         vidaActual = vidaActual - cantidad;
-    }
+        CambiarColor(colorDaño);
+        // Debug.Log("DañoRecibido");
 
-    private void OnCollisionEnter2D(Collision2D collision)
-   
-    {
-        if (collision.gameObject.CompareTag("BalaJugador"))
+        if (vidaActual <= 0)
         {
-            CambiarColor(colorDaño);
-
-            Debug.Log("DañoRecibido");
-
-            DañoRecibido(vidaPerdida);
-
-            Destroy(collision.gameObject); // Destruye la bala 
-
-
-            if (vidaActual <= 0)
-            {
-                Muerte();
-            }
-
-            StartCoroutine(RevertirColorDespuesDeTiempo(TCambioColor)); // Llamo a la co-rutina para devolver el color original
-
+            Muerte();
         }
+
+        StartCoroutine(RevertirColorDespuesDeTiempo(TCambioColor)); // Llamo a la co-rutina para devolver el color original
     }
 
     IEnumerator RevertirColorDespuesDeTiempo(float tiempo) // Co-rutina para devolver el color original al enemigo
