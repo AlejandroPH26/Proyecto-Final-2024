@@ -28,6 +28,8 @@ public class EMurcielagoPrueba : MonoBehaviour
     private EnemigosComun enemy; //Referencia al script EnemigosComun
 
     private GameManagerHats gm;
+    public MusicManager mm;
+    public AudioClip disparoMurcielago;
 
     void Start()
     {
@@ -44,6 +46,8 @@ public class EMurcielagoPrueba : MonoBehaviour
         enemy = GetComponent<EnemigosComun>();
 
         gm = GameManagerHats.instance;
+
+        mm = MusicManager.instance;
     }
 
     // Update is called once per frame
@@ -113,6 +117,7 @@ public class EMurcielagoPrueba : MonoBehaviour
                 {
                     animator.SetBool("EstaAtacando", true); // Activo la animacion de atacar atraves de un bool creado en el animator
                     Disparar();
+                    mm.PlaySFX(disparoMurcielago);
                     tiempoUltimoDisparo = Time.time; // Actualiza el tiempo del último disparo
                 }
                 rb.velocity = Vector2.zero; // Detiene el movimiento del murciélago cuando dispara

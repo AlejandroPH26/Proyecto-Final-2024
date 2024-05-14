@@ -106,6 +106,8 @@ MonoBehaviour:
   player: {fileID: 0}
   RangoMin: 6
   animator: {fileID: 4587325551668925800}
+  mm: {fileID: 0}
+  disparoBorracho: {fileID: 8300000, guid: e0f4c15cd69eb074b9239dc586242a4e, type: 3}
   canShoot: 1
 --- !u!114 &-9061386184882647149
 MonoBehaviour:

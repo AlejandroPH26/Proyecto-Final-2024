@@ -137,6 +137,8 @@ MonoBehaviour:
   delayDisparo: 2
   "tiempoUltimoDa\xF1o": 0
   TieneVision: 0
+  mm: {fileID: 0}
+  disparoMurcielago: {fileID: 8300000, guid: e0f4c15cd69eb074b9239dc586242a4e, type: 3}
 --- !u!114 &-1855311324614835739
 MonoBehaviour:
   m_ObjectHideFlags: 0

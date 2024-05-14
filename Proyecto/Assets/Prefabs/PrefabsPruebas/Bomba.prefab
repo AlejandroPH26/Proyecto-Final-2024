@@ -103,6 +103,8 @@ MonoBehaviour:
   destruyeBomba: 0
   bAnimator: {fileID: 0}
   bombaCollider: {fileID: 0}
+  mm: {fileID: 0}
+  SonidoExplosion: {fileID: 8300000, guid: e0f4c15cd69eb074b9239dc586242a4e, type: 3}
 --- !u!58 &2332388756210603888
 CircleCollider2D:
   m_ObjectHideFlags: 0

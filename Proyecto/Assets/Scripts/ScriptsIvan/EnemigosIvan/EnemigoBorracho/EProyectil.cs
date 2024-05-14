@@ -14,6 +14,10 @@ public class EProyectil : MonoBehaviour
     private GameManagerHats gm;
 
     public float speed;
+
+    public MusicManager mm;
+
+    public AudioClip rompeDisparoBorracho;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -42,14 +46,14 @@ public class EProyectil : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstaculo") || collision.gameObject.CompareTag("Pared"))
         {
             Animator.Play("BOTTLE_BREAK");
-            
+            mm.PlaySFX(rompeDisparoBorracho);
         }
 
         else if (collision.gameObject.CompareTag("Player"))
         {
             gm.RestarVidas(); // Llamada al metodo RestarVidas del game manager
             Animator.Play("BOTTLE_BREAK");
-                      
+            mm.PlaySFX(rompeDisparoBorracho);             
         }
     }
 
