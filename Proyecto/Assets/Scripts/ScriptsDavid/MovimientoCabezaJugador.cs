@@ -20,6 +20,8 @@ public class MovimientoCabezaJugador : MonoBehaviour
     public Transform GameObjectRight;
     public Transform GameObjectDown;
     public Renderer sprite;
+    public MusicManager mm;
+    public AudioClip sDisparo;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,8 @@ public class MovimientoCabezaJugador : MonoBehaviour
         cAnimator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
         gm = GameManagerHats.instance;
-    }
+        mm = MusicManager.instance;
+}
 
     // Update is called once per frame
     void Update()
@@ -87,6 +90,7 @@ public class MovimientoCabezaJugador : MonoBehaviour
                 // A esa BalaJugador le asignamos la dirección (la de la cabeza)
                 bullet.asignarDireccion(dirCabeza);
                 // Desactivar el disparo (p.ej. booleano canShoot)
+                mm.PlaySFX(sDisparo);
                 canShoot = false;
                 isShooting = true;
                 // Hacer un invoke para volver a activar canShoot en un tiempo p.ej. delayDisparo)
@@ -100,7 +104,7 @@ public class MovimientoCabezaJugador : MonoBehaviour
                 BalaJugador bullet = bala.GetComponent<BalaJugador>();
                 // A esa BalaJugador le asignamos la dirección (la de la cabeza)
                 bullet.asignarDireccion(dirCabeza);
-
+                mm.PlaySFX(sDisparo);
                 // Desactivar el disparo (p.ej. booleano canShoot)
                 canShoot = false;
                 isShooting = true;
@@ -115,7 +119,7 @@ public class MovimientoCabezaJugador : MonoBehaviour
                 BalaJugador bullet = bala.GetComponent<BalaJugador>();
                 // A esa BalaJugador le asignamos la dirección (la de la cabeza)
                 bullet.asignarDireccion(dirCabeza);
-
+                mm.PlaySFX(sDisparo);
                 // Desactivar el disparo (p.ej. booleano canShoot)
                 canShoot = false;
                 isShooting = true;
@@ -130,7 +134,7 @@ public class MovimientoCabezaJugador : MonoBehaviour
                 BalaJugador bullet = bala.GetComponent<BalaJugador>();
                 // A esa BalaJugador le asignamos la dirección (la de la cabeza)
                 bullet.asignarDireccion(dirCabeza);
-
+                mm.PlaySFX(sDisparo);
                 // Desactivar el disparo (p.ej. booleano canShoot)
                 canShoot = false;
                 isShooting = true;

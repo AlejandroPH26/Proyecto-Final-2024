@@ -10,12 +10,15 @@ public class Bombas : MonoBehaviour
     private bool segundoFrame = false;
     public Animator bAnimator;
     public CircleCollider2D bombaCollider;
+    public MusicManager mm;
+    public AudioClip SonidoExplosion;
     // Start is called before the first frame update
     void Start()
     {
         bAnimator = gameObject.GetComponent<Animator>();
         bombaCollider = gameObject.GetComponent<CircleCollider2D>();
         gm = GameManagerHats.instance;
+        mm = MusicManager.instance;
     }
 
     // Update is called once per frame
@@ -32,7 +35,7 @@ public class Bombas : MonoBehaviour
             bombaCollider.enabled = true;
             destruyeBomba = true;
             GameObject Explosion = Instantiate(prefabExplosion, transform.position, Quaternion.identity);
-        // Particulas
+            mm.PlaySFX(SonidoExplosion);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

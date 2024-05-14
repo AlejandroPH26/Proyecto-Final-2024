@@ -11,9 +11,10 @@ public class EBorracho : MonoBehaviour
     public float RangoMin = 8;
 
     public Animator animator;
-   
-   
-   
+    public MusicManager mm;
+    public AudioClip disparoBorracho;
+
+
 
     public bool canShoot = true;
 
@@ -22,7 +23,7 @@ public class EBorracho : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<JugadorV1>();
-           
+        mm = MusicManager.instance; 
     }
   
     void Update()
@@ -32,7 +33,8 @@ public class EBorracho : MonoBehaviour
 
     public void shoot() // Se llama desde el animator 
     {          
-            Instantiate(bullet, bulletPos.position, Quaternion.identity);      
+            Instantiate(bullet, bulletPos.position, Quaternion.identity);
+            mm.PlaySFX(disparoBorracho);
     }
     
     void Rango()

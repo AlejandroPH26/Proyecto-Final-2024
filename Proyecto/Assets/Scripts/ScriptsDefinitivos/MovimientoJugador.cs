@@ -21,6 +21,8 @@ public class MovimientoJugador : MonoBehaviour
     public Animator pAnimator;
     private bool isMoving = false;
     private Rigidbody2D rb;
+    public MusicManager mm;
+    public AudioClip pickUp;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,7 @@ public class MovimientoJugador : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         cabeza = GetComponentInChildren<MovimientoCabezaJugador>();
         gm = GameManagerHats.instance;
+        mm = MusicManager.instance;
     }
 
     // Update is called once per frame
@@ -143,11 +146,13 @@ public class MovimientoJugador : MonoBehaviour
         {
             Destroy(collision.gameObject);
             gm.SumarVidas();
+            mm.PlaySFX(pickUp);
         }
         if (collision.tag == "BombaItem")
         {
             Destroy(collision.gameObject);
             gm.SumarBombas();
+            mm.PlaySFX(pickUp);
         }
         if (collision.tag == "Enemigo")
         {
