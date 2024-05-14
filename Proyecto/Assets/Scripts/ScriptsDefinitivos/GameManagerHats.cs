@@ -148,15 +148,14 @@ public class GameManagerHats : MonoBehaviour
     // Cambia el color del jugador entre blanco y rojo tres veces durante el intervalo de DelayInvulnerabilidad
     IEnumerator CambiarColorJugadorDuranteDelay()
     {
-        for (int i = 0; i < 3; i++)
+        Color rojo = new Color(1f, 0.675f, 0.675f); // Define el color rojo en formato RGB
+        for (int i = 0; i < 3; i++) // Repite el proceso tres veces
         {
-            jugador.CambiarColorSprite(true); // Cambia a rojo
-            yield return new WaitForSeconds(DelayInvulnerabilidad / 6f);
-            jugador.CambiarColorSprite(false); // Cambia a blanco
-            yield return new WaitForSeconds(DelayInvulnerabilidad / 6f);
+            jugador.CambiarColor(rojo); // Cambia el color del jugador y sus hijos a rojo
+            yield return new WaitForSeconds(DelayInvulnerabilidad / 6f); // Espera un tiempo determinado
+            jugador.CambiarColor(Color.white); // Cambia el color del jugador y sus hijos a blanco
+            yield return new WaitForSeconds(DelayInvulnerabilidad / 6f); // Espera otro tiempo determinado
         }
-        Debug.Log("Ya no es invulnerable 2");
-        // Asegura que el color final sea blanco
-        jugador.CambiarColorSprite(false);
+        jugador.CambiarColor(Color.white); // Asegura que el color final sea blanco
     }
 }

@@ -25,8 +25,8 @@ public class JugadorV1 : MonoBehaviour
     public Animator pAnimator;
     private bool isMoving = false;
 
-    public int vidaActual;
-    public int vidaMax = 100;
+    // public int vidaActual;
+    // public int vidaMax = 100;
 
     // Agrega una variable para el tiempo que el SpriteRenderer debe estar activo
     public float activationTime;
@@ -52,7 +52,7 @@ public class JugadorV1 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();                           // Obtener el Rigidbody2D del jugador
         cameraManager = FindObjectOfType<CameraManager>();
         sombreros = GetComponentsInChildren<ISombreros>().ToList();
-        vidaActual = vidaMax;
+        // vidaActual = vidaMax;
         activationTime = gm.DelayInvulnerabilidad;
         initialSpeed = speed;
 
@@ -278,6 +278,20 @@ public class JugadorV1 : MonoBehaviour
         Debug.Log(n.ToString() + " Sombreros");
         // Verificar si hay menos de un sombrero en la lista
         if (n <= 1)
+        {
+            // Obtener la posicion de anchorInitial
+            Vector3 anchorInitialPosition = anchorInitial.position;
+
+            // Iterar a traves de los sombreros desde el segundo hasta el ultimo
+            for (int i = 0; i < n; i++)
+            {
+                // Obtener el transform del sombrero actual
+                Transform sombreroTransform = sombreros[i].gameObject.transform;
+
+                // Establecer la posicion del sombrero actual en la posicion de anchorInitial
+                sombreroTransform.position = anchorInitialPosition;
+            }
+        }
         // Verificar si hay al menos dos sombreros en la lista
         if (n >= 2)
         {
@@ -391,7 +405,6 @@ public class JugadorV1 : MonoBehaviour
     //Codigo Ivan (Vida y muerte del jugador), (provisional)
     public void DamageTaken()
     {
-
         if (gm.vidas <= 0)
         {
             MuerteJugador();
@@ -401,21 +414,37 @@ public class JugadorV1 : MonoBehaviour
 
     private void MuerteJugador()
     {
-            pAnimator.Play("Anim_Muerte");
-            Debug.Log("Se ha muerto");             
+        // AUDIO DE MUERTE
+
+        pAnimator.Play("Anim_Muerte");
+        Debug.Log("Se ha muerto");
+        // Elimina todos los sombreros de la lista
+        foreach (ISombreros sombrero in sombreros)
+        {
+            // Destruye el GameObject asociado al sombrero
+            Destroy(sombrero.gameObject);
+        }
+
+        // Limpia la lista de sombreros
+        sombreros.Clear();
     }
 
     // Cambia el color del SpriteRenderer a blanco o rojo
-    public void CambiarColorSprite(bool isRed)
+    public void CambiarColor(Color color)
     {
-        if (isRed)
+        // Verifica si el jugador está vivo antes de cambiar el color
+        if (gm.vidas > 0)
         {
-            rbSprite.color = Color.red;
-        }
-        else
-        {
-            rbSprite.color = Color.white;
+            rbSprite.color = color; // Cambia el color del jugador
+                                    // Obtiene todos los SpriteRenderer de los hijos del jugador, incluyendo los hijos de los hijos
+            SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>(true);
+            foreach (SpriteRenderer renderer in spriteRenderers)
+            {
+                if (renderer != rbSprite) // Evita cambiar el color del jugador dos veces
+                {
+                    renderer.color = color; // Cambia el color de los hijos
+                }
+            }
         }
     }
-
 }
