@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BalaMurcielago : MonoBehaviour
 
-{
+{   // Estadisticas
     public float velocidad = 10f; // Velocidad de la bala
-    private Rigidbody2D rb; 
-    public JugadorV1 Player;
     public int Daño = 1;
+
+    //Variables externas
     private GameManagerHats gm;
+    public JugadorV1 Player;
+
+    //Variables internas
+    private Rigidbody2D rb; 
+    public Animator animator;
 
     void Start()
     {
@@ -17,6 +23,8 @@ public class BalaMurcielago : MonoBehaviour
      
         Player = FindObjectOfType<JugadorV1>();
         gm = GameManagerHats.instance;
+
+        animator = GetComponent<Animator>();
 
         Vector2 direccion = (Player.transform.position - transform.position).normalized;
         rb.velocity = direccion * velocidad;
@@ -28,59 +36,40 @@ public class BalaMurcielago : MonoBehaviour
         
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Pared") || collision.gameObject.CompareTag("Roca"))
-        {
-            Destroy(this.gameObject);
-        }
-
-        /*
-        else if (collision.gameObject.CompareTag("Player"))
-        {
-            Player.DamageTaken(Daño);
-            Destroy(this.gameObject);
-            //daño al jugador 
-         
-        }
-        */
-
-        else if(collision.gameObject.CompareTag("BalaJugador"))
-        {
-            Destroy(this.gameObject);
-            Destroy(collision.gameObject);
-        }
-    }
-
-
-    //Añadir al scrip de la bala jugador que si choca con un obejto con el tag bala.enemigo o .murcielago se destruye ambos objetos
-
-    // CODIGO DE PRUEBA ALEJANDRO
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
 
         if (collision.gameObject.CompareTag("Pared") || collision.gameObject.CompareTag("Roca"))
         {
-            Destroy(this.gameObject);
+            rb.velocity = Vector2.zero;
+            animator.Play("BAT_BULLET_DESTROY");
         }
 
         else if (collision.CompareTag("Player"))
         {
             // Acceder al GameManager y restarle vida al jugador
-            GameManagerHats.instance.RestarVidas();
+            rb.velocity = Vector2.zero;
             gm.RestarVidas();
-
-            // Destruir la bala enemiga cuando colisiona con el jugador
-            Destroy(gameObject);
+            animator.Play("BAT_BULLET_DESTROY");  // En el ultimo frame da la animación se llama al metodo DestruirObjeto;
+           
         }
 
         else if (collision.gameObject.CompareTag("BalaJugador"))
         {
-            Destroy(this.gameObject);
+            rb.velocity = Vector2.zero;
             Destroy(collision.gameObject);
+            animator.Play("BAT_BULLET_DESTROY");
         }
     }
+
+    public void DestruirObjeto()
+    {
+        Destroy(this.gameObject);
+    }
+
+    
 }
+
+
 

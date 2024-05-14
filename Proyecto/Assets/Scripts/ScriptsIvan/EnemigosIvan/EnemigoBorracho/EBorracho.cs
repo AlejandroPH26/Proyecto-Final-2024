@@ -38,14 +38,14 @@ public class EBorracho : MonoBehaviour
     void Rango()
     {
         float distancia = Vector2.Distance(transform.position, player.transform.position);
-        //Debug.Log(distancia);
+        Debug.Log(distancia);
 
         if (distancia < RangoMin)
         {
 
             if (canShoot == true)
             {
-                Debug.Log("Disparo");
+             
                 animator.Play("BORRACHO_ATTACK");
                 //Reproduce la animacion de disparo , en el ultimo frame de la animacion llamar a la variable canShoot y ponerla a true
                 
@@ -69,7 +69,7 @@ public class EBorracho : MonoBehaviour
     public void DelayShoot()
     {
         canShoot = false;
-        Invoke("EnableShoot", 3);
+        Invoke("EnableShoot", 1);
     }
 
   
