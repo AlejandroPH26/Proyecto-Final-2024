@@ -55,6 +55,13 @@ public class EProyectil : MonoBehaviour
             Animator.Play("BOTTLE_BREAK");
             mm.PlaySFX(rompeDisparoBorracho);             
         }
+
+        else if(collision.gameObject.CompareTag("BalaJugador"))
+        {
+            Animator.Play("BOTTLE_BREAK");
+            Destroy(collision.gameObject);
+        }
+
     }
 
     public void DestruirObjeto() // Se llama en el ultimo frame de la animacion BOTTLE_BREAK

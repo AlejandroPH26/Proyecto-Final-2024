@@ -640,8 +640,7 @@ MonoBehaviour:
   x: 0
   rbSprite: {fileID: 0}
   pAnimator: {fileID: 0}
-  vidaActual: 0
-  vidaMax: 100
+  activationTime: 0
   player: {fileID: 755966108}
   anchorInitial: {fileID: 563740704}
   teleportTargetTag: TeleportTarget
@@ -1816,6 +1815,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6665265687681318778, guid: ab9c8007b0373e64d804b929ca938080, type: 3}
   m_PrefabInstance: {fileID: 183422771}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2081767728
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -1475875439961107931, guid: 5c094c94f4c6130438a4ed4c4514bc33, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 949398952716087039, guid: 5c094c94f4c6130438a4ed4c4514bc33, type: 3}
+      propertyPath: m_Name
+      value: BalaMurcielago
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504368045408380368, guid: 5c094c94f4c6130438a4ed4c4514bc33, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.6401463
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504368045408380368, guid: 5c094c94f4c6130438a4ed4c4514bc33, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3421326
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504368045408380368, guid: 5c094c94f4c6130438a4ed4c4514bc33, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504368045408380368, guid: 5c094c94f4c6130438a4ed4c4514bc33, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504368045408380368, guid: 5c094c94f4c6130438a4ed4c4514bc33, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504368045408380368, guid: 5c094c94f4c6130438a4ed4c4514bc33, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504368045408380368, guid: 5c094c94f4c6130438a4ed4c4514bc33, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504368045408380368, guid: 5c094c94f4c6130438a4ed4c4514bc33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504368045408380368, guid: 5c094c94f4c6130438a4ed4c4514bc33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6504368045408380368, guid: 5c094c94f4c6130438a4ed4c4514bc33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5c094c94f4c6130438a4ed4c4514bc33, type: 3}
 --- !u!1 &2096366255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,14 +2023,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6113225044345388047, guid: fd5b82fd657595c45af13fb6de14937e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 6113225044345388047, guid: fd5b82fd657595c45af13fb6de14937e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 6297467288412213055, guid: fd5b82fd657595c45af13fb6de14937e, type: 3}
       propertyPath: m_Name
       value: IBorracho
@@ -2093,3 +2145,4 @@ SceneRoots:
   - {fileID: 513530252350024023}
   - {fileID: 18449152}
   - {fileID: 2138696732}
+  - {fileID: 2081767728}

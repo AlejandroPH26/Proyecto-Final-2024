@@ -16,32 +16,36 @@ public class ETopo2 : MonoBehaviour
 
     public JugadorV1 Player;
     private EnemigosComun enemy; //Referencia al script EnemigosComun
+    private Direction curDir;
 
     public Animator animator;
+
+    public GameManagerHats gm;
+
+    public bool puedeCambiarDireccion = true;
+    [SerializeField]
+    private float TiempoEntreCambio = 3f;
 
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         Player = FindObjectOfType<JugadorV1>(); // Busca el script del jugador 
-        enemy = GetComponent<EnemigosComun>();
 
-            if (Player != null)
-            {
+        if (Player != null)
+          
+        {
+            rb = GetComponent<Rigidbody2D>();   
+            gm = GameManagerHats.instance;
+            enemy = GetComponent<EnemigosComun>();
+            CambiarDireccion();
+            timer = cambiarDireccionTimer; // Inicializa el temporizador
+        }
 
-                CambiarDireccion();
-
-
-
-
-                timer = cambiarDireccionTimer; // Inicializa el temporizador
-
-            }
-
-            else if (Player = null)
-            {
-                rb.velocity = Vector2.zero;
-            }
+        else 
+           
+        {
+            rb.velocity = Vector2.zero;         
+        }
 
     }
 
@@ -111,14 +115,25 @@ public class ETopo2 : MonoBehaviour
         }
     }
 
+
+    // Crear Metodo Cambio de direccion aleatoria que pueda escoger todas menos la Actual
+    
+
+
+
+
+
     // Detecta colisiones con obstáculos, topes y paredes // Cambio on collision Enter por Stay
     void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Roca") || collision.gameObject.CompareTag("Enemigo") || collision.gameObject.CompareTag("Pared"))
         {
-            // Cambia la dirección de forma aleatoria entre los ejes X e Y, sin diagonales
-            CambiarDireccion();
-            Debug.Log("colisionDetectada");
+            
+                // Cambia la dirección de forma aleatoria entre los ejes X e Y, sin diagonales
+                CambiarDireccion();
+                // Debug.Log("colisionDetectada");
+            
+            
         }
 
        
@@ -128,12 +143,10 @@ public class ETopo2 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            CambiarDireccion();
-            // Referencia al gamemanager restarvida();
-            Debug.Log("DañoRecibidoJugador");
-
+            CambiarDireccion();      
+            gm.RestarVidas(); // Llamo al metodo restar vidas del gameManager
         }
     }
-  
+
 }
 

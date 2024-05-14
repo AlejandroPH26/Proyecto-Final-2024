@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -726354695
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1876987750, guid: 3780dc8ad00dd134da0a2ec87b6169d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -184,6 +184,10 @@ MonoBehaviour:
   vidaMax: 50
   vidaPerdida: 10
   activo: 1
+  TCambioColor: 0.2
+  rbSprite: {fileID: 0}
+  "colorDa\xF1o": {r: 0.9528302, g: 0.24719654, b: 0.24719654, a: 1}
+  colorOriginal: {r: 1, g: 1, b: 1, a: 0}
 --- !u!95 &4988359009963784137
 Animator:
   serializedVersion: 5
