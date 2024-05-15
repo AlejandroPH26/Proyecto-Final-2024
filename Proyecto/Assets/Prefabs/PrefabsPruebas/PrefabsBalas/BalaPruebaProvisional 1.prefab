@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3714738239566709184}
   - component: {fileID: 5940725673874261750}
+  - component: {fileID: 1150122963030514880}
   - component: {fileID: 2204165055469249601}
   - component: {fileID: 5609720420505081238}
-  - component: {fileID: 1150122963030514880}
   m_Layer: 11
   m_Name: BalaPruebaProvisional 1
   m_TagString: BalaJugador
@@ -87,6 +87,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1150122963030514880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883427944473689993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e518b0d065db3494097478b59fdd2915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dirBala: 0
+  speed: 5
+  damage: 30
 --- !u!50 &2204165055469249601
 Rigidbody2D:
   serializedVersion: 4
@@ -149,17 +164,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.12985578
---- !u!114 &1150122963030514880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1883427944473689993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e518b0d065db3494097478b59fdd2915, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dirBala: 0
-  speed: 5

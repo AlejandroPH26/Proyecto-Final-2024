@@ -9,6 +9,8 @@ public class BalaVagabundo : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2[] direcciones = { new Vector2(0, 1), new Vector2(0, -1), new Vector2(-1, 0), new Vector2(1, 0) };
 
+    public int damage = 20;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,5 +25,18 @@ public class BalaVagabundo : MonoBehaviour
         // que dirBala es int y no otro tipo de dato (int),
         // mutiplicarlo por speed para indicarle la velocidad
         rb.velocity = direcciones[(int)dirBala] * speed;
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemigo"))
+        {
+            EnemigosComun enemigo = collision.gameObject.GetComponent<EnemigosComun>();
+            if (enemigo != null)
+            {
+                enemigo.DañoRecibido(damage);
+            }
+            Destroy(this.gameObject); // Destruye la bala            
+        }
     }
 }

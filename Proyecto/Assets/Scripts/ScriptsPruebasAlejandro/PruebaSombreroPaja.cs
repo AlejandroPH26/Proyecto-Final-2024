@@ -119,12 +119,4 @@ public class PruebaSombreroPaja : MonoBehaviour, ISombreros
         // Aquí puedes realizar cualquier acción que necesites cuando el sombrero es recogido.
         Debug.Log("Sombrero Sheriff recogido por el jugador.");
     }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Reflejar la velocidad de la bala cuando colisiona con cualquier cosa
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        Vector2 reflection = Vector2.Reflect(rb.velocity, collision.contacts[0].normal);
-        rb.velocity = reflection;
-    }
 }

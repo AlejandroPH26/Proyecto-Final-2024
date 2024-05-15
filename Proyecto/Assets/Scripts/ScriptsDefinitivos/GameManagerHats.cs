@@ -9,7 +9,10 @@ public class GameManagerHats : MonoBehaviour
 {
     static public GameManagerHats instance;     // Se crea la instancia como variable
     static public JugadorV1 jugador;
-    public int vidas = 6;
+
+    public int vidasMaximas = 6; // Cambio: Se añade una nueva variable para la vida máxima
+    public int vidasActuales = 6; // Cambio: Se cambia el nombre de la variable vidas a vidasActuales
+
     public int bombas = 3;
     public TextMeshProUGUI ContadorBombas;
     public TextMeshProUGUI ContadorVidas;
@@ -71,12 +74,12 @@ public class GameManagerHats : MonoBehaviour
 
     public void SumarVidas()
     {
-        vidas++;
-        if (vidas > 6)
+        vidasActuales++; // Cambio: Se ajusta el incremento de vidas actuales
+        if (vidasActuales > vidasMaximas) // Cambio: Se compara con la nueva variable vidasMaximas
         {
-            vidas = 6;
+            vidasActuales = vidasMaximas; // Cambio: Se ajusta el límite de vidas actuales
         }
-        ContadorVidas.text = vidas.ToString();
+        ContadorVidas.text = vidasActuales.ToString();
         UIvidas();
 
     }
@@ -84,18 +87,28 @@ public class GameManagerHats : MonoBehaviour
     {
         if (!Invulnerabilidad)
         {
-            vidas--;
+            vidasActuales--; // Cambio: Se ajusta la disminución de vidas actuales
             mm.PlaySFX(dañoJugador);
-            if (vidas <= 0)
+            if (vidasActuales <= 0)
             {
-                vidas = 0;
+                vidasActuales = 0;
             }
-            ContadorVidas.text = vidas.ToString();
+            ContadorVidas.text = vidasActuales.ToString();
             Invulnerabilidad = true;
             // Llama al método para cambiar el color del jugador tres veces durante el intervalo de DelayInvulnerabilidad
             StartCoroutine(CambiarColorJugadorDuranteDelay());
             Invoke("DesactivarInvulnerabilidad", DelayInvulnerabilidad);
             UIvidas();
+        }
+    }
+
+    public void ReducirVidaMaxima()
+    {
+        vidasMaximas--; // Reducir la vida máxima en un punto
+        if (vidasActuales > vidasMaximas)
+        {
+            vidasActuales = vidasMaximas; // Ajustar las vidas actuales si exceden la nueva máxima
+            ContadorVidas.text = vidasActuales.ToString(); // Actualizar el texto de las vidas en el UI
         }
     }
 
@@ -111,14 +124,10 @@ public class GameManagerHats : MonoBehaviour
             }
             else
             {
-
                 bomba.SetActive(false);
-
             }
-
             i++;
        }
-
     }
 
     public void UIvidas()
@@ -127,20 +136,16 @@ public class GameManagerHats : MonoBehaviour
 
         foreach (GameObject vida in spritesVidas)
         {
-            if (vidas >= i) //esta activa
+            if (vidasActuales >= i) //esta activa
             {
                 vida.SetActive(true);
             }
             else
             {
-
                 vida.SetActive(false);
-
             }
-
             i++;
         }
-
     }
 
     public void DesactivarInvulnerabilidad()

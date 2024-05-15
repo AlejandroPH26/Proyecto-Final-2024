@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 219526388833465740}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.0300001, y: 0.31900007, z: 0}
+  m_LocalPosition: {x: 1.0300001, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 2683793883111101231}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1100001, y: 0.31900007, z: 0}
+  m_LocalPosition: {x: -1.1100001, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -72,9 +72,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1251099653561594326}
   - component: {fileID: 3224128193301394285}
+  - component: {fileID: 2033892121573263901}
   - component: {fileID: 8399786197397133998}
   - component: {fileID: 9029137270402108100}
-  - component: {fileID: 2033892121573263901}
   m_Layer: 0
   m_Name: Hat_Strawhat_Down
   m_TagString: Sombrero
@@ -154,6 +154,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2033892121573263901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3566856529050457694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60198721a790e9a46868ea7a07a000f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1883427944473689993, guid: 81c1910330ddf884f8de21fdf35e222a, type: 3}
+  bulletSpeed: 10
+  firePointDown: {fileID: 5487300429961080107}
+  firePointUp: {fileID: 7259240279206891641}
+  firePointRight: {fileID: 1375847033914117674}
+  firePointLeft: {fileID: 1253023595049576138}
+  anchorUp: {fileID: 3032998337579635848}
+  delay: 1
+  pAnimator: {fileID: 0}
+  bulletLifetime: 2
+  hatDir: 0
 --- !u!61 &8399786197397133998
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -220,28 +243,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2033892121573263901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3566856529050457694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60198721a790e9a46868ea7a07a000f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1883427944473689993, guid: 81c1910330ddf884f8de21fdf35e222a, type: 3}
-  bulletSpeed: 5
-  firePointDown: {fileID: 5487300429961080107}
-  firePointUp: {fileID: 7259240279206891641}
-  firePointRight: {fileID: 1375847033914117674}
-  firePointLeft: {fileID: 1253023595049576138}
-  anchorUp: {fileID: 3032998337579635848}
-  pAnimator: {fileID: 0}
-  bulletLifetime: 2
-  hatDir: 0
 --- !u!1 &5512214447386092078
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,6 +23,8 @@ public class MovimientoCabezaJugador : MonoBehaviour
     public MusicManager mm;
     public AudioClip sDisparo;
 
+    public float bulletLifetime = 2f; // Tiempo de vida de las balas
+
     // Start is called before the first frame update
     void Start()
     {
@@ -95,6 +97,8 @@ public class MovimientoCabezaJugador : MonoBehaviour
                 isShooting = true;
                 // Hacer un invoke para volver a activar canShoot en un tiempo p.ej. delayDisparo)
                 Invoke("activaDisparo", delay);
+                // Destruir la bala después de un cierto tiempo
+                Destroy(bala, bulletLifetime); // Aquí se destruye la bala después de bulletLifetime segundos
             }
             else if (dirCabeza == Direction.LEFT)
             {
@@ -110,6 +114,8 @@ public class MovimientoCabezaJugador : MonoBehaviour
                 isShooting = true;
                 // Hacer un invoke para volver a activar canShoot en un tiempo p.ej. delayDisparo)
                 Invoke("activaDisparo", delay);
+                // Destruir la bala después de un cierto tiempo
+                Destroy(bala, bulletLifetime); // Aquí se destruye la bala después de bulletLifetime segundos
             }
             else if (dirCabeza == Direction.RIGHT)
             {
@@ -125,6 +131,8 @@ public class MovimientoCabezaJugador : MonoBehaviour
                 isShooting = true;
                 // Hacer un invoke para volver a activar canShoot en un tiempo p.ej. delayDisparo)
                 Invoke("activaDisparo", delay);
+                // Destruir la bala después de un cierto tiempo
+                Destroy(bala, bulletLifetime); // Aquí se destruye la bala después de bulletLifetime segundos
             }
             else if (dirCabeza == Direction.DOWN)
             {
@@ -140,13 +148,17 @@ public class MovimientoCabezaJugador : MonoBehaviour
                 isShooting = true;
                 // Hacer un invoke para volver a activar canShoot en un tiempo p.ej. delayDisparo)
                 Invoke("activaDisparo", delay);
+                // Destruir la bala después de un cierto tiempo
+                Destroy(bala, bulletLifetime); // Aquí se destruye la bala después de bulletLifetime segundos
             }
         }
     }
+
    private void activaDisparo()
     {
         canShoot = true;
     }
+
    //Metodo con dirCabeza para usarlo en el script de movimiento y orientar la cabeza en la dirección en la que se anda
    public void orientarCabeza(Direction dir)
     {
@@ -169,9 +181,10 @@ public class MovimientoCabezaJugador : MonoBehaviour
             cAnimator.Play("WalkDown_Cabeza");
         }
     }
+
     public void DestruirCabeza()
     {
-        if(gm.vidas <= 0)
+        if(gm.vidasActuales <= 0)
         {
             Destroy(gameObject);
             Debug.Log("Se destruye la cabeza");

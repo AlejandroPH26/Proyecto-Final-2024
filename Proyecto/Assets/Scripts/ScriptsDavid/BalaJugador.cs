@@ -6,17 +6,16 @@ using static Unity.Burst.Intrinsics.X86;
 public class BalaJugador : MonoBehaviour
 {
     public Direction dirBala;
-    public int damage = 20;
     public float speed = 3f;
     private Rigidbody2D rb;
     private Vector2[] direcciones = {new Vector2(0,1), new Vector2(0,-1), new Vector2(-1,0), new Vector2(1,0)};
-    public EnemigosComun eComun;
+
+    public int damage = 20;
 
     // Start is called before the first frame update
     void Awake()
     { 
         rb = GetComponent<Rigidbody2D>();
-        eComun = FindObjectOfType<EnemigosComun>();
     }
 
     public void asignarDireccion(Direction dir)
@@ -35,8 +34,11 @@ public class BalaJugador : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemigo"))
         {
-            
-            eComun.DañoRecibido(damage);
+            EnemigosComun enemigo = collision.gameObject.GetComponent<EnemigosComun>();
+            if (enemigo != null)
+            {
+                enemigo.DañoRecibido(damage);
+            }
             Destroy(this.gameObject); // Destruye la bala            
         }
     }

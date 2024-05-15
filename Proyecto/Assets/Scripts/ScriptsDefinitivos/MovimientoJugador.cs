@@ -161,7 +161,7 @@ public class MovimientoJugador : MonoBehaviour
     }
     private void MuerteJugador()
     {
-        if (gm.vidas <= 0)
+        if (gm.vidasActuales <= 0)
         {
             pAnimator.Play("Anim_Muerte");
         }

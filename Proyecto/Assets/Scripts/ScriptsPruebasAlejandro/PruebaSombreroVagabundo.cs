@@ -35,19 +35,6 @@ public class PruebaSombreroVagabundo : MonoBehaviour, ISombreros
         gm = GetComponent<GameManagerHats>();
     }
 
-    // NO FUNCIONA
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            gm.RestarVidas();
-            // Reducir la vida máxima del jugador en 1 unidad
-            gm.vidas--;
-            // Actualizar el contador de vidas en el GameManagerHats
-            gm.ContadorVidas.text = gm.vidas.ToString();
-        }
-    }
-
     public void Shoot()
     {
         if (!canShoot) return; // Si no puede disparar, sal del método

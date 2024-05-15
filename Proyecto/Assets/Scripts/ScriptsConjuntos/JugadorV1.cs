@@ -25,9 +25,6 @@ public class JugadorV1 : MonoBehaviour
     public Animator pAnimator;
     private bool isMoving = false;
 
-    // public int vidaActual;
-    // public int vidaMax = 100;
-
     // Agrega una variable para el tiempo que el SpriteRenderer debe estar activo
     public float activationTime;
     private bool isActivating = false;
@@ -38,7 +35,6 @@ public class JugadorV1 : MonoBehaviour
     public string currentRoomTag = "SalaActual";
 
     private bool hatInFrame = false;
-
 
     private CameraManager cameraManager;
 
@@ -235,7 +231,20 @@ public class JugadorV1 : MonoBehaviour
                 sombreroCollider.enabled = false;
             }
 
-            
+            // Obtener el componente ISombreros del sombrero
+            ISombreros sombreroComponent = sombrero.GetComponent<ISombreros>();
+
+            if (sombreroComponent != null)
+            {
+                // Verificar si el sombrero recogido es el Sombrero Vagabundo
+                if (sombreroComponent.GetType() == typeof(PruebaSombreroVagabundo))
+                {
+                    // Llamar al método RestarVidas del GameManagerHats
+                    gm.RestarVidas();
+                    gm.ReducirVidaMaxima();
+                }
+            }
+
             sombrero.transform.SetParent(gameObject.transform); // Hacer que el sombrero sea un hijo del jugador         
             sombreros.Add(sombrero.GetComponent<ISombreros>()); // Agregar el sombrero a la lista de sombreros del jugador           
             PosicionarSombreros();                              // Posicionar los sombreros uno sobre otro
@@ -249,9 +258,14 @@ public class JugadorV1 : MonoBehaviour
         // Verificar si el jugador colisionó con un botiquín
         if (other.CompareTag("Botiquin"))
         {
+            // Si las vidas actuales son iguales a la vida máxima, no recolectar el botiquín
+            if (gm.vidasActuales == gm.vidasMaximas)
+            {
+                return; // Salir del método sin recolectar el botiquín
+            }
+
             Debug.Log("Se ha chocado con un botiquin");
             Destroy(other.gameObject);
-
             gm.SumarVidas();
         }
         // Verificar si el jugador colisionó con una bomba
@@ -356,22 +370,22 @@ public class JugadorV1 : MonoBehaviour
         // Manejo de la entrada para disparar y asignar dirección a los sombreros
         Vector3 direction = Vector3.zero;
         // Establecer las direcciones de las teclas de disparo
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             direction = Vector3.up;
             SetDirectionForHats(Direction.UP);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
             direction = Vector3.down;
             SetDirectionForHats(Direction.DOWN);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             direction = Vector3.right;
             SetDirectionForHats(Direction.RIGHT);
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow))
         {
             direction = Vector3.left;
             SetDirectionForHats(Direction.LEFT);
@@ -405,7 +419,7 @@ public class JugadorV1 : MonoBehaviour
     //Codigo Ivan (Vida y muerte del jugador), (provisional)
     public void DamageTaken()
     {
-        if (gm.vidas <= 0)
+        if (gm.vidasActuales <= 0)
         {
             MuerteJugador();
             Debug.Log("Se destruye el cuerpo");
@@ -433,7 +447,7 @@ public class JugadorV1 : MonoBehaviour
     public void CambiarColor(Color color)
     {
         // Verifica si el jugador está vivo antes de cambiar el color
-        if (gm.vidas > 0)
+        if (gm.vidasActuales > 0)
         {
             rbSprite.color = color; // Cambia el color del jugador
                                     // Obtiene todos los SpriteRenderer de los hijos del jugador, incluyendo los hijos de los hijos

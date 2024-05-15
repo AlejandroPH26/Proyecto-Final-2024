@@ -42,40 +42,59 @@ public class PruebaSombreroPayaso : MonoBehaviour, ISombreros
     {
         if (!canShoot) return; // Si no puede disparar, sal del método
 
-        // Establecer la dirección de movimiento de las balas basada en la dirección del sombrero
         Vector3 direction = Vector3.zero;
+        // Determinar la dirección aleatoria de la bala
+        Vector3 ramdomDirection = Random.insideUnitCircle.normalized;
 
+        // Calcular el ángulo de disparo de la bala
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        /*
         switch (hatDir)
         {
             case Direction.UP:
                 direction = Vector3.up;
                 pAnimator.Play("Hat_Clown_Up");
-                Debug.Log("Sombrero dispara arriba");
-                InstantiateBullet(firePointUp, direction);
                 break;
             case Direction.DOWN:
                 direction = Vector3.down;
                 Debug.Log("Sombrero dispara abajo");
-                pAnimator.Play("Hat_Clown_Down");
-                InstantiateBullet(firePointDown, direction);
                 break;
             case Direction.RIGHT:
                 direction = Vector3.right;
                 Debug.Log("Sombrero dispara derecha");
-                pAnimator.Play("Hat_Clown_Right");
-                InstantiateBullet(firePointRight, direction);
                 break;
             case Direction.LEFT:
                 direction = Vector3.left;
                 Debug.Log("Sombrero dispara izquierda");
-                pAnimator.Play("Hat_Clown_Left");
-                InstantiateBullet(firePointLeft, direction);
                 break;
             default:
                 // Si la dirección no está definida, no disparamos
                 Debug.LogWarning("La dirección del sombrero no está definida. No se puede disparar.");
                 break;
         }
+        */
+
+        // Determinar la animación del sombrero según el ángulo de disparo de la bala
+        if ((angle >= 315 && angle <= 360) || (angle >= 0 && angle < 45))
+        {
+            pAnimator.Play("Hat_Clown_Right");
+        }
+        else if (angle >= 45 && angle < 135)
+        {
+            pAnimator.Play("Hat_Clown_Up");
+        }
+        else if (angle >= 135 && angle < 225)
+        {
+            pAnimator.Play("Hat_Clown_Left");
+        }
+        else if (angle >= 225 && angle < 315)
+        {
+            pAnimator.Play("Hat_Clown_Down");
+        }
+
+        // Instanciar la bala en la dirección aleatoria
+        InstantiateBullet(anchorUp, ramdomDirection);
 
         canShoot = false; // Desactivar disparo temporalmente
         Invoke("ActivateShoot", delay); // Invocar método para activar el disparo después del delay
