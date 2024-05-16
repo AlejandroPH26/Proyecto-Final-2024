@@ -114,11 +114,11 @@ public class GameManagerHats : MonoBehaviour
 
     public void UIbombas()
     {
-       int i = 0;
+       int o = 0;
 
        foreach(GameObject bomba in spritesBombas)
        {
-            if (bombas >= i) //esta activa
+            if (bombas >= o) //esta activa
             {
                 bomba.SetActive(true);
             }
@@ -126,7 +126,7 @@ public class GameManagerHats : MonoBehaviour
             {
                 bomba.SetActive(false);
             }
-            i++;
+            o++;
        }
     }
 
