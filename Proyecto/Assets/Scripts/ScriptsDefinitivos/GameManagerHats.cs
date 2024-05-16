@@ -132,11 +132,11 @@ public class GameManagerHats : MonoBehaviour
 
     public void UIvidas()
     {
-        int i = 0;
+        int a = 0;
 
         foreach (GameObject vida in spritesVidas)
         {
-            if (vidasActuales >= i) //esta activa
+            if (vidasActuales >= a) //esta activa
             {
                 vida.SetActive(true);
             }
@@ -144,7 +144,7 @@ public class GameManagerHats : MonoBehaviour
             {
                 vida.SetActive(false);
             }
-            i++;
+            a++;
         }
     }
 

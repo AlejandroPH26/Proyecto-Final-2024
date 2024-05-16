@@ -3211,7 +3211,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3291,40 +3290,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1127727175}
-  - {fileID: 1438878472}
+  - {fileID: 1983203442}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e945ea6ae2a335c40b38146b0235fd68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidas: 6
-  bombas: 3
-  ContadorBombas: {fileID: 0}
-  ContadorVidas: {fileID: 0}
-  Invulnerabilidad: 0
-  DelayInvulnerabilidad: 3
-  spritesVidas:
-  - {fileID: 26309262}
-  - {fileID: 1604642387}
-  - {fileID: 322377384}
-  - {fileID: 2114779560}
-  - {fileID: 378080333}
-  - {fileID: 2100702512}
-  spritesBombas:
-  - {fileID: 2067483415}
-  - {fileID: 882370407}
-  - {fileID: 282152254}
-  - {fileID: 468357419}
 --- !u!1 &545247299
 GameObject:
   m_ObjectHideFlags: 0
@@ -6018,7 +5986,7 @@ Transform:
   m_GameObject: {fileID: 1127727174}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.031966448, y: 0.103295505, z: 10.382446}
+  m_LocalPosition: {x: -0.10057029, y: 0.28410125, z: 0.19927692}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6028,7 +5996,7 @@ Transform:
   - {fileID: 2114779561}
   - {fileID: 378080334}
   - {fileID: 2100702513}
-  m_Father: {fileID: 519420032}
+  m_Father: {fileID: 1983203442}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1150075499
 GameObject:
@@ -6860,8 +6828,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438878471}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.06860384, y: 0.18080576, z: -10.183169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6869,7 +6837,7 @@ Transform:
   - {fileID: 882370408}
   - {fileID: 282152255}
   - {fileID: 468357421}
-  m_Father: {fileID: 519420032}
+  m_Father: {fileID: 1983203442}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1482945161
 GameObject:
@@ -9672,7 +9640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1956928074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10016,6 +9984,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967897540}
   m_CullTransparentMesh: 1
+--- !u!1 &1983203441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1983203442}
+  - component: {fileID: 1983203443}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1983203442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983203441}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.06860384, y: -0.18080576, z: 10.183169}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1127727175}
+  - {fileID: 1438878472}
+  m_Father: {fileID: 519420032}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1983203443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983203441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e945ea6ae2a335c40b38146b0235fd68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidasMaximas: 6
+  vidasActuales: 6
+  bombas: 3
+  ContadorBombas: {fileID: 0}
+  ContadorVidas: {fileID: 0}
+  Invulnerabilidad: 0
+  DelayInvulnerabilidad: 3
+  mm: {fileID: 0}
+  "da\xF1oJugador": {fileID: 0}
+  spritesVidas:
+  - {fileID: 26309262}
+  - {fileID: 1604642387}
+  - {fileID: 322377384}
+  - {fileID: 2114779560}
+  - {fileID: 378080333}
+  - {fileID: 2100702512}
+  spritesBombas:
+  - {fileID: 2067483415}
+  - {fileID: 882370407}
+  - {fileID: 282152254}
+  - {fileID: 468357419}
 --- !u!1 &1988418572
 GameObject:
   m_ObjectHideFlags: 0
