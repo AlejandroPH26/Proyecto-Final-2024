@@ -20,7 +20,6 @@ public class BalaPaja : MonoBehaviour
     public void asignarDireccion(Direction dir)
     {
         dirBala = dir;
-        rb.velocity = direcciones[(int)dirBala] * speed;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -31,10 +30,6 @@ public class BalaPaja : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        var firstContact = collision.contacts[0];
-        Vector2 newVelocity = Vector2.Reflect(rb.velocity, firstContact.normal);
-        rb.velocity = newVelocity;
 
         if (collision.gameObject.CompareTag("Enemigo"))
         {
