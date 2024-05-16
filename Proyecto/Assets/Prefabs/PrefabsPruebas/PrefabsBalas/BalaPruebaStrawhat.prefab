@@ -103,7 +103,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e2a23fd87af986742aa19d05bbbbecc7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -163,4 +163,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dirBala: 0
   speed: 10
+  rebotesBala: 3
   damage: 20
