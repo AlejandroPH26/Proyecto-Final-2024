@@ -12,6 +12,10 @@ public class BalaPaja : MonoBehaviour
 
     public int damage = 20;
 
+    // Referencia al prefab del sprite de destrucción
+    public GameObject spriteDestruccionPrefab;
+    public float tiempoDestruccionSprite = 0.1f;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -27,6 +31,7 @@ public class BalaPaja : MonoBehaviour
         rebotesBala--;
         if(rebotesBala <= 0)
         {
+            InstanciarSpriteDestruccion();
             Destroy(gameObject);
             return;
         }
@@ -38,7 +43,17 @@ public class BalaPaja : MonoBehaviour
             {
                 enemigo.DañoRecibido(damage);
             }
+            InstanciarSpriteDestruccion();
             Destroy(this.gameObject); // Destruye la bala            
         }        
+    }
+
+    private void InstanciarSpriteDestruccion()
+    {
+        if (spriteDestruccionPrefab != null)
+        {
+            GameObject spriteDestruccion = Instantiate(spriteDestruccionPrefab, transform.position, transform.rotation);
+            Destroy(spriteDestruccion, tiempoDestruccionSprite);
+        }
     }
 }

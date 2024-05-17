@@ -14,8 +14,8 @@ public class GameManagerHats : MonoBehaviour
     public int vidasActuales = 6; // Cambio: Se cambia el nombre de la variable vidas a vidasActuales
 
     public int bombas = 3;
-    public TextMeshProUGUI ContadorBombas;
-    public TextMeshProUGUI ContadorVidas;
+    // public TextMeshProUGUI ContadorBombas;
+    // public TextMeshProUGUI ContadorVidas;
     public bool Invulnerabilidad = false;
     public int DelayInvulnerabilidad = 3;
     public MusicManager mm;
@@ -26,6 +26,7 @@ public class GameManagerHats : MonoBehaviour
 
     //BOMBAS
     public GameObject[] spritesBombas;
+    public int MAX_BOMBAS = 3;
 
     private void Awake()
     {
@@ -43,33 +44,35 @@ public class GameManagerHats : MonoBehaviour
     {
        jugador = FindObjectOfType<JugadorV1>();
        mm = MusicManager.instance;
+       UIbombas();
+       UIvidas();
     }
 
     // Update is called once per frame
     void Update()
     {
-        UIvidas();
-        UIbombas();
+        // UIvidas();
+        // UIbombas();
     }
-   
+
     public void SumarBombas()
     {
         bombas++;
-        if (bombas > 10)
+        if (bombas > MAX_BOMBAS)
         {
-            bombas = 10;
+            bombas = MAX_BOMBAS;
         }
-            ContadorBombas.text = bombas.ToString();
+        UIbombas();
     }
 
     public void RestarBombas()
     {
         bombas--;
-        if (bombas <= 0)
+        if (bombas < 0)
         {
             bombas = 0;
         }
-        ContadorBombas.text = bombas.ToString();
+        UIbombas();
     }
 
     public void SumarVidas()
@@ -79,7 +82,7 @@ public class GameManagerHats : MonoBehaviour
         {
             vidasActuales = vidasMaximas; // Cambio: Se ajusta el límite de vidas actuales
         }
-        ContadorVidas.text = vidasActuales.ToString();
+        // ContadorVidas.text = vidasActuales.ToString();
         UIvidas();
 
     }
@@ -87,18 +90,16 @@ public class GameManagerHats : MonoBehaviour
     {
         if (!Invulnerabilidad)
         {
-            vidasActuales--; // Cambio: Se ajusta la disminución de vidas actuales
+            vidasActuales--;
             mm.PlaySFX(dañoJugador);
             if (vidasActuales <= 0)
             {
                 vidasActuales = 0;
             }
-            ContadorVidas.text = vidasActuales.ToString();
+            UIvidas();
             Invulnerabilidad = true;
-            // Llama al método para cambiar el color del jugador tres veces durante el intervalo de DelayInvulnerabilidad
             StartCoroutine(CambiarColorJugadorDuranteDelay());
             Invoke("DesactivarInvulnerabilidad", DelayInvulnerabilidad);
-            UIvidas();
         }
     }
 
@@ -108,17 +109,18 @@ public class GameManagerHats : MonoBehaviour
         if (vidasActuales > vidasMaximas)
         {
             vidasActuales = vidasMaximas; // Ajustar las vidas actuales si exceden la nueva máxima
-            ContadorVidas.text = vidasActuales.ToString(); // Actualizar el texto de las vidas en el UI
+            // ContadorVidas.text = vidasActuales.ToString(); // Actualizar el texto de las vidas en el UI
+            UIvidas();
         }
     }
 
     public void UIbombas()
     {
-       int o = 0;
+        int o = 0;
 
-       foreach(GameObject bomba in spritesBombas)
-       {
-            if (bombas >= o) //esta activa
+        foreach (GameObject bomba in spritesBombas)
+        {
+            if (bombas > o) // esta activa
             {
                 bomba.SetActive(true);
             }
@@ -127,7 +129,7 @@ public class GameManagerHats : MonoBehaviour
                 bomba.SetActive(false);
             }
             o++;
-       }
+        }
     }
 
     public void UIvidas()
@@ -136,7 +138,7 @@ public class GameManagerHats : MonoBehaviour
 
         foreach (GameObject vida in spritesVidas)
         {
-            if (vidasActuales >= a) //esta activa
+            if (vidasActuales > a) // esta activa
             {
                 vida.SetActive(true);
             }
@@ -166,6 +168,7 @@ public class GameManagerHats : MonoBehaviour
             yield return new WaitForSeconds(DelayInvulnerabilidad / 6f); // Espera otro tiempo determinado
         }
         jugador.CambiarColor(Color.white); // Asegura que el color final sea blanco
+        DesactivarInvulnerabilidad(); // Desactiva la invulnerabilidad al final del cambio de color
     }
 
 }
