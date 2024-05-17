@@ -41,6 +41,11 @@ public class BalaJugador : MonoBehaviour
             }
             Destroy(this.gameObject); // Destruye la bala            
         }
+
+        if (collision.gameObject.CompareTag("Pared"))
+        {
+            Destroy(this.gameObject); // Destruye la bala            
+        }
     }
 
 }

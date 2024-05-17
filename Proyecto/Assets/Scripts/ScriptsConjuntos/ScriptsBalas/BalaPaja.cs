@@ -39,6 +39,6 @@ public class BalaPaja : MonoBehaviour
                 enemigo.DañoRecibido(damage);
             }
             Destroy(this.gameObject); // Destruye la bala            
-        }
+        }        
     }
 }

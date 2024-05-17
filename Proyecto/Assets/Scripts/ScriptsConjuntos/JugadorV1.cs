@@ -76,7 +76,7 @@ public class JugadorV1 : MonoBehaviour
             pAnimator.Play("WalkUp_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.UP);
+                cabeza.OrientarCabeza(Direction.UP);
                 SetDirectionForHats(Direction.UP);
             }
 
@@ -88,7 +88,7 @@ public class JugadorV1 : MonoBehaviour
             pAnimator.Play("WalkUp_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.UP);
+                cabeza.OrientarCabeza(Direction.UP);
                 SetDirectionForHats(Direction.UP);
             }
         }
@@ -99,7 +99,7 @@ public class JugadorV1 : MonoBehaviour
             pAnimator.Play("WalkDown_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.DOWN);
+                cabeza.OrientarCabeza(Direction.DOWN);
                 SetDirectionForHats(Direction.DOWN);
             }
         }
@@ -110,7 +110,7 @@ public class JugadorV1 : MonoBehaviour
             pAnimator.Play("WalkDown_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.DOWN);
+                cabeza.OrientarCabeza(Direction.DOWN);
                 SetDirectionForHats(Direction.DOWN);
             }
         }
@@ -122,7 +122,7 @@ public class JugadorV1 : MonoBehaviour
             pAnimator.Play("WalkUp_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.UP);
+                cabeza.OrientarCabeza(Direction.UP);
                 SetDirectionForHats(Direction.UP);
             }
         }
@@ -133,7 +133,7 @@ public class JugadorV1 : MonoBehaviour
             pAnimator.Play("WalkDown_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.DOWN);
+                cabeza.OrientarCabeza(Direction.DOWN);
                 SetDirectionForHats(Direction.DOWN);
             }
         }
@@ -144,7 +144,7 @@ public class JugadorV1 : MonoBehaviour
             pAnimator.Play("WalkLeft_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.LEFT);
+                cabeza.OrientarCabeza(Direction.LEFT);
                 SetDirectionForHats(Direction.LEFT);
             }
         }
@@ -155,7 +155,7 @@ public class JugadorV1 : MonoBehaviour
             pAnimator.Play("WalkRight_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.RIGHT);
+                cabeza.OrientarCabeza(Direction.RIGHT);
                 SetDirectionForHats(Direction.RIGHT);
             }
 

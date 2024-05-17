@@ -49,7 +49,7 @@ public class MovimientoJugador : MonoBehaviour
             pAnimator.Play("WalkUp_Personaje");
             if(!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.UP);
+                cabeza.OrientarCabeza(Direction.UP);
             }
 
         }
@@ -60,7 +60,7 @@ public class MovimientoJugador : MonoBehaviour
             pAnimator.Play("WalkUp_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.UP);
+                cabeza.OrientarCabeza(Direction.UP);
             }
         }
         else if (Input.GetKey(moveDown) && Input.GetKey(moveLeft))// Diagonal arriba izquierda
@@ -70,7 +70,7 @@ public class MovimientoJugador : MonoBehaviour
             pAnimator.Play("WalkDown_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.DOWN);
+                cabeza.OrientarCabeza(Direction.DOWN);
             }
         }
         else if (Input.GetKey(moveDown) && Input.GetKey(moveRight))// Diagonal arriba izquierda
@@ -80,7 +80,7 @@ public class MovimientoJugador : MonoBehaviour
             pAnimator.Play("WalkDown_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.DOWN);
+                cabeza.OrientarCabeza(Direction.DOWN);
             }
         }
         else if (Input.GetKey(moveUp)) // Comprobamos que se está pulsando la tecla W
@@ -91,7 +91,7 @@ public class MovimientoJugador : MonoBehaviour
             pAnimator.Play("WalkUp_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.UP);
+                cabeza.OrientarCabeza(Direction.UP);
             }
         }
         else if (Input.GetKey(moveDown))
@@ -101,7 +101,7 @@ public class MovimientoJugador : MonoBehaviour
             pAnimator.Play("WalkDown_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.DOWN);
+                cabeza.OrientarCabeza(Direction.DOWN);
             }
         }
         else if (Input.GetKey(moveLeft))
@@ -111,7 +111,7 @@ public class MovimientoJugador : MonoBehaviour
             pAnimator.Play("WalkLeft_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.LEFT);
+                cabeza.OrientarCabeza(Direction.LEFT);
             }
         }
         else if (Input.GetKey(moveRight))
@@ -121,7 +121,7 @@ public class MovimientoJugador : MonoBehaviour
             pAnimator.Play("WalkRight_Personaje");
             if (!cabeza.isShooting)
             {
-                cabeza.orientarCabeza(Direction.RIGHT);
+                cabeza.OrientarCabeza(Direction.RIGHT);
             }
 
         } 
