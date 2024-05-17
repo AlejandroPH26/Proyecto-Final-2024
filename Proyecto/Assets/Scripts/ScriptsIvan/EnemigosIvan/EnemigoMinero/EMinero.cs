@@ -21,6 +21,9 @@ public class EMinero : MonoBehaviour
     // Animator
     private Animator animator;
 
+    public MusicManager mm;
+    public AudioClip dañoMinero;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,6 +31,7 @@ public class EMinero : MonoBehaviour
         jugador = GameObject.FindGameObjectWithTag("Player").transform; // Busca el jugador por su etiqueta "Player"
         gm = FindObjectOfType<GameManagerHats>();
         animator = GetComponent<Animator>();
+        mm = MusicManager.instance;
     }
 
     void Update()
@@ -64,7 +68,8 @@ public class EMinero : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Player"))
         {         
-            gm.RestarVidas();           
+            gm.RestarVidas();
+            mm.PlaySFX(dañoMinero);
         }
     }
 
