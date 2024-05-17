@@ -8,6 +8,7 @@ public class Bombas : MonoBehaviour
     public GameObject prefabExplosion;
     public bool destruyeBomba = false;
     private bool segundoFrame = false;
+    public int damage = 40;
     public Animator bAnimator;
     public CircleCollider2D bombaCollider;
     public MusicManager mm;
@@ -48,7 +49,11 @@ public class Bombas : MonoBehaviour
         if (collision.tag == "Enemigo")
         {
             EnemigosComun enemigo = collision.gameObject.GetComponent<EnemigosComun>();
-            //enemigo.DañoRecibido(damage);
+            enemigo.DañoRecibido(damage);
+        }
+        if (collision.tag == "Roca")
+        {
+            Destroy(collision.gameObject);
         }
     }
 }
