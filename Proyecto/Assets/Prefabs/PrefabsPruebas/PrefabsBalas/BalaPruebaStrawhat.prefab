@@ -103,6 +103,8 @@ MonoBehaviour:
   speed: 10
   rebotesBala: 3
   damage: 20
+  spriteDestruccionPrefab: {fileID: 6774546880680498395, guid: 5bacccba387357349b9598ae8b94d11b, type: 3}
+  tiempoDestruccionSprite: 0.1
 --- !u!50 &2204165055469249601
 Rigidbody2D:
   serializedVersion: 4
