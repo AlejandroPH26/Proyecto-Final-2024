@@ -45,7 +45,7 @@ public class MovimientoCabezaJugador : MonoBehaviour
         if(Input.GetKey(KeyCode.UpArrow))
         {
             dirCabeza = Direction.UP;
-            sprite.sortingLayerName = "Bala";
+            sprite.sortingLayerName = "Jugador";
             sprite.sortingOrder = 4;
             Shoot();
             cAnimator.Play("WalkUp_Cabeza");
@@ -67,7 +67,7 @@ public class MovimientoCabezaJugador : MonoBehaviour
         else if (Input.GetKey(KeyCode.DownArrow))
         {
             dirCabeza = Direction.DOWN;
-            sprite.sortingLayerName = "Cabeza";
+            sprite.sortingLayerName = "Jugador";
             sprite.sortingOrder = 3;
             // pAnimator.Play("Mirar_Abajo");
             Shoot();
@@ -160,7 +160,7 @@ public class MovimientoCabezaJugador : MonoBehaviour
     }
 
    //Metodo con dirCabeza para usarlo en el script de movimiento y orientar la cabeza en la dirección en la que se anda
-   public void orientarCabeza(Direction dir)
+   public void OrientarCabeza(Direction dir)
     {
         dirCabeza = dir;
 
