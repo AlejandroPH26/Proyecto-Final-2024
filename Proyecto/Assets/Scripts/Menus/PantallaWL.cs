@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PantallaWL : MonoBehaviour
 {
@@ -14,14 +15,13 @@ public class PantallaWL : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SALIR();
-        MenuPrincipal();
-        ResetLvl();
+        
     }
 
     public void SALIR()
     {
         Application.Quit();
+        Debug.Log("salir");
     }
 
     public void MenuPrincipal()
@@ -33,7 +33,8 @@ public class PantallaWL : MonoBehaviour
 
     public void ResetLvl()
     {
-        SceneManager.LoadScene("Nivel1");
+        SceneManager.LoadScene("Nivel 1");
+        Debug.Log("reiniciando");
 
     }
 }
