@@ -17,6 +17,10 @@ public class EMinero : MonoBehaviour
     //Jugador
     private MovimientoPrueba Player;
 
+    public MusicManager mm;
+
+    public AudioClip dañoMinero;
+
 
 
     //private Animator Eanimator;
@@ -30,6 +34,8 @@ public class EMinero : MonoBehaviour
         Player = FindObjectOfType<MovimientoPrueba>(); // Busca el script del jugador 
 
         jugador = GameObject.FindGameObjectWithTag("Player").transform; // Busca el jugador por su etiqueta "Player"
+
+        mm = MusicManager.instance;
 
         // Al iniciar, la vida actual es igual a la vida maxima
 
@@ -87,7 +93,7 @@ public class EMinero : MonoBehaviour
                 Debug.Log("DañoAlJugador");
                 tiempoUltimoDaño = Time.time;
             }
-
+                mm.PlaySFX(dañoMinero);
         }
 
 

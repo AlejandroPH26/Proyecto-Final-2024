@@ -174,6 +174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   "da\xF1oPorIntervalo": 10
+  mm: {fileID: 0}
+  "da\xF1oMinero": {fileID: 8300000, guid: e0f4c15cd69eb074b9239dc586242a4e, type: 3}
 --- !u!114 &1277537350997637327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,4 +190,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaActual: 0
   vidaMax: 50
-  vidaPerdida: 10
+  activo: 1
+  TCambioColor: 0.1
+  rbSprite: {fileID: 0}
+  "colorDa\xF1o": {r: 0, g: 0, b: 0, a: 0}
+  colorOriginal: {r: 0, g: 0, b: 0, a: 0}

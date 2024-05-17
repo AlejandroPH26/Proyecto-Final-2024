@@ -167,4 +167,5 @@ public class GameManagerHats : MonoBehaviour
         }
         jugador.CambiarColor(Color.white); // Asegura que el color final sea blanco
     }
+
 }

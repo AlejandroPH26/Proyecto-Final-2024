@@ -32,6 +32,7 @@ public class Bombas : MonoBehaviour
     }
     private void Explosion()
     {
+            Debug.Log("Explosion");
             bombaCollider.enabled = true;
             destruyeBomba = true;
             GameObject Explosion = Instantiate(prefabExplosion, transform.position, Quaternion.identity);
@@ -46,7 +47,8 @@ public class Bombas : MonoBehaviour
         }
         if (collision.tag == "Enemigo")
         {
-            // Para hacer, quitar vida al enemigo
+            EnemigosComun enemigo = collision.gameObject.GetComponent<EnemigosComun>();
+            //enemigo.DañoRecibido(damage);
         }
     }
 }

@@ -3,7 +3,12 @@ guid: ae87ca803c4ba6b44a045f96e91c8983
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Player: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - gm: {instanceID: 0}
+  - mm: {instanceID: 0}
+  - "da\xF1oTopo": {fileID: 8300000, guid: e0f4c15cd69eb074b9239dc586242a4e, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
