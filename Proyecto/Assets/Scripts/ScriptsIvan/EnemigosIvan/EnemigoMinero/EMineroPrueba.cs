@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EMinero : MonoBehaviour
-
+public class EMineroPrueba : MonoBehaviour
 {
-    // Estadisticas
+    // Estadísticas
     public float speed;
     public int dañoPorIntervalo = 10;
     private float tiempoUltimoDaño;
@@ -18,16 +17,12 @@ public class EMinero : MonoBehaviour
     private JugadorV1 Player;
     private GameManagerHats gm;
 
-    // Animator
-    private Animator animator;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         Player = FindObjectOfType<JugadorV1>(); // Busca el script del jugador 
         jugador = GameObject.FindGameObjectWithTag("Player").transform; // Busca el jugador por su etiqueta "Player"
         gm = FindObjectOfType<GameManagerHats>();
-        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -36,24 +31,32 @@ public class EMinero : MonoBehaviour
         {
             Chase();
         }
-        else
+        else if (jugador == null)
         {
             rb.velocity = Vector2.zero;
         }
-
-        ComprobacionDireccion();
     }
 
     public void Chase()
     {
-        // Calcula la dirección hacia la que el enemigo debe moverse (hacia el jugador)
+        // Calcula la dirección hacia el jugador
         Vector2 direccion = (jugador.position - transform.position).normalized;
 
-        // Calcula la velocidad de movimiento
-        Vector2 velocidadMovimiento = direccion * speed;
+        // Lanza un Raycast hacia el jugador
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direccion, Mathf.Infinity);
 
-        // Aplica la velocidad al Rigidbody del enemigo
-        rb.velocity = velocidadMovimiento;
+        // Si el Raycast detecta un obstáculo entre el enemigo y el jugador
+        if (hit.collider != null && hit.collider.CompareTag("Obstaculo"))
+        {
+            EvadirObstaculo();
+        }
+        else
+        {
+            // Calcula la velocidad de movimiento
+            Vector2 velocidadMovimiento = direccion * speed;
+            // Aplica la velocidad al Rigidbody del enemigo
+            rb.velocity = velocidadMovimiento;
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -63,14 +66,19 @@ public class EMinero : MonoBehaviour
             EvadirObstaculo();
         }
         else if (collision.gameObject.CompareTag("Player"))
-        {         
-            gm.RestarVidas();           
+        {
+            if (Time.time - tiempoUltimoDaño > 1.5f)
+            {
+                gm.RestarVidas();
+                Debug.Log("DañoAlJugador");
+                tiempoUltimoDaño = Time.time;
+            }
         }
     }
 
     private void EvadirObstaculo()
     {
-        // Calcula una dirección perpendicular a la dirección hacia el jugador
+        // Calcula una dirección perpendicular a la dirección actual del movimiento
         Vector2 direccionPerpendicular = Vector2.Perpendicular(rb.velocity).normalized;
 
         // Calcula una dirección alternativa para evitar el obstáculo
@@ -78,32 +86,5 @@ public class EMinero : MonoBehaviour
 
         // Aplica la nueva dirección de movimiento
         rb.velocity = nuevaDireccion.normalized * speed;
-    }
-
-    private void ComprobacionDireccion()
-    {
-        Vector2 velocidad = rb.velocity;
-
-        if (velocidad.x > 0)
-        {
-            // El enemigo se está moviendo hacia la derecha
-            Debug.Log("Se está moviendo hacia la derecha");
-        }
-        else if (velocidad.x < 0)
-        {
-            // El enemigo se está moviendo hacia la izquierda
-            Debug.Log("Se está moviendo hacia la izquierda");
-        }
-
-        if (velocidad.y > 0)
-        {
-            // El enemigo se está moviendo hacia arriba
-            Debug.Log("Se está moviendo hacia arriba");
-        }
-        else if (velocidad.y < 0)
-        {
-            // El enemigo se está moviendo hacia abajo
-            Debug.Log("Se está moviendo hacia abajo");
-        }
     }
 }
