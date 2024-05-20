@@ -246,14 +246,13 @@ MonoBehaviour:
   vidasMaximas: 6
   vidasActuales: 6
   bombas: 3
-  ContadorBombas: {fileID: 1210651561}
-  ContadorVidas: {fileID: 2096366257}
   Invulnerabilidad: 0
   DelayInvulnerabilidad: 3
   mm: {fileID: 0}
   "da\xF1oJugador": {fileID: 0}
   spritesVidas: []
   spritesBombas: []
+  MAX_BOMBAS: 3
 --- !u!1001 &21282895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1854,6 +1853,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JugadorV1
       objectReference: {fileID: 0}
+    - target: {fileID: 1893980247023425444, guid: b4fd5554aefe7484ab6e077f222c17db, type: 3}
+      propertyPath: healthRecoveryParticlesPrefab
+      value: 
+      objectReference: {fileID: 1738563789042334701, guid: 7a7c4a8ef22e79a4cb6083933dd9b01e, type: 3}
     - target: {fileID: 7219241502886969739, guid: b4fd5554aefe7484ab6e077f222c17db, type: 3}
       propertyPath: m_LocalPosition.x
       value: 31.7
@@ -1895,7 +1898,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3175389649943944022, guid: b4fd5554aefe7484ab6e077f222c17db, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4fd5554aefe7484ab6e077f222c17db, type: 3}

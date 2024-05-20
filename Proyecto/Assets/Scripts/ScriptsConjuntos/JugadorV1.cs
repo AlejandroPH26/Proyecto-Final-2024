@@ -38,6 +38,10 @@ public class JugadorV1 : MonoBehaviour
 
     private CameraManager cameraManager;
 
+    // Variable para el sistema de partículas
+    public ParticleSystem healthRecoveryParticlesPrefab;
+    private bool hasActivatedParticles = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -459,6 +463,20 @@ public class JugadorV1 : MonoBehaviour
                     renderer.color = color; // Cambia el color de los hijos
                 }
             }
+        }
+    }
+
+    // Método para activar el sistema de partículas de recuperación de vida
+    public void ActivarParticulasRecuperacion()
+    {
+        if (!hasActivatedParticles)
+        {
+            // Instanciar el sistema de partículas como hijo del jugador
+            ParticleSystem healthRecoveryParticles = Instantiate(healthRecoveryParticlesPrefab, transform.position, Quaternion.identity, transform);
+            healthRecoveryParticles.Play(); // Reproducir las partículas
+
+            // Destruir el sistema de partículas después de 2 segundos
+            Destroy(healthRecoveryParticles.gameObject, 2f);
         }
     }
 }
