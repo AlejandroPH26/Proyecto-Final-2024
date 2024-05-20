@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -4538976745179703805}
   - component: {fileID: 2332388756210603888}
   - component: {fileID: 5775975698919730910}
+  - component: {fileID: -4351932720404850419}
   m_Layer: 0
   m_Name: Bomba
   m_TagString: Bomba
@@ -101,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabExplosion: {fileID: 7222187149520719292, guid: d1d24446071a69a47a23643158ab9afc, type: 3}
   destruyeBomba: 0
+  damage: 40
   bAnimator: {fileID: 0}
   bombaCollider: {fileID: 0}
   mm: {fileID: 0}
@@ -161,3 +163,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &-4351932720404850419
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4345612283534839279}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

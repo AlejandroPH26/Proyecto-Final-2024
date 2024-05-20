@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bombas : MonoBehaviour
@@ -41,13 +42,13 @@ public class Bombas : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Colision con bomba");
         if (collision.tag == "Player")
         {
             gm.RestarVidas();
         }
         if (collision.tag == "Enemigo")
         {
+            Debug.Log("Impacto");
             EnemigosComun enemigo = collision.gameObject.GetComponent<EnemigosComun>();
             enemigo.DañoRecibido(damage);
         }
