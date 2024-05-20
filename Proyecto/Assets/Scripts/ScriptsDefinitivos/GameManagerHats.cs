@@ -170,4 +170,5 @@ public class GameManagerHats : MonoBehaviour
         jugador.CambiarColor(Color.white); // Asegura que el color final sea blanco
         DesactivarInvulnerabilidad(); // Desactiva la invulnerabilidad al final del cambio de color
     }
+
 }

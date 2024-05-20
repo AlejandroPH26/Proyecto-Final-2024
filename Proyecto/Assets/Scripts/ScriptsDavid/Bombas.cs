@@ -8,6 +8,7 @@ public class Bombas : MonoBehaviour
     public GameObject prefabExplosion;
     public bool destruyeBomba = false;
     private bool segundoFrame = false;
+    public int damage = 40;
     public Animator bAnimator;
     public CircleCollider2D bombaCollider;
     public MusicManager mm;
@@ -32,6 +33,7 @@ public class Bombas : MonoBehaviour
     }
     private void Explosion()
     {
+            Debug.Log("Explosion");
             bombaCollider.enabled = true;
             destruyeBomba = true;
             GameObject Explosion = Instantiate(prefabExplosion, transform.position, Quaternion.identity);
@@ -46,7 +48,12 @@ public class Bombas : MonoBehaviour
         }
         if (collision.tag == "Enemigo")
         {
-            // Para hacer, quitar vida al enemigo
+            EnemigosComun enemigo = collision.gameObject.GetComponent<EnemigosComun>();
+            enemigo.DañoRecibido(damage);
+        }
+        if (collision.tag == "Roca")
+        {
+            Destroy(collision.gameObject);
         }
     }
 }

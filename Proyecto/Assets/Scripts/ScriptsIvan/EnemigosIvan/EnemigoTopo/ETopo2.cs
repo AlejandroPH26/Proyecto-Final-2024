@@ -26,9 +26,15 @@ public class ETopo2 : MonoBehaviour
     [SerializeField]
     private float TiempoEntreCambio = 3f;
 
+    public MusicManager mm;
+
+    public AudioClip dañoTopo;
+
 
     void Start()
     {
+        mm = MusicManager.instance;
+
         Player = FindObjectOfType<JugadorV1>(); // Busca el script del jugador 
 
         if (Player != null)
@@ -145,6 +151,7 @@ public class ETopo2 : MonoBehaviour
         {
             CambiarDireccion();      
             gm.RestarVidas(); // Llamo al metodo restar vidas del gameManager
+            mm.PlaySFX(dañoTopo);
         }
     }
 

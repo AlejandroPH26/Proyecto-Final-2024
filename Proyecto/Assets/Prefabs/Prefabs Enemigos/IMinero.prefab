@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1608398166548219399}
   - component: {fileID: 8807913260104404358}
   - component: {fileID: 2037023599420214744}
+  - component: {fileID: 441414451544053413}
   - component: {fileID: 1758937687575041537}
   - component: {fileID: 1277537350997637327}
-  - component: {fileID: 7355677062362086845}
   m_Layer: 10
   m_Name: IMinero
   m_TagString: Minero
@@ -74,11 +74,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -726354695
-  m_SortingLayer: 4
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -435456029, guid: 4ac712225c4fee749a0ffd5c56f05fad, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -115,41 +115,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1758937687575041537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7672378028743556268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f28c3a9d8b02808418ea9d8250ba0540, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  "da\xF1oPorIntervalo": 10
---- !u!114 &1277537350997637327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7672378028743556268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dcaddf72e1ea0c47a8bab729c4b330a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidaActual: 0
-  vidaMax: 50
-  activo: 1
-  TCambioColor: 0.1
-  rbSprite: {fileID: 0}
-  "colorDa\xF1o": {r: 0, g: 0, b: 0, a: 0}
-  colorOriginal: {r: 0, g: 0, b: 0, a: 0}
---- !u!60 &7355677062362086845
-PolygonCollider2D:
+--- !u!61 &441414451544053413
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -160,7 +127,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -184,23 +151,47 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.2520733, y: 0.91830826}
-      - {x: -0.48327065, y: 0.60256433}
-      - {x: -0.50777817, y: -0.37460947}
-      - {x: -0.4200554, y: -0.67348456}
-      - {x: -0.2467575, y: -1}
-      - {x: 0.3092556, y: -1.0081692}
-      - {x: 0.47091866, y: -0.685415}
-      - {x: 0.55867386, y: -0.4325564}
-      - {x: 0.57027817, y: -0.399117}
-      - {x: 0.58760643, y: 0.6324048}
-      - {x: 0.35787964, y: 0.91830826}
-  m_UseDelaunayMesh: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1758937687575041537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672378028743556268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28c3a9d8b02808418ea9d8250ba0540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  "da\xF1oPorIntervalo": 10
+  mm: {fileID: 0}
+  "da\xF1oMinero": {fileID: 8300000, guid: e0f4c15cd69eb074b9239dc586242a4e, type: 3}
+--- !u!114 &1277537350997637327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672378028743556268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dcaddf72e1ea0c47a8bab729c4b330a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaActual: 0
+  vidaMax: 50
+  activo: 1
+  TCambioColor: 0.1
+  rbSprite: {fileID: 0}
+  "colorDa\xF1o": {r: 0, g: 0, b: 0, a: 0}
+  colorOriginal: {r: 0, g: 0, b: 0, a: 0}
