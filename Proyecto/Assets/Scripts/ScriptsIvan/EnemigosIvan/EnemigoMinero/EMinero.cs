@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class EMinero : MonoBehaviour
@@ -24,6 +25,8 @@ public class EMinero : MonoBehaviour
     public MusicManager mm;
     public AudioClip dañoMinero;
 
+    public Transform MineroTransform;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,6 +35,7 @@ public class EMinero : MonoBehaviour
         gm = FindObjectOfType<GameManagerHats>();
         animator = GetComponent<Animator>();
         mm = MusicManager.instance;
+        
     }
 
     void Update()
@@ -51,13 +55,17 @@ public class EMinero : MonoBehaviour
     public void Chase()
     {
         // Calcula la dirección hacia la que el enemigo debe moverse (hacia el jugador)
-        Vector2 direccion = (jugador.position - transform.position).normalized;
+        Vector2 Dir = (jugador.position - transform.position).normalized;
 
         // Calcula la velocidad de movimiento
-        Vector2 velocidadMovimiento = direccion * speed;
+        Vector2 velocidadMovimiento = Dir * speed;
 
         // Aplica la velocidad al Rigidbody del enemigo
         rb.velocity = velocidadMovimiento;
+
+        ComprobacionDireccion();
+
+
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -87,28 +95,41 @@ public class EMinero : MonoBehaviour
 
     private void ComprobacionDireccion()
     {
-        Vector2 velocidad = rb.velocity;
+        Vector2 Dir = (jugador.position - transform.position).normalized;
 
-        if (velocidad.x > 0)
+
+        if (Mathf.Abs(Dir.x) > Mathf.Abs(Dir.y))
         {
-            // El enemigo se está moviendo hacia la derecha
-            Debug.Log("Se está moviendo hacia la derecha");
-        }
-        else if (velocidad.x < 0)
-        {
-            // El enemigo se está moviendo hacia la izquierda
-            Debug.Log("Se está moviendo hacia la izquierda");
+            if (Dir.x > 0)
+            {
+                //Debug.Log("voy a la derecha");
+                animator.Play("MINERO_RIGHT");
+            }
+
+            else
+            {
+                //Debug.Log("voy a la izquierda");
+                animator.Play("MINERO_LEFT");
+            }
         }
 
-        if (velocidad.y > 0)
+        else if (Mathf.Abs(Dir.y) > Mathf.Abs(Dir.x))
         {
-            // El enemigo se está moviendo hacia arriba
-            Debug.Log("Se está moviendo hacia arriba");
-        }
-        else if (velocidad.y < 0)
-        {
-            // El enemigo se está moviendo hacia abajo
-            Debug.Log("Se está moviendo hacia abajo");
+
+            Debug.Log("Menor que 0");
+            if (Dir.y < 0)
+
+
+            {
+                animator.Play("MINERO_DOWN");
+            }
+
+            else
+            {
+
+                animator.Play("MINERO_UP");
+            }
+
         }
     }
 }

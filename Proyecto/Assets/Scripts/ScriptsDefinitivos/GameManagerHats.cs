@@ -78,6 +78,7 @@ public class GameManagerHats : MonoBehaviour
     public void SumarVidas()
     {
         vidasActuales++; // Cambio: Se ajusta el incremento de vidas actuales
+        jugador.ActivarParticulasRecuperacion(); // Método para llamar a las partículas de vida
         if (vidasActuales > vidasMaximas) // Cambio: Se compara con la nueva variable vidasMaximas
         {
             vidasActuales = vidasMaximas; // Cambio: Se ajusta el límite de vidas actuales
