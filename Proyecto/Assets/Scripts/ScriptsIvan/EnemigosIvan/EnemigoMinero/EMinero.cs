@@ -63,39 +63,9 @@ public class EMinero : MonoBehaviour
         // Aplica la velocidad al Rigidbody del enemigo
         rb.velocity = velocidadMovimiento;
 
-        if(Mathf.Abs(Dir.x) > Mathf.Abs(Dir.y))
-        {
-            if(Dir.x > 0)
-            {
-                //Debug.Log("voy a la derecha");
-                animator.Play("MINERO_RIGHT");
-            }
+        ComprobacionDireccion();
 
-            else
-            {
-                //Debug.Log("voy a la izquierda");
-                animator.Play("MINERO_LEFT");
-            }
-        }
 
-        else if (Mathf.Abs(Dir.y) > Mathf.Abs(Dir.x)) 
-        {
-
-         Debug.Log("Menor que 0");
-         if( Dir.y < 0) 
-
-            
-            {
-                animator.Play("MINERO_DOWN");       
-            }
-
-         else
-            {
-               
-                animator.Play("MINERO_UP");
-            }
-        
-        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -125,6 +95,41 @@ public class EMinero : MonoBehaviour
 
     private void ComprobacionDireccion()
     {
-       
+        Vector2 Dir = (jugador.position - transform.position).normalized;
+
+
+        if (Mathf.Abs(Dir.x) > Mathf.Abs(Dir.y))
+        {
+            if (Dir.x > 0)
+            {
+                //Debug.Log("voy a la derecha");
+                animator.Play("MINERO_RIGHT");
+            }
+
+            else
+            {
+                //Debug.Log("voy a la izquierda");
+                animator.Play("MINERO_LEFT");
+            }
+        }
+
+        else if (Mathf.Abs(Dir.y) > Mathf.Abs(Dir.x))
+        {
+
+            Debug.Log("Menor que 0");
+            if (Dir.y < 0)
+
+
+            {
+                animator.Play("MINERO_DOWN");
+            }
+
+            else
+            {
+
+                animator.Play("MINERO_UP");
+            }
+
+        }
     }
 }
