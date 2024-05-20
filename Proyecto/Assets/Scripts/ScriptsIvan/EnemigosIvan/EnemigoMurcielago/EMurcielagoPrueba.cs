@@ -7,7 +7,6 @@ public class EMurcielagoPrueba : MonoBehaviour
 {
     public int RangoMin = 5;
     public float speed;
-
     public GameObject bulletPrefab;
     public Transform bulletPos;
 

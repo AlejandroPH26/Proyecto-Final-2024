@@ -66,7 +66,7 @@ public class SalasManager : MonoBehaviour
                 EnemigosComun comportamientoEnemigo = enemigo.GetComponent<EnemigosComun>();
                 if (comportamientoEnemigo != null)
                 {
-                    comportamientoEnemigo.enabled = false;
+                    //comportamientoEnemigo.enabled = false;
                     enemigo.GetComponent<SpriteRenderer>().enabled = false; // Desactivar el SpriteRenderer
                     comportamientoEnemigo.activo = false;
                 }
