@@ -26,6 +26,7 @@ public class EMinero : MonoBehaviour
     public AudioClip dañoMinero;
 
     public Transform MineroTransform;
+    private EnemigosComun enemy; //Referencia al script EnemigosComun
 
     void Start()
     {
@@ -35,12 +36,13 @@ public class EMinero : MonoBehaviour
         gm = FindObjectOfType<GameManagerHats>();
         animator = GetComponent<Animator>();
         mm = MusicManager.instance;
-        
+        enemy = GetComponent<EnemigosComun>();
+
     }
 
     void Update()
     {
-        if (jugador != null)
+        if (enemy.activo && jugador != null)
         {
             Chase();
         }

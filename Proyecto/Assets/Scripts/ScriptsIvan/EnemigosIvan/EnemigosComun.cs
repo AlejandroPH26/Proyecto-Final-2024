@@ -25,7 +25,7 @@ public class EnemigosComun : MonoBehaviour
     
     void Update()
     {
-        
+
     }
 
     public void Muerte()

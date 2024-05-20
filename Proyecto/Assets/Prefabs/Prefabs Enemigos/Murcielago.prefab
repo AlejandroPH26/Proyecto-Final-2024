@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2215857264232679208}
   - component: {fileID: 5285405342537173014}
-  - component: {fileID: 4952766671574365526}
   - component: {fileID: 3183104379338802466}
   - component: {fileID: -1855311324614835739}
+  - component: {fileID: 4952766671574365526}
   - component: {fileID: 6245568104248117744}
   - component: {fileID: 576612083788678841}
   m_Layer: 8
@@ -90,33 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &4952766671574365526
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4579228704656662381}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &3183104379338802466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,12 +126,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaActual: 0
   vidaMax: 100
-  vidaPerdida: 20
   activo: 1
   TCambioColor: 0.2
   rbSprite: {fileID: 0}
   "colorDa\xF1o": {r: 0.9811321, g: 0.23602703, b: 0.23602703, a: 1}
   colorOriginal: {r: 1, g: 1, b: 1, a: 0}
+--- !u!50 &4952766671574365526
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4579228704656662381}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &6245568104248117744
 BoxCollider2D:
   m_ObjectHideFlags: 0

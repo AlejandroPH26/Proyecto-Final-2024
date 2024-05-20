@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4392193564730976719}
   - component: {fileID: 3722521759308654076}
-  - component: {fileID: 2417998376129672409}
-  - component: {fileID: 4580862414862009043}
   - component: {fileID: 1543844987469123394}
   - component: {fileID: 7339030261013441742}
+  - component: {fileID: 2417998376129672409}
+  - component: {fileID: 4580862414862009043}
   - component: {fileID: 4988359009963784137}
   m_Layer: 8
   m_Name: ITopo
@@ -89,6 +89,47 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1543844987469123394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227901250011615489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae87ca803c4ba6b44a045f96e91c8983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidadMovimiento: 2
+  cambiarDireccionTimer: 3
+  "da\xF1o": 20
+  Player: {fileID: 0}
+  animator: {fileID: 4988359009963784137}
+  gm: {fileID: 0}
+  puedeCambiarDireccion: 1
+  TiempoEntreCambio: 3
+  mm: {fileID: 0}
+  "da\xF1oTopo": {fileID: 0}
+--- !u!114 &7339030261013441742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227901250011615489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dcaddf72e1ea0c47a8bab729c4b330a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaActual: 0
+  vidaMax: 50
+  activo: 1
+  TCambioColor: 0.2
+  rbSprite: {fileID: 0}
+  "colorDa\xF1o": {r: 0.9528302, g: 0.24719654, b: 0.24719654, a: 1}
+  colorOriginal: {r: 1, g: 1, b: 1, a: 0}
 --- !u!50 &2417998376129672409
 Rigidbody2D:
   serializedVersion: 4
@@ -151,43 +192,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &1543844987469123394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8227901250011615489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae87ca803c4ba6b44a045f96e91c8983, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadMovimiento: 2
-  cambiarDireccionTimer: 3
-  "da\xF1o": 20
-  Player: {fileID: 0}
-  animator: {fileID: 4988359009963784137}
---- !u!114 &7339030261013441742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8227901250011615489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dcaddf72e1ea0c47a8bab729c4b330a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidaActual: 0
-  vidaMax: 50
-  vidaPerdida: 10
-  activo: 1
-  TCambioColor: 0.2
-  rbSprite: {fileID: 0}
-  "colorDa\xF1o": {r: 0.9528302, g: 0.24719654, b: 0.24719654, a: 1}
-  colorOriginal: {r: 1, g: 1, b: 1, a: 0}
 --- !u!95 &4988359009963784137
 Animator:
   serializedVersion: 5
