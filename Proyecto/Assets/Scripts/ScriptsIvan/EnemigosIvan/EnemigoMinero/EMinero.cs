@@ -8,9 +8,7 @@ public class EMinero : MonoBehaviour
 {
     // Estadisticas
     public float speed;
-    public int dañoPorIntervalo = 10;
-    private float tiempoUltimoDaño;
-
+   
     // Componentes
     private Transform jugador; // Referencia al transform del jugador
     private Rigidbody2D rb;

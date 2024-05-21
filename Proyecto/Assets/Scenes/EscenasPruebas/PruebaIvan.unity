@@ -246,14 +246,13 @@ MonoBehaviour:
   vidasMaximas: 6
   vidasActuales: 6
   bombas: 3
-  ContadorBombas: {fileID: 1210651561}
-  ContadorVidas: {fileID: 2096366257}
   Invulnerabilidad: 0
   DelayInvulnerabilidad: 3
   mm: {fileID: 0}
   "da\xF1oJugador": {fileID: 0}
   spritesVidas: []
   spritesBombas: []
+  MAX_BOMBAS: 3
 --- !u!1001 &21282895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -779,6 +778,7 @@ MonoBehaviour:
   anchorInitial: {fileID: 563740704}
   teleportTargetTag: TeleportTarget
   currentRoomTag: SalaActual
+  healthRecoveryParticlesPrefab: {fileID: 0}
 --- !u!212 &755966107
 SpriteRenderer:
   m_ObjectHideFlags: 0
