@@ -23,6 +23,7 @@ public class GameManagerHats : MonoBehaviour
     public AudioClip RecolectableBomba;
     public AudioClip RecolectableVida;
     public AudioClip muertePersonaje;
+    public AudioClip dañoPersonaje;
 
     //VIDAS
     public GameObject[] spritesVidas;
@@ -101,6 +102,7 @@ public class GameManagerHats : MonoBehaviour
             if (vidasActuales <= 0)
             {
                 vidasActuales = 0;
+                mm.PlaySFX(muertePersonaje);
             }
             UIvidas();
             Invulnerabilidad = true;
