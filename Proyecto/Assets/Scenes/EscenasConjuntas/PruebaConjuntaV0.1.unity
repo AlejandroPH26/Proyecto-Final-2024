@@ -249,7 +249,7 @@ MonoBehaviour:
   Invulnerabilidad: 0
   DelayInvulnerabilidad: 3
   mm: {fileID: 0}
-  "da\xF1oJugador": {fileID: 0}
+  "da\xF1oJugador": {fileID: 8300000, guid: b85d7b0a5c68ec946a02ff97fc45aa40, type: 3}
   spritesVidas: []
   spritesBombas: []
   MAX_BOMBAS: 3

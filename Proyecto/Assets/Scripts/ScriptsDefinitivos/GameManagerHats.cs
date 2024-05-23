@@ -20,6 +20,9 @@ public class GameManagerHats : MonoBehaviour
     public int DelayInvulnerabilidad = 3;
     public MusicManager mm;
     public AudioClip dañoJugador;
+    public AudioClip RecolectableBomba;
+    public AudioClip RecolectableVida;
+    public AudioClip muertePersonaje;
 
     //VIDAS
     public GameObject[] spritesVidas;
@@ -57,6 +60,7 @@ public class GameManagerHats : MonoBehaviour
 
     public void SumarBombas()
     {
+        mm.PlaySFX(RecolectableBomba);
         bombas++;
         if (bombas > MAX_BOMBAS)
         {
@@ -78,6 +82,7 @@ public class GameManagerHats : MonoBehaviour
     public void SumarVidas()
     {
         vidasActuales++; // Cambio: Se ajusta el incremento de vidas actuales
+        mm.PlaySFX(RecolectableVida);
         jugador.ActivarParticulasRecuperacion(); // Método para llamar a las partículas de vida
         if (vidasActuales > vidasMaximas) // Cambio: Se compara con la nueva variable vidasMaximas
         {

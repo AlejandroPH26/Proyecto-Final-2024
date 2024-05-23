@@ -243,14 +243,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e945ea6ae2a335c40b38146b0235fd68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidas: 6
+  vidasMaximas: 6
+  vidasActuales: 6
   bombas: 3
-  ContadorBombas: {fileID: 1210651561}
-  ContadorVidas: {fileID: 2096366257}
   Invulnerabilidad: 0
   DelayInvulnerabilidad: 3
+  mm: {fileID: 0}
+  "da\xF1oJugador": {fileID: 8300000, guid: b85d7b0a5c68ec946a02ff97fc45aa40, type: 3}
+  RecolectableBomba: {fileID: 8300000, guid: 1e31ee0eedbafb64992d0aaa22746e86, type: 3}
+  RecolectableVida: {fileID: 8300000, guid: 1e31ee0eedbafb64992d0aaa22746e86, type: 3}
   spritesVidas: []
   spritesBombas: []
+  MAX_BOMBAS: 3
 --- !u!1001 &18449152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -646,6 +650,7 @@ MonoBehaviour:
   anchorInitial: {fileID: 563740704}
   teleportTargetTag: TeleportTarget
   currentRoomTag: SalaActual
+  healthRecoveryParticlesPrefab: {fileID: 0}
 --- !u!212 &755966107
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1644,7 +1649,8 @@ MonoBehaviour:
   GameObjectDown: {fileID: 346229527}
   sprite: {fileID: 0}
   mm: {fileID: 0}
-  sDisparo: {fileID: 8300000, guid: e0f4c15cd69eb074b9239dc586242a4e, type: 3}
+  sDisparo: {fileID: 8300000, guid: 6ba19fc77ff9d6341a5e4db83efdee12, type: 3}
+  bulletLifetime: 2
 --- !u!58 &1979913399
 CircleCollider2D:
   m_ObjectHideFlags: 0
