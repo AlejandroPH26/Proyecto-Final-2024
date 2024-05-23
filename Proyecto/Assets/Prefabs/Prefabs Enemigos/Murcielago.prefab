@@ -111,7 +111,7 @@ MonoBehaviour:
   "tiempoUltimoDa\xF1o": 0
   TieneVision: 0
   mm: {fileID: 0}
-  disparoMurcielago: {fileID: 8300000, guid: e0f4c15cd69eb074b9239dc586242a4e, type: 3}
+  disparoMurcielago: {fileID: 8300000, guid: 08ce56ad414f23a4f916e9e1d18bc674, type: 3}
 --- !u!114 &-1855311324614835739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaActual: 0
   vidaMax: 100
+  SonidoMuerte: {fileID: 8300000, guid: b604981dcd7d79f41b56599359234f7f, type: 3}
   activo: 1
   TCambioColor: 0.2
   rbSprite: {fileID: 0}

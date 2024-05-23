@@ -102,7 +102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  "da\xF1oPorIntervalo": 10
   mm: {fileID: 0}
   "da\xF1oMinero": {fileID: 8300000, guid: e0f4c15cd69eb074b9239dc586242a4e, type: 3}
   MineroTransform: {fileID: 1608398166548219399}
@@ -120,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaActual: 0
   vidaMax: 100
+  SonidoMuerte: {fileID: 8300000, guid: 4e3a881167e4fd5418d9e1e035b4185c, type: 3}
   activo: 1
   TCambioColor: 0.1
   rbSprite: {fileID: 0}

@@ -110,7 +110,7 @@ MonoBehaviour:
   puedeCambiarDireccion: 1
   TiempoEntreCambio: 3
   mm: {fileID: 0}
-  "da\xF1oTopo": {fileID: 0}
+  "da\xF1oTopo": {fileID: 8300000, guid: 3876bc31a4be6ab4f8820f22940c01d1, type: 3}
 --- !u!114 &7339030261013441742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaActual: 0
   vidaMax: 50
+  SonidoMuerte: {fileID: 8300000, guid: 4b9f86266d6cfd440bbd335ee41bc550, type: 3}
   activo: 1
   TCambioColor: 0.2
   rbSprite: {fileID: 0}

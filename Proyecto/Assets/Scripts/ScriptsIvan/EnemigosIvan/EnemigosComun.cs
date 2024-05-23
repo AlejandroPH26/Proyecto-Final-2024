@@ -6,6 +6,8 @@ public class EnemigosComun : MonoBehaviour
 {
     public int vidaActual;
     public int vidaMax;
+    private MusicManager mm;
+    public AudioClip SonidoMuerte;
 
     public bool activo = true;
     public float TCambioColor = 0.1f;
@@ -20,6 +22,7 @@ public class EnemigosComun : MonoBehaviour
         vidaActual = vidaMax;
         rbSprite = GetComponent<SpriteRenderer>();
         colorOriginal = rbSprite.color;
+        mm = MusicManager.instance;
     }
 
     
@@ -32,6 +35,7 @@ public class EnemigosComun : MonoBehaviour
 
     {
         Destroy(this.gameObject);
+        mm.PlaySFX(SonidoMuerte);
     }
 
     public void DañoRecibido(int cantidad)

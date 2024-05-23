@@ -108,7 +108,8 @@ MonoBehaviour:
   RangoMin: 6
   animator: {fileID: 4587325551668925800}
   mm: {fileID: 0}
-  disparoBorracho: {fileID: 8300000, guid: e0f4c15cd69eb074b9239dc586242a4e, type: 3}
+  disparoBorracho: {fileID: 8300000, guid: ef00102125830134cb5e914cf88abe6b, type: 3}
+  MuerteBorracho: {fileID: 0}
   canShoot: 1
 --- !u!114 &-9061386184882647149
 MonoBehaviour:
@@ -124,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaActual: 0
   vidaMax: 100
+  SonidoMuerte: {fileID: 8300000, guid: ef962e868b8f17c458fbf6b0d22f8e7f, type: 3}
   activo: 1
   TCambioColor: 0.15
   rbSprite: {fileID: 0}
