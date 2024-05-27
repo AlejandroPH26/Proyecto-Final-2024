@@ -23,7 +23,7 @@ public class GameManagerHats : MonoBehaviour
     public AudioClip RecolectableBomba;
     public AudioClip RecolectableVida;
     public AudioClip muertePersonaje;
-    public AudioClip dañoPersonaje;
+    //public AudioClip dañoPersonaje;
 
     //VIDAS
     public GameObject[] spritesVidas;

@@ -35621,11 +35621,10 @@ MonoBehaviour:
   Invulnerabilidad: 0
   DelayInvulnerabilidad: 3
   mm: {fileID: 2098652925}
-  "da\xF1oJugador": {fileID: 0}
-  RecolectableBomba: {fileID: 0}
-  RecolectableVida: {fileID: 0}
-  muertePersonaje: {fileID: 0}
-  "da\xF1oPersonaje": {fileID: 0}
+  "da\xF1oJugador": {fileID: 8300000, guid: b85d7b0a5c68ec946a02ff97fc45aa40, type: 3}
+  RecolectableBomba: {fileID: 8300000, guid: 9045b26429132e649bc78ff094d81b50, type: 3}
+  RecolectableVida: {fileID: 8300000, guid: 9045b26429132e649bc78ff094d81b50, type: 3}
+  muertePersonaje: {fileID: 8300000, guid: 388739ad3874dfd4a90e3d406c2c00e1, type: 3}
   spritesVidas:
   - {fileID: 1729748708}
   - {fileID: 273307353}
