@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -1475875439961107931}
   - component: {fileID: -4329381015491190976}
   - component: {fileID: 7703650500504546008}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: BalaMurcielago
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,8 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidad: 10
-  Player: {fileID: 0}
   "Da\xF1o": 20
+  Player: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!50 &-1475875439961107931
 Rigidbody2D:
   serializedVersion: 4
