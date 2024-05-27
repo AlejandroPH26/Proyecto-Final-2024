@@ -27225,6 +27225,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2999221125714245702, guid: c0442d20c5b54c94ba41be13a6402212, type: 3}
+      propertyPath: m_Volume
+      value: 0.126
+      objectReference: {fileID: 0}
     - target: {fileID: 5286842589255405143, guid: c0442d20c5b54c94ba41be13a6402212, type: 3}
       propertyPath: m_Name
       value: SoundManager
@@ -34557,7 +34561,7 @@ MonoBehaviour:
   Invulnerabilidad: 0
   DelayInvulnerabilidad: 3
   mm: {fileID: 2098652925}
-  "da\xF1oJugador": {fileID: 8300000, guid: b85d7b0a5c68ec946a02ff97fc45aa40, type: 3}
+  "da\xF1oJugador": {fileID: 8300000, guid: 3876bc31a4be6ab4f8820f22940c01d1, type: 3}
   RecolectableBomba: {fileID: 8300000, guid: 9045b26429132e649bc78ff094d81b50, type: 3}
   RecolectableVida: {fileID: 8300000, guid: 9045b26429132e649bc78ff094d81b50, type: 3}
   muertePersonaje: {fileID: 8300000, guid: 388739ad3874dfd4a90e3d406c2c00e1, type: 3}
