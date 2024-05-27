@@ -44,7 +44,7 @@ public class BalaSheriff : MonoBehaviour
             Destroy(this.gameObject); // Destruye la bala            
         }
 
-        if (collision.gameObject.CompareTag("Pared"))
+        if (collision.gameObject.CompareTag("Pared") || collision.gameObject.CompareTag("Roca"))
         {
             InstanciarSpriteDestruccion();
             Destroy(this.gameObject); // Destruye la bala            
