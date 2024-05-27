@@ -275,6 +275,12 @@ public class JugadorV1 : MonoBehaviour
         // Verificar si el jugador colisionó con una bomba
         if (other.CompareTag("BombaItem"))
         {
+            // Si las vidas actuales son iguales a la vida máxima, no recolectar el botiquín
+            if (gm.bombas == 3)
+            {
+                return; // Salir del método sin recolectar el botiquín
+            }
+
             Destroy(other.gameObject);
             gm.SumarBombas();
         }
