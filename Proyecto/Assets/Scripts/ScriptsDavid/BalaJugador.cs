@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Unity.Burst.Intrinsics.X86;
+using static UnityEngine.ParticleSystem;
 
 public class BalaJugador : MonoBehaviour
 {
@@ -47,7 +48,7 @@ public class BalaJugador : MonoBehaviour
             Destroy(this.gameObject); // Destruye la bala            
         }
 
-        if (collision.gameObject.CompareTag("Pared") || collision.gameObject.CompareTag("Roca"))
+        if (collision.gameObject.CompareTag("ParedBala") || collision.gameObject.CompareTag("Roca"))
         {
             InstanciarSpriteDestruccion();
             Destroy(this.gameObject); // Destruye la bala            

@@ -27,7 +27,7 @@ public class SalasManager : MonoBehaviour
                 enemigosEnSala.Add(child.gameObject);
             }
         }
-        Debug.Log(enemigosEnSala.Count);
+        // Debug.Log(enemigosEnSala.Count);
         DesactivarCollidersPuertas();
     }
 
