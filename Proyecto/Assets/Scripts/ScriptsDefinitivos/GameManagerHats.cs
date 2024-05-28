@@ -12,6 +12,7 @@ public class GameManagerHats : MonoBehaviour
 
     public int vidasMaximas = 6; // Cambio: Se añade una nueva variable para la vida máxima
     public int vidasActuales = 6; // Cambio: Se cambia el nombre de la variable vidas a vidasActuales
+    public int interludio = 3;
 
     public int bombas = 3;
     // public TextMeshProUGUI ContadorBombas;
@@ -101,8 +102,10 @@ public class GameManagerHats : MonoBehaviour
             mm.PlaySFX(dañoJugador);
             if (vidasActuales <= 0)
             {
+                Debug.Log("hecho invoke muerte");
                 vidasActuales = 0;
                 mm.PlaySFX(muertePersonaje);
+                Invoke("IrAPantallaDeMuerte", interludio);
             }
             UIvidas();
             Invulnerabilidad = true;
@@ -178,5 +181,9 @@ public class GameManagerHats : MonoBehaviour
         jugador.CambiarColor(Color.white); // Asegura que el color final sea blanco
         DesactivarInvulnerabilidad(); // Desactiva la invulnerabilidad al final del cambio de color
     }
-
+    public void IrAPantallaDeMuerte()
+    {
+        Debug.Log("Llamado ir a a pantalla de meurte");
+        SceneManager.LoadScene("Muerte");
+    }
 }
