@@ -44,7 +44,7 @@ public class BalaPayaso : MonoBehaviour
             Destroy(this.gameObject); // Destruye la bala            
         }
 
-        if (collision.gameObject.CompareTag("Pared") || collision.gameObject.CompareTag("Roca"))
+        if (collision.gameObject.CompareTag("ParedBala") || collision.gameObject.CompareTag("Roca"))
         {
             InstanciarSpriteDestruccion();
             Destroy(this.gameObject); // Destruye la bala            

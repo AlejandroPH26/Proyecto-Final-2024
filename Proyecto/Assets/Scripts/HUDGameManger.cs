@@ -15,6 +15,8 @@ public class HUDGameManager : MonoBehaviour
     public Slider sliderVolumen;
     public float sliderValor;
     public Image imagenMuteo;
+    public MusicManager mm;
+    public AudioClip musicaDeFondo;
 
     //PANTALLA COMPLETA
     public Toggle Pcompleta;
@@ -23,7 +25,7 @@ public class HUDGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        mm = MusicManager.instance;
         //brillo
         sliderBrillo.value = PlayerPrefs.GetFloat("brillo", 0f);
 
@@ -34,10 +36,11 @@ public class HUDGameManager : MonoBehaviour
         sliderVolumen.value = PlayerPrefs.GetFloat("volumenAudio", 50f); //ponemos el audio del slider a X voluem predeterminado
         AudioListener.volume = sliderVolumen.value;// hacemos que el volumen del AudioListener tenga el volumen predefinidio del slider
         RevisarMuteo(); //revisamos si estamos sin audio para activar un icono
+        mm.PlayMusic(musicaDeFondo);
 
         //pantalla completa
 
-        if(Screen.fullScreen)
+        if (Screen.fullScreen)
         {
 
             Pcompleta.isOn = true;

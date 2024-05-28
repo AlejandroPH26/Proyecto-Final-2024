@@ -5,19 +5,58 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: "Assets/Scenes/Men\xFAPrincipal.unity"
     guid: f75c41f377353a642a4a8c2db3c1723b
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/AnimacionInicial.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 08d80c1e5a4bcc64b8352f07ccebc025
   - enabled: 1
     path: Assets/Scenes/Nivel 1.unity
     guid: be90cf061c4cb5746aa9b230130dfd73
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Boss.unity
     guid: cdd2b0ad218579e47828f77cd60f2e5c
+  - enabled: 1
+    path: Assets/Scenes/Muerte.unity
+    guid: c5a30c7d15d0b924f874e91714a098ec
+  - enabled: 1
+    path: Assets/Scenes/Win.unity
+    guid: b6d5698680d5cd746b2f55c86ce6875b
+  - enabled: 1
+    path: Assets/Scenes/EscenasPruebas/BOSSTEST.unity
+    guid: 36740fc1ab022284ba67894a8a601415
+  - enabled: 1
+    path: Assets/Scenes/EscenasPruebas/Escena_Para_Pruebas1.unity
+    guid: 191aacb6b87f77542a554093151527ac
+  - enabled: 1
+    path: Assets/Scenes/EscenasPruebas/PruebaGestionPuertas.unity
+    guid: d58469d1e38ec58498f270894d6dd22f
+  - enabled: 1
+    path: Assets/Scenes/EscenasPruebas/PruebaGestionSalas.unity
+    guid: 589f5718b892c714b87b725f16d77b31
+  - enabled: 1
+    path: Assets/Scenes/EscenasPruebas/PruebaIvan.unity
+    guid: 19bda1cf7e3126746b0cdd6ae0cec820
+  - enabled: 1
+    path: Assets/Scenes/EscenasPruebas/PruebaSalas + Enemigos.unity
+    guid: 9f2ed18df1fa49b49acc5151d256c7f6
+  - enabled: 1
+    path: Assets/ScenesIvan/EnemigosIvan/EnemigoTopo.unity
+    guid: 5befbb94402a8064085b26b6b195ccab
+  - enabled: 1
+    path: Assets/Scenes/EscenasConjuntas/BossPrueba.unity
+    guid: dfc19ff9b401f5a47a194a6f92360f72
+  - enabled: 1
+    path: Assets/Scenes/EscenasConjuntas/Ivan.unity
+    guid: 0c62534a9e71a6346a29ea0dc0a5a0b0
+  - enabled: 1
+    path: Assets/Scenes/EscenasConjuntas/PruebaConjuntaV0.1 De David.unity
+    guid: aa8c3a9fce61e0f4aa6f9f1cf87a618b
+  - enabled: 1
+    path: Assets/Scenes/EscenasConjuntas/PruebaConjuntaV0.1.unity
+    guid: d625403d493005e4290ee0d0e9184ab5
   m_configObjects: {}

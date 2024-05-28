@@ -2,23 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class SalasManager : MonoBehaviour
+public class SalasBossManager : MonoBehaviour
 {
 
     public string teleportTargetTag = "TeleportTarget";
     public string currentRoomTag = "SalaActual";
-    public GameObject bombaPrefab;
-    public GameObject botiquinPrefab;
-
-    public List<Comportamiento_PuertasV1> puertas;// Lista de comportamientos de puertas
 
     private List<GameObject> enemigosEnSala = new List<GameObject>();
     private bool jugadorEnSala = false;
 
     void Start()
     {
-        puertas = GetComponentsInChildren<Comportamiento_PuertasV1>().ToList();
 
         foreach (Transform child in transform)
         {
@@ -26,33 +22,6 @@ public class SalasManager : MonoBehaviour
             {
                 enemigosEnSala.Add(child.gameObject);
             }
-        }
-        // Debug.Log(enemigosEnSala.Count);
-        DesactivarCollidersPuertas();
-    }
-
-    void SetCollidersPuertas(bool estado)
-    {
-        foreach (var puerta in puertas)
-        {
-            Collider2D collider = puerta.GetComponent<Collider2D>();
-            if (collider != null)
-            {
-                collider.enabled = estado;
-            }
-        }
-    }
-
-    private void DesactivarCollidersPuertas()
-    {
-        SetCollidersPuertas(false);
-    }
-
-    private void ActivarCollidersPuertas()
-    {
-        if (enemigosEnSala.Count == 0)
-        {
-            SetCollidersPuertas(true);
         }
     }
 
@@ -122,27 +91,13 @@ public class SalasManager : MonoBehaviour
         if (other.CompareTag("Enemigo"))
         {
             DesactivarEnemigos();
-            DesactivarCollidersPuertas();
         }
 
         if (other.CompareTag("Player"))
         {
             jugadorEnSala = true;
-            if (enemigosEnSala.Count > 0 && jugadorEnSala)
-            {
-                ActivarEnemigos();
-                // Si hay al menos un enemigo en la sala cuando el jugador entra, cerrar las puertas
-                foreach (var puerta in puertas)
-                {
-                    puerta.CerrandoPuertas();
-                    Debug.Log("Se cierran las puertas");
-                }
-            }
-            else
-            {
-                ActivarCollidersPuertas();
-            }
             DesactivarTeleportTargets();
+            ActivarEnemigos();
         }
     }
 
@@ -151,43 +106,13 @@ public class SalasManager : MonoBehaviour
         if (other.CompareTag("Enemigo"))
         {
             Debug.Log("EnemigoEliminado");
+
             enemigosEnSala.Remove(other.gameObject);
             if (jugadorEnSala && enemigosEnSala.Count == 0)
             {
+                Debug.Log("Has ganado");
+                SceneManager.LoadScene("Win");
                 DesactivarEnemigos();
-                ActivarCollidersPuertas();
-
-                foreach (var puerta in puertas)
-                {
-                    puerta.AbriendoPuertas();
-                    Debug.Log("Se abren las puertas");
-                }
-
-                // Generar un número aleatorio entre 0 y 1
-                float randomValue = Random.Range(0f, 1f);
-
-                // Si el número aleatorio es mayor que 0.5, se instancia un objeto
-                if (randomValue > 0.5f)
-                {
-                    Debug.Log("Na de na");                                  
-                }
-
-                else
-                {
-                    // Generar otro número aleatorio para determinar si se instancia una bomba o un botiquín
-                    float itemTypeChance = Random.Range(0f, 1f);
-
-                    if (itemTypeChance > 0.5f)
-                    {
-                        // Instanciar una bomba
-                        Instantiate(bombaPrefab, transform.position, Quaternion.identity);
-                    }
-                    else
-                    {
-                        // Instanciar un botiquín
-                        Instantiate(botiquinPrefab, transform.position, Quaternion.identity);
-                    }
-                }
             }
         }
 
