@@ -22428,6 +22428,8 @@ MonoBehaviour:
   sliderVolumen: {fileID: 1754707324}
   sliderValor: 0
   imagenMuteo: {fileID: 1449299023}
+  mm: {fileID: 0}
+  musicaDeFondo: {fileID: 8300000, guid: c756e747bd7b5714484b9c8e85f0aba9, type: 3}
   Pcompleta: {fileID: 1457488717}
 --- !u!114 &1288953175
 MonoBehaviour:

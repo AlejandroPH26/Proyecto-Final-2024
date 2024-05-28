@@ -186,4 +186,8 @@ public class GameManagerHats : MonoBehaviour
         Debug.Log("Llamado ir a a pantalla de meurte");
         SceneManager.LoadScene("Muerte");
     }
+    public void IrAPantallaGanadora()
+    {
+        SceneManager.LoadScene("Win");
+    }
 }
