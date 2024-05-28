@@ -42,9 +42,12 @@ public class JugadorV1 : MonoBehaviour
     public ParticleSystem healthRecoveryParticlesPrefab;
     private bool hasActivatedParticles = false;
 
+    private bool playerDead = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerDead = false;
         gm = GameManagerHats.instance;
         rbSprite = GetComponent<SpriteRenderer>();
         pAnimator = GetComponent<Animator>();
@@ -61,13 +64,15 @@ public class JugadorV1 : MonoBehaviour
     // Update se llama una vez por frame
     void Update()
     {
-        // Manejo de la entrada de movimiento del jugador
-        InputJugador();
-        // Manejo de la entrada de sombreros (disparo)
-        InputHats();
-        hatInFrame = false;
-        DamageTaken();
-
+        if (!playerDead)
+        {
+            // Manejo de la entrada de movimiento del jugador
+            InputJugador();
+            // Manejo de la entrada de sombreros (disparo)
+            InputHats();
+            hatInFrame = false;
+            DamageTaken();
+        }
     }
 
     private void InputJugador()
@@ -432,7 +437,7 @@ public class JugadorV1 : MonoBehaviour
         if (gm.vidasActuales <= 0)
         {
             MuerteJugador();
-            Debug.Log("Se destruye el cuerpo");
+            //Debug.Log("Se destruye el cuerpo");
         }
     }
 
@@ -451,6 +456,9 @@ public class JugadorV1 : MonoBehaviour
 
         // Limpia la lista de sombreros
         sombreros.Clear();
+
+        playerDead = true;
+        rb.velocity = Vector3.zero;
     }
 
     // Cambia el color del SpriteRenderer a blanco o rojo
