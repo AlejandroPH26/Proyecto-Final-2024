@@ -116,7 +116,7 @@ public class EMinero : MonoBehaviour
         else if (Mathf.Abs(Dir.y) > Mathf.Abs(Dir.x))
         {
 
-            Debug.Log("Menor que 0");
+            // Debug.Log("Menor que 0");
             if (Dir.y < 0)
 
 
