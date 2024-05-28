@@ -23,6 +23,7 @@ TagManager:
   - BombaItem
   - ClavosObstaculo
   - ZarzasObstaculo
+  - ParedBala
   layers:
   - Default
   - TransparentFX
@@ -41,7 +42,7 @@ TagManager:
   - Obstaculo
   - Puerta
   - BalaMurcielago
-  - 
+  - ParedBala
   - 
   - 
   - 
