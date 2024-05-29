@@ -23,6 +23,8 @@ TagManager:
   - BombaItem
   - ClavosObstaculo
   - ZarzasObstaculo
+  - ParedBala
+  - Boss
   layers:
   - Default
   - TransparentFX
