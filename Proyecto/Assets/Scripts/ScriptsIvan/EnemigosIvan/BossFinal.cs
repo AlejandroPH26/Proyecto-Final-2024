@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BossFinal : MonoBehaviour
+
 {
     public float health = 100f;
     public float movementSpeed = 5f;
@@ -17,10 +18,18 @@ public class BossFinal : MonoBehaviour
     private bool isMoving = true;
     private bool spheresSpawned = false;
 
-    public float frecuenciaDisparo = 2f;
-    public BalaJefe balaPrefab;
-    public float contador = 0f;
-    public Transform bulletPos;
+    public float shootInterval = 2f; // Intervalo de tiempo entre disparos
+    public GameObject bulletPrefab; // El prefab de la bala
+    private float shootTimer = 0f; // Temporizador para el disparo
+    public Transform bulletSpawnPoint; // Punto de aparición de las balas
+
+    private bool isPhase3 = false;
+    private bool isPhase4 = false;
+
+    private GameObject spawnedSphere1;
+    private GameObject spawnedSphere2;
+
+    public Transform phase4Position; // Posición a la que se moverá en la fase 4
 
     void Start()
     {
@@ -31,50 +40,33 @@ public class BossFinal : MonoBehaviour
 
     void Update()
     {
-        /*if (health >= 0)
+        if (health <= 0)
         {
             Defeated();
             return;
-        }*/
+        }
 
-        if (health == 100 && health > 75 && isMoving)
+        if (health > 75 && isMoving)
         {
             Phase1();
-            return;
         }
-
-        if (health == 75 && health > 50 && isMoving)
+        else if (health <= 75 && health > 50 && isMoving)
         {
             Phase2();
-            return;
         }
-
-        if (health == 50 && health >= 25 && !isMoving)
+        else if (health <= 50 && health > 25 && !isPhase3)
         {
-            Debug.Log("fase3");
             Phase3();
-            return;
+        }
+        else if (health <= 25 && !isPhase4)
+        {
+            Phase4();
         }
 
-
-
-        /*if (health <= 75f && isMoving)
+        if (isPhase3)
         {
-            Phase2();
-            return;
+            Invoke("Phase3Behavior", 3);
         }
-
-        if (health <= 50f && isMoving)
-        {
-            Debug.Log("fase3");
-            Phase3();
-            return;
-        }
-
-        if (isMoving)
-        {
-            Phase1();
-        }*/
     }
 
     void Phase1()
@@ -93,33 +85,87 @@ public class BossFinal : MonoBehaviour
 
     void Phase3()
     {
-       
-      
+        isPhase3 = true;
+        rb.velocity = Vector2.zero;
+        DestroySpawnedSpheres(); // Destruir esferas al comienzo de la fase 3
+        animator.SetTrigger("startSpin");
     }
 
-   
+    void DestroySpawnedSpheres()
+    {
+        if (spawnedSphere1 != null)
+        {
+            Destroy(spawnedSphere1);
+        }
+        if (spawnedSphere2 != null)
+        {
+            Destroy(spawnedSphere2);
+        }
+    }
 
-    public void MoveToPosition() // se llama en el ultimo frame de la animacion de desaparecer
+    void Phase3Behavior()
+    {
+        // Persigue al jugador
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        rb.velocity = direction * movementSpeed;
+
+        // Controlar el disparo de balas
+        shootTimer += Time.deltaTime;
+        if (shootTimer >= shootInterval)
+        {
+            Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+
+            shootTimer = 0f;
+        }
+    }
+
+    void Phase4()
+    {
+       
+            isPhase4 = true;
+            // Movimiento hacia la posición designada
+            rb.velocity = (phase4Position.position - transform.position).normalized * movementSpeed;
+
+            // Si el jefe está cerca de la posición designada, detén su movimiento
+            if (Vector2.Distance(transform.position, phase4Position.position) < 0.1f)
+            {
+                rb.velocity = Vector2.zero;
+            }
+
+            // Aquí puedes definir el comportamiento adicional de la fase 4 si es necesario.
+    }
+
+    public void MoveToPosition() // se llama en el último frame de la animación de desaparecer
     {
         transform.position = spawnPoint.position;
         animator.SetTrigger("Appear");
         isMoving = true;
     }
 
-    public void OnDisappearAnimationComplete() // se llama desde la animacion de aparecer
+    public void OnDisappearAnimationComplete() // se llama desde la animación de aparecer
     {
         // Una vez que la animación de "desaparecer" ha terminado, instanciamos las esferas
         if (!spheresSpawned)
         {
-            Instantiate(spherePrefab, sphereSpawn1.position, Quaternion.identity);
-            Instantiate(spherePrefab, sphereSpawn2.position, Quaternion.identity);
+            spawnedSphere1 = Instantiate(spherePrefab, sphereSpawn1.position, Quaternion.identity);
+            spawnedSphere2 = Instantiate(spherePrefab, sphereSpawn2.position, Quaternion.identity);
             spheresSpawned = true;
         }
     }
 
-    public void OnAppearAnimationComplete() // se llama en el ultimo frame de la animacion de aparecer
+    public void OnAppearAnimationComplete() // se llama en el último frame de la animación de aparecer
     {
         animator.SetTrigger("Sleep");
+    }
+
+    public void OnStartSpinAnimationComplete() // se llama al final de la animación "StartSpin"
+    {
+        animator.SetTrigger("Spin");
+    }
+
+    public void OnSpin2AnimationComplete() // se llama al final de la animación "Spin2"
+    {
+        // Aquí no hacemos nada ya que la animación "Spin2" es loopeada y la fase 3 continúa
     }
 
     public void TakeDamage(float damage)
@@ -145,5 +191,3 @@ public class BossFinal : MonoBehaviour
         }
     }
 }
-
-

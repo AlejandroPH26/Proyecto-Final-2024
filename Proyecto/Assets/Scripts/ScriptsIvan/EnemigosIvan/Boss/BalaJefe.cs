@@ -41,5 +41,11 @@ public class BalaJefe : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        else if(collision.collider.CompareTag("BalaJugador"))
+        {
+            Destroy(this.gameObject);
+            Destroy(collision.gameObject);
+        }
     }
 }
