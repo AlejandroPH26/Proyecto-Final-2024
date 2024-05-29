@@ -8,9 +8,10 @@ public class SalasBossManager : MonoBehaviour
 {
 
     public string teleportTargetTag = "TeleportTarget";
-    public string currentRoomTag = "SalaActual";
+    public string currentRoomTag = "SalaActualBoss";
 
     private List<GameObject> enemigosEnSala = new List<GameObject>();
+    public GameObject trophy;
     private bool jugadorEnSala = false;
 
     void Start()
@@ -48,7 +49,7 @@ public class SalasBossManager : MonoBehaviour
         }
     }
 
-    void ActivarEnemigos()
+    public void ActivarEnemigos()
     {
         Debug.Log("Enemigo activado");
         foreach (var enemigo in enemigosEnSala)
@@ -111,7 +112,8 @@ public class SalasBossManager : MonoBehaviour
             if (jugadorEnSala && enemigosEnSala.Count == 0)
             {
                 Debug.Log("Has ganado");
-                SceneManager.LoadScene("Win");
+                // Instanciar el trofeo
+                Instantiate(trophy, transform.position, Quaternion.identity);
                 DesactivarEnemigos();
             }
         }
