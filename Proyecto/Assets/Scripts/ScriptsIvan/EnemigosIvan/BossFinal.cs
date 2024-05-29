@@ -5,9 +5,12 @@ using UnityEngine;
 public class BossFinal : MonoBehaviour
 
 {
+    public ActivarBoss ActivacionBoss;
+
+
     public float health = 4000f;
     public float movementSpeed = 5f;
-    public Transform spawnPoint; // Punto de aparición para la fase 2
+    public Transform spawnPointFase2; // Punto de aparición para la fase 2
     public GameObject spherePrefab; // El prefab de la esfera
     public Transform sphereSpawn1; // Posición de spawn para la primera esfera
     public Transform sphereSpawn2; // Posición de spawn para la segunda esfera
@@ -19,10 +22,10 @@ public class BossFinal : MonoBehaviour
     private bool spheresSpawned = false;
 
     public float shootInterval = 2f; // Intervalo de tiempo entre disparos
-    public GameObject bulletPrefab; // El prefab de la bala
-    public GameObject bulletPrefab2; // El prefab de la bala
+    public GameObject bulletPrefabFase3; // El prefab de la bala
+    public GameObject bulletPrefabFase4; // El prefab de la bala
     private float shootTimer = 0f; // Temporizador para el disparo
-    public Transform bulletSpawnPoint; // Punto de aparición de las balas
+    public Transform bulletPos; // Punto de aparición de las balas
 
     private bool isPhase3 = false;
     private bool isPhase4 = false;
@@ -32,22 +35,31 @@ public class BossFinal : MonoBehaviour
     private GameObject spawnedSphere2;
 
     public Transform phase4Position; // Posición a la que se moverá en la fase 4
-    public BalaFase4 Fase4;
-    public Transform bulletArriba;
-    public Transform bulletAbajo;
-    public Transform bulletDerecha;
-    public Transform bulletIzquierda;
+    
+ 
     public float shootIntervalFase4 = 2f; // Intervalo de tiempo entre disparos
+
+    public GameObject trophy;
+    public Transform trophyPos;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        Fase4 = FindObjectOfType<BalaFase4>();
+       
+        ActivacionBoss = FindObjectOfType<ActivarBoss>();
     }
 
     void Update()
+    {
+       if(ActivacionBoss.PuedeMoverse == true)
+        {
+            ActivarFases();
+        }
+    }
+
+    public void ActivarFases()
     {
         if (health <= 0)
         {
@@ -69,7 +81,7 @@ public class BossFinal : MonoBehaviour
         }
         else if (health <= 1000)
         {
-            
+
             Phase4();
         }
 
@@ -126,7 +138,7 @@ public class BossFinal : MonoBehaviour
         shootTimer += Time.deltaTime;
         if (shootTimer >= shootInterval)
         {
-            Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+            Instantiate(bulletPrefabFase3, bulletPos.position, Quaternion.identity);
 
             shootTimer = 0f;
         }
@@ -151,7 +163,7 @@ public class BossFinal : MonoBehaviour
 
             if (shootTimer >= shootIntervalFase4)
             {
-                Instantiate(bulletPrefab2, bulletSpawnPoint.position, Quaternion.identity);
+                Instantiate(bulletPrefabFase4, bulletPos.position, Quaternion.identity);
 
                 shootTimer = 0f;
             }
@@ -161,7 +173,7 @@ public class BossFinal : MonoBehaviour
 
     public void MoveToPosition() // se llama en el último frame de la animación de desaparecer
     {
-        transform.position = spawnPoint.position;
+        transform.position = spawnPointFase2.position;
         animator.SetTrigger("Appear");
         isMoving = true;
     }
@@ -204,6 +216,7 @@ public class BossFinal : MonoBehaviour
         Debug.Log("El jefe ha sido derrotado!");
         Destroy(this.gameObject);
         rb.velocity = Vector2.zero;
+        Instantiate(trophy, trophyPos.position, Quaternion.identity);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
