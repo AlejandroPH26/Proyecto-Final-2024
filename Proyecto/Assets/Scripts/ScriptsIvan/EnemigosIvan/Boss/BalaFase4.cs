@@ -5,49 +5,35 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class BalaFase4 : MonoBehaviour
 {
-    public float speed = 10f; // Velocidad de la bala
-    public float lifeTime = 5f; // Tiempo de vida de la bala antes de ser destruida
-    public int damage = 10; // Daño que inflige la bala
-
+    public float velocidad = 7f;
+    public int daño = 10;
+    public Vector2 direccion;
     private Rigidbody2D rb;
 
     private GameManagerHats gm;
+    public JugadorV1 Player;
 
     void Start()
     {
+        // Obtener el componente Rigidbody2D de la bala
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        Player = FindObjectOfType<JugadorV1>();
         gm = FindObjectOfType<GameManagerHats>();
-        rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, lifeTime); // Destruye la bala después de 'lifeTime' segundos
 
-        // Dispara la bala en cuatro direcciones diferentes
-        ShootInFourDirections();
-    }
+        // Obtener la dirección de movimiento basada en la posición de spawn de la bala
+        Vector3 direction = Player.transform.position - transform.position;
+        rb.velocity = new Vector2(direction.x, direction.y).normalized * velocidad;
 
-    void ShootInFourDirections()
-    {
-        Vector2[] directions = { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
-
-        foreach (var direction in directions)
-        {
-            GameObject bullet = Instantiate(gameObject, transform.position, Quaternion.identity);
-            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-            bulletRb.velocity = direction * speed;
-        }
-
-        // Destruir la bala original para que sólo queden las copias disparadas en cuatro direcciones
-        Destroy(gameObject);
+        float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rot + 180);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
-            Destroy(this.gameObject);
-
-
             gm.RestarVidas();
-
-
+            Destroy(this.gameObject);
         }
 
         else if (collision.collider.CompareTag("Pared") || collision.collider.CompareTag("Boss"))

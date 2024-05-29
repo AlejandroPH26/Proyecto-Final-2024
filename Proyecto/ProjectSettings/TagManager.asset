@@ -80,6 +80,9 @@ TagManager:
   - name: Proyectiles
     uniqueID: 2871268281
     locked: 0
+  - name: Boss
+    uniqueID: 2518494213
+    locked: 0
   - name: Sombreros
     uniqueID: 1524724053
     locked: 0
