@@ -25,6 +25,8 @@ TagManager:
   - ZarzasObstaculo
   - ParedBala
   - Boss
+  - SalaActualBoss
+  - Trofeo
   layers:
   - Default
   - TransparentFX
