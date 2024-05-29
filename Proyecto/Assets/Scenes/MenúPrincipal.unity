@@ -1439,6 +1439,7 @@ MonoBehaviour:
   sliderVolumen: {fileID: 546158718}
   sliderValor: 0
   imagenMuteo: {fileID: 411340758}
+  mm: {fileID: 0}
   Pcompleta: {fileID: 854075116}
 --- !u!114 &229245117
 MonoBehaviour:
@@ -1569,7 +1570,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d41ee2395a45892459115e1fd54abb12, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.002
+  m_Volume: 0.015
   m_Pitch: 1
   Loop: 1
   Mute: 0

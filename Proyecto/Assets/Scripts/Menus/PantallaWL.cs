@@ -7,16 +7,13 @@ using UnityEngine.UI;
 public class PantallaWL : MonoBehaviour
 {
     public MusicManager mm;
-    public AudioClip Victoria;
 
     // Start is called before the first frame update
     void Start()
     {
-        mm = MusicManager.instance;
-        mm.PlaySFX(Victoria); 
     }
 
-    // Update is called once per frame
+    // Update is called once per 3rame
     void Update()
     {
     }
@@ -31,7 +28,7 @@ public class PantallaWL : MonoBehaviour
     {
         
         SceneManager.LoadScene("MenúPrincipal");
-        mm.StopMusic();
+       // mm.PlaySFX(MenuMusica);
     }
 
     public void ResetLvl()
