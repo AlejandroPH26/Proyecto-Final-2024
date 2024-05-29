@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JugadorV1 : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class JugadorV1 : MonoBehaviour
     private bool hasActivatedParticles = false;
 
     private bool playerDead = false;
+    private bool isCollidingWithBossRoom = false;
 
     // Start is called before the first frame update
     void Start()
@@ -299,6 +301,27 @@ public class JugadorV1 : MonoBehaviour
         {
             speed = speed - slowedSpeed;
         }
+        // Verificar su el jugador colisionó con la sala del boss
+        if (other.CompareTag("SalaActualBoss"))
+        {
+            SalasBossManager salaBossManager = other.GetComponent<SalasBossManager>();
+            if (salaBossManager != null)
+            {
+                salaBossManager.DesactivarTeleportTargets();
+                salaBossManager.ActivarEnemigos();
+            }
+
+            Transform cameraTarget = other.transform.Find("CameraTarget");
+            if (cameraTarget != null)
+            {
+                cameraManager.MoveCameraSmoothly(cameraManager.mainCamera.position, cameraTarget.position);
+            }
+        }
+        // Verificar su el jugador colisionó con el trofeo
+        if (other.CompareTag("Trofeo"))
+        {
+            gm.IrAPantallaGanadora();
+        }
     }
 
     private void PosicionarSombreros()
@@ -456,6 +479,15 @@ public class JugadorV1 : MonoBehaviour
 
         // Limpia la lista de sombreros
         sombreros.Clear();
+
+        if (isCollidingWithBossRoom)
+        {
+            // Lógica para la muerte del jugador
+            playerDead = true;
+
+            // Cargar la escena "Muerte" cuando el jugador muere
+            gm.IrAPantallaDeMuerte();
+        }
 
         playerDead = true;
         rb.velocity = Vector3.zero;
