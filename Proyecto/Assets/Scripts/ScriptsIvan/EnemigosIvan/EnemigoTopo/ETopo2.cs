@@ -132,12 +132,12 @@ public class ETopo2 : MonoBehaviour
     // Detecta colisiones con obstáculos, topes y paredes // Cambio on collision Enter por Stay
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Roca") || collision.gameObject.CompareTag("Enemigo") || collision.gameObject.CompareTag("Pared"))
+        if (collision.gameObject.CompareTag("Roca") || collision.gameObject.CompareTag("Enemigo") || collision.gameObject.CompareTag("Pared") || collision.gameObject.CompareTag("Obstaculo"))
         {
             
                 // Cambia la dirección de forma aleatoria entre los ejes X e Y, sin diagonales
                 CambiarDireccion();
-                // Debug.Log("colisionDetectada");
+                Debug.Log("colisionDetectada");
             
             
         }

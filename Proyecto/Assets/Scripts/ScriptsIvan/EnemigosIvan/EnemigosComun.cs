@@ -39,7 +39,7 @@ public class EnemigosComun : MonoBehaviour
     {
         Destroy(this.gameObject);
         mm.PlaySFX(SonidoMuerte);
-        bossController.EnemyDefeated();
+        //bossController.EnemyDefeated();  // no se de quien es esta linea, puede ser mia, y se me ha pasado borrarla 
     }
 
     public void DañoRecibido(int cantidad)
