@@ -100,8 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dirBala: 0
-  speed: 10
+  speed: 20
   damage: 10
+  spriteDestruccionPrefab: {fileID: 0}
+  tiempoDestruccionSprite: 0.1
 --- !u!50 &2204165055469249601
 Rigidbody2D:
   serializedVersion: 4

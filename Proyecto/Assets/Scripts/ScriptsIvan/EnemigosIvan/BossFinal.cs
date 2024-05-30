@@ -42,21 +42,32 @@ public class BossFinal : MonoBehaviour
     public GameObject trophy;
     public Transform trophyPos;
 
+    private GameManagerHats gm;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        gm = FindObjectOfType<GameManagerHats>();
        
         ActivacionBoss = FindObjectOfType<ActivarBoss>();
     }
 
     void Update()
     {
-       if(ActivacionBoss.PuedeMoverse == true)
+
+        if (player != null && ActivacionBoss.PuedeMoverse == true)
         {
             ActivarFases();
         }
+        else
+        {
+           
+            rb.velocity = Vector2.zero;
+        }
+
+        
     }
 
     public void ActivarFases()
@@ -225,6 +236,11 @@ public class BossFinal : MonoBehaviour
         {
             Destroy(collision.gameObject);
             TakeDamage(25);
+        }
+
+        if (collision.collider.CompareTag("Player"))
+        {
+            gm.RestarVidas();
         }
     }
 }

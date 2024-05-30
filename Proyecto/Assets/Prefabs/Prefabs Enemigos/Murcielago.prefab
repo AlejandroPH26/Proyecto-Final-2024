@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vidaActual: 0
-  vidaMax: 100
+  vidaMax: 60
   SonidoMuerte: {fileID: 8300000, guid: b604981dcd7d79f41b56599359234f7f, type: 3}
   activo: 1
   TCambioColor: 0.2
@@ -174,7 +174,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16392
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
