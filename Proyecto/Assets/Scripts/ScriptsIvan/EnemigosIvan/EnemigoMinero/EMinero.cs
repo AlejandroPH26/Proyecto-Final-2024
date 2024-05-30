@@ -43,13 +43,14 @@ public class EMinero : MonoBehaviour
         if (enemy.activo && jugador != null)
         {
             Chase();
+            ComprobacionDireccion();
         }
         else
         {
             rb.velocity = Vector2.zero;
         }
 
-        ComprobacionDireccion();
+       
     }
 
     public void Chase()
