@@ -7,7 +7,6 @@ public class BossFinal : MonoBehaviour
 {
     public ActivarBoss ActivacionBoss;
 
-
     public float health = 4000f;
     public float movementSpeed = 5f;
     public Transform spawnPointFase2; // Punto de aparición para la fase 2
@@ -27,17 +26,17 @@ public class BossFinal : MonoBehaviour
     private float shootTimer = 0f; // Temporizador para el disparo
     public Transform bulletPos; // Punto de aparición de las balas
 
+    private bool isPhase2 = false;
     private bool isPhase3 = false;
     private bool isPhase4 = false;
-    
+    private bool isPhase4Shooting = false; // Variable para controlar la corrutina de disparo en fase 4
 
     private GameObject spawnedSphere1;
     private GameObject spawnedSphere2;
 
     public Transform phase4Position; // Posición a la que se moverá en la fase 4
-    
- 
-    public float shootIntervalFase4 = 2f; // Intervalo de tiempo entre disparos
+
+    public float phase4ShootInterval = 0.1f; // Intervalo de disparo dentro del ciclo de 5 segundos en fase 4
 
     public GameObject trophy;
     public Transform trophyPos;
@@ -50,12 +49,13 @@ public class BossFinal : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gm = FindObjectOfType<GameManagerHats>();
-       
+
         ActivacionBoss = FindObjectOfType<ActivarBoss>();
     }
 
     void Update()
     {
+       
 
         if (player != null && ActivacionBoss.PuedeMoverse == true)
         {
@@ -63,10 +63,9 @@ public class BossFinal : MonoBehaviour
         }
         else
         {
-           
+            
             rb.velocity = Vector2.zero;
         }
-
         
     }
 
@@ -92,7 +91,6 @@ public class BossFinal : MonoBehaviour
         }
         else if (health <= 1000)
         {
-
             Phase4();
         }
 
@@ -111,6 +109,13 @@ public class BossFinal : MonoBehaviour
 
     void Phase2()
     {
+
+        // variable de control para convertir el Rb del jefe en kinematic
+        isPhase2 = true; 
+        rb.isKinematic = true;
+
+
+        // Logica de la fase 2
         animator.SetTrigger("Disappear");
         isMoving = false;
         rb.velocity = Vector2.zero;
@@ -118,13 +123,14 @@ public class BossFinal : MonoBehaviour
 
     void Phase3()
     {
-       
-        
-            isPhase3 = true;
-            rb.velocity = Vector2.zero;
-            DestroySpawnedSpheres(); // Destruir esferas al comienzo de la fase 3
-            animator.SetTrigger("startSpin");
-        
+        // Se Restablece si rigidBody
+        isPhase2 = false;
+        rb.isKinematic = false;
+
+        isPhase3 = true;
+        rb.velocity = Vector2.zero;
+        DestroySpawnedSpheres(); // Destruir esferas al comienzo de la fase 3
+        animator.SetTrigger("startSpin");
     }
 
     void DestroySpawnedSpheres()
@@ -150,36 +156,50 @@ public class BossFinal : MonoBehaviour
         if (shootTimer >= shootInterval)
         {
             Instantiate(bulletPrefabFase3, bulletPos.position, Quaternion.identity);
-
             shootTimer = 0f;
         }
     }
 
     void Phase4()
     {
-            CancelInvoke("Phase3Behavior"); // cancelo la phase3 para parla y poder ejecutar la fase4
+        CancelInvoke("Phase3Behavior"); // cancelo la phase3 para parla y poder ejecutar la fase4
 
+        Debug.Log("Fase4");
+        isPhase4 = true;
+        // Movimiento hacia la posición designada
+        rb.velocity = (phase4Position.position - transform.position).normalized * movementSpeed;
 
-            Debug.Log("Fase4");
-            isPhase4 = true;
-            // Movimiento hacia la posición designada
-            rb.velocity = (phase4Position.position - transform.position).normalized * movementSpeed;
+        // Si el jefe está cerca de la posición designada, detén su movimiento e inicia la corrutina de disparo
+        if (Vector2.Distance(transform.position, phase4Position.position) < 0.1f)
+        {
+            rb.velocity = Vector2.zero;
 
-            // Si el jefe está cerca de la posición designada, detén su movimiento
-            if (Vector2.Distance(transform.position, phase4Position.position) < 0.1f)
+            // Iniciar la corrutina de disparo si no se ha iniciado ya
+            if (!isPhase4Shooting)
             {
-                rb.velocity = Vector2.zero;
-
-            shootTimer += Time.deltaTime;
-
-            if (shootTimer >= shootIntervalFase4)
-            {
-                Instantiate(bulletPrefabFase4, bulletPos.position, Quaternion.identity);
-
-                shootTimer = 0f;
+                isPhase4Shooting = true;
+                StartCoroutine(Phase4ShootingCycle());
             }
         }
+    }
 
+    private IEnumerator Phase4ShootingCycle()
+    {
+        while (true)
+        {
+            // Disparar continuamente cada `phase4ShootInterval` segundos durante 5 segundos
+            float shootDuration = 5f;
+            float shootEndTime = Time.time + shootDuration;
+
+            while (Time.time < shootEndTime)
+            {
+                Instantiate(bulletPrefabFase4, bulletPos.position, Quaternion.identity);
+                yield return new WaitForSeconds(phase4ShootInterval);
+            }
+
+            // Pausa de 3 segundos
+            yield return new WaitForSeconds(3f);
+        }
     }
 
     public void MoveToPosition() // se llama en el último frame de la animación de desaparecer

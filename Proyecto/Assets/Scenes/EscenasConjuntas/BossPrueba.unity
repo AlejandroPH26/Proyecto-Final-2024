@@ -746,6 +746,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1505430116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1049353774 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1776261628401846400, guid: 769dfb07cc8c6074db892ebb66b268ea, type: 3}
+  m_PrefabInstance: {fileID: 1044978385117497113}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1146605416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,6 +1506,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8747623816726229820, guid: 769dfb07cc8c6074db892ebb66b268ea, type: 3}
+      propertyPath: health
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747623816726229820, guid: 769dfb07cc8c6074db892ebb66b268ea, type: 3}
+      propertyPath: trophy
+      value: 
+      objectReference: {fileID: 6364383727476872564, guid: 400d11c0651c73d46b31ece9621fe7eb, type: 3}
+    - target: {fileID: 8747623816726229820, guid: 769dfb07cc8c6074db892ebb66b268ea, type: 3}
+      propertyPath: bulletPos
+      value: 
+      objectReference: {fileID: 1049353774}
+    - target: {fileID: 8747623816726229820, guid: 769dfb07cc8c6074db892ebb66b268ea, type: 3}
+      propertyPath: trophyPos
+      value: 
+      objectReference: {fileID: 240737062}
+    - target: {fileID: 8747623816726229820, guid: 769dfb07cc8c6074db892ebb66b268ea, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 961513677}
@@ -1516,6 +1537,18 @@ PrefabInstance:
       propertyPath: phase4Position
       value: 
       objectReference: {fileID: 240737062}
+    - target: {fileID: 8747623816726229820, guid: 769dfb07cc8c6074db892ebb66b268ea, type: 3}
+      propertyPath: spawnPointFase2
+      value: 
+      objectReference: {fileID: 961513677}
+    - target: {fileID: 8747623816726229820, guid: 769dfb07cc8c6074db892ebb66b268ea, type: 3}
+      propertyPath: bulletPrefabFase3
+      value: 
+      objectReference: {fileID: 295876351945195777, guid: 3056c77470b6f0f41ab5b7469432292f, type: 3}
+    - target: {fileID: 8747623816726229820, guid: 769dfb07cc8c6074db892ebb66b268ea, type: 3}
+      propertyPath: bulletPrefabFase4
+      value: 
+      objectReference: {fileID: 8777601251518022375, guid: 9a2b4dd3d72f4ad44be77d90443ce152, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
