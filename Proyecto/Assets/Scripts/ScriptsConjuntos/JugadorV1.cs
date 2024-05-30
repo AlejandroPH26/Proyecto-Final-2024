@@ -322,6 +322,11 @@ public class JugadorV1 : MonoBehaviour
         {
             gm.IrAPantallaGanadora();
         }
+        // Verificar su el jugador colisionó con la puerta del tutorial
+        if (other.CompareTag("PuertaTutorial"))
+        {
+            SceneManager.LoadScene("Nivel 1");
+        }
     }
 
     private void PosicionarSombreros()

@@ -96,6 +96,8 @@ public class SalasBossManager : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            // METER MÚSICA DEL BOSS Y QUITAR LA MÚSICA DEL NIVEL 1
+
             jugadorEnSala = true;
             DesactivarTeleportTargets();
             ActivarEnemigos();
