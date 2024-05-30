@@ -17,13 +17,13 @@ public class EnemigosComun : MonoBehaviour
     public Color colorDaño;
     public Color colorOriginal;
 
-    private EBoss bossController;
+    
 
     void Start()
     {
         vidaActual = vidaMax;
         rbSprite = GetComponent<SpriteRenderer>();
-        bossController = FindObjectOfType<EBoss>();
+       
         colorOriginal = rbSprite.color;
         mm = MusicManager.instance;
     }

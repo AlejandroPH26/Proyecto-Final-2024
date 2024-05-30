@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossFinal : MonoBehaviour
 
 {
     public ActivarBoss ActivacionBoss;
 
-    public float health = 4000f;
+    public float maxHealth = 4000f;
+    public float Health;
+
+   
+    public BarraDeVida BarraDeVida;
+
     public float movementSpeed = 5f;
+
     public Transform spawnPointFase2; // Punto de aparición para la fase 2
     public GameObject spherePrefab; // El prefab de la esfera
     public Transform sphereSpawn1; // Posición de spawn para la primera esfera
@@ -41,16 +48,28 @@ public class BossFinal : MonoBehaviour
     public GameObject trophy;
     public Transform trophyPos;
 
+  
+
     private GameManagerHats gm;
 
+
+    public void Awake()
+    {
+       BarraDeVida = FindObjectOfType<BarraDeVida>();
+    }
     void Start()
     {
+        
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gm = FindObjectOfType<GameManagerHats>();
-
         ActivacionBoss = FindObjectOfType<ActivarBoss>();
+        Health = maxHealth;
+
+        
+        BarraDeVida.InicializarBarraDeVida(Health);
+        
     }
 
     void Update()
@@ -71,25 +90,25 @@ public class BossFinal : MonoBehaviour
 
     public void ActivarFases()
     {
-        if (health <= 0)
+        if (Health <= 0)
         {
             Defeated();
             return;
         }
 
-        if (health > 3000 && isMoving)
+        if (Health > 3000 && isMoving)
         {
             Phase1();
         }
-        else if (health <= 3000 && health > 2000 && isMoving)
+        else if (Health <= 3000 && Health > 2000 && isMoving)
         {
             Phase2();
         }
-        else if (health <= 2000 && health > 1000 && !isPhase3)
+        else if (Health <= 2000 && Health > 1000 && !isPhase3)
         {
             Phase3();
         }
-        else if (health <= 1000)
+        else if (Health <= 1000)
         {
             Phase4();
         }
@@ -237,8 +256,11 @@ public class BossFinal : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        if (health <= 0)
+        Health -= damage;
+
+        BarraDeVida.CambiarVidaActual(Health);
+       
+        if (Health <= 0)
             Defeated();
     }
 
@@ -249,6 +271,9 @@ public class BossFinal : MonoBehaviour
         rb.velocity = Vector2.zero;
         Instantiate(trophy, trophyPos.position, Quaternion.identity);
     }
+
+
+  
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
