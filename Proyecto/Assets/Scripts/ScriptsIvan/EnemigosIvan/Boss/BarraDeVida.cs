@@ -34,7 +34,8 @@ public class BarraDeVida : MonoBehaviour
 
     public void InicializarBarraDeVida(float cantidadVida)
     {
-        CambiarVidaActual(cantidadVida);
         CambiarVidaMaxima(cantidadVida);
+        CambiarVidaActual(cantidadVida);
+       
     }
 }

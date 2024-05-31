@@ -12,7 +12,8 @@ public class BossFinal : MonoBehaviour
     public float Health;
 
    
-    public BarraDeVida BarraDeVida;
+    public BarraDeVida barraDeVida;
+   
 
     public float movementSpeed = 5f;
 
@@ -55,7 +56,7 @@ public class BossFinal : MonoBehaviour
 
     public void Awake()
     {
-       BarraDeVida = FindObjectOfType<BarraDeVida>();
+       barraDeVida = FindObjectOfType<BarraDeVida>();
     }
     void Start()
     {
@@ -68,7 +69,7 @@ public class BossFinal : MonoBehaviour
         Health = maxHealth;
 
         
-        BarraDeVida.InicializarBarraDeVida(Health);
+        barraDeVida.InicializarBarraDeVida(Health);
         
     }
 
@@ -258,7 +259,7 @@ public class BossFinal : MonoBehaviour
     {
         Health -= damage;
 
-        BarraDeVida.CambiarVidaActual(Health);
+        barraDeVida.CambiarVidaActual(Health);
        
         if (Health <= 0)
             Defeated();
@@ -269,6 +270,7 @@ public class BossFinal : MonoBehaviour
         Debug.Log("El jefe ha sido derrotado!");
         Destroy(this.gameObject);
         rb.velocity = Vector2.zero;
+        barraDeVida.gameObject.SetActive(false);
         Instantiate(trophy, trophyPos.position, Quaternion.identity);
     }
 
@@ -288,4 +290,6 @@ public class BossFinal : MonoBehaviour
             gm.RestarVidas();
         }
     }
+
+
 }

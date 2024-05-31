@@ -6,6 +6,8 @@ public class ActivarBoss : MonoBehaviour
 {
     private BossFinal jefe;
     public bool PuedeMoverse = false;
+    public GameObject sliderVida;
+    public GameObject Boss;
    
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,9 @@ public class ActivarBoss : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-           
+
+            sliderVida.SetActive(true);
+            Boss.SetActive(true);
             PuedeMoverse=true;
         }
     }

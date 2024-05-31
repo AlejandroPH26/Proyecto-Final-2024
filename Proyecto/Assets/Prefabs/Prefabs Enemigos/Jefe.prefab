@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8683609679391468536
 Transform:
   m_ObjectHideFlags: 0
@@ -101,23 +101,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b404a7dfe762047988246635a0aa87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4000
-  movementSpeed: 4
-  spawnPoint: {fileID: 0}
+  ActivacionBoss: {fileID: 0}
+  maxHealth: 4000
+  Health: 0
+  barraDeVida: {fileID: 0}
+  movementSpeed: 5
+  spawnPointFase2: {fileID: 0}
   spherePrefab: {fileID: 2103673964157693029, guid: 1e9b2e08a898ce34d86128f1373a277a, type: 3}
   sphereSpawn1: {fileID: 0}
   sphereSpawn2: {fileID: 0}
   shootInterval: 1
-  bulletPrefab: {fileID: 295876351945195777, guid: 3056c77470b6f0f41ab5b7469432292f, type: 3}
-  bulletPrefab2: {fileID: 8777601251518022375, guid: 9a2b4dd3d72f4ad44be77d90443ce152, type: 3}
-  bulletSpawnPoint: {fileID: 1776261628401846400}
+  bulletPrefabFase3: {fileID: 295876351945195777, guid: 3056c77470b6f0f41ab5b7469432292f, type: 3}
+  bulletPrefabFase4: {fileID: 8777601251518022375, guid: 9a2b4dd3d72f4ad44be77d90443ce152, type: 3}
+  bulletPos: {fileID: 1776261628401846400}
   phase4Position: {fileID: 0}
-  Fase4: {fileID: 3204920825426717407, guid: 963815feaf7b93e47b572ac813f5e842, type: 3}
-  bulletArriba: {fileID: 0}
-  bulletAbajo: {fileID: 0}
-  bulletDerecha: {fileID: 0}
-  bulletIzquierda: {fileID: 0}
-  shootIntervalFase4: 0.15
+  phase4ShootInterval: 0.1
+  trophy: {fileID: 6364383727476872564, guid: 400d11c0651c73d46b31ece9621fe7eb, type: 3}
+  trophyPos: {fileID: 0}
 --- !u!50 &1862620740240256140
 Rigidbody2D:
   serializedVersion: 4
@@ -236,7 +236,7 @@ Transform:
   m_GameObject: {fileID: 8439894198212256258}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.214, y: -0.571, z: 0}
+  m_LocalPosition: {x: 0.16, y: -0.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

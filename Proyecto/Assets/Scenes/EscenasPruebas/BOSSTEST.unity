@@ -486,6 +486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaActual: 0
   vidaMax: 1000
+  SonidoMuerte: {fileID: 0}
   activo: 1
   TCambioColor: 0.1
   rbSprite: {fileID: 0}
