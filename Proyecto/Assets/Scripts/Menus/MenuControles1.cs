@@ -33,9 +33,9 @@ public class MenuControles1 : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Space) && number == 2)
         {
+            SceneManager.LoadScene("Nivel 1");
             pag1.SetActive(false);
             pag2.SetActive(false);
-
         }
     }
 
